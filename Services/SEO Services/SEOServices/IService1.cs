@@ -14,5 +14,8 @@ namespace SEOServices
     {
         [OperationContract]
         List<string> GetKeywordResults(string lang, int num, string searchTerm, int start, string country);
+
+        [OperationContract]
+        bool AddKeyword(string keyword);
     }
 }

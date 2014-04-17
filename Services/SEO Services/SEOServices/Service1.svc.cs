@@ -5,10 +5,11 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using System.Text.RegularExpressions;
-using HtmlAgilityPack;
-using System.IO;
 
+using Couchbase;
+using Couchbase.Extensions;
+using Enyim.Caching.Memcached;
+using Newtonsoft.Json;
 
 namespace SEOServices
 {
@@ -18,6 +19,21 @@ namespace SEOServices
         {
             string url = string.Format(SEOServices.Properties.Resources.GoogleSearch, lang, num, searchTerm, start, country);
             return WebUtils.GetGoogleResults(url);
+        }
+
+        public bool AddKeyword(string keyword)
+        {
+            var client = new CouchbaseClient();
+
+            var newKeyword = new Keywords
+            {
+                Keyword = "test"
+            };
+            
+            var key = "Stephen1";
+            var result = client.StoreJson(StoreMode.Add, key, newKeyword);
+
+            return true;
         }
     }
 }
