@@ -14,8 +14,12 @@ namespace SEOServices
     {
         [OperationContract]
         List<string> GetKeywordResults(string lang, int num, string searchTerm, int start, string country);
+    }
 
+    [ServiceContract]
+    public interface IUserService
+    {
         [OperationContract]
-        bool AddKeyword(string keyword);
+        bool AddWebsiteInfo(string userId, string url, List<string> keywords);
     }
 }

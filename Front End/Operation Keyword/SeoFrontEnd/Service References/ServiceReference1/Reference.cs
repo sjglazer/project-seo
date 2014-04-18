@@ -105,4 +105,91 @@ namespace SeoFrontEnd.ServiceReference1 {
             return base.Channel.GetKeywordResultsAsync(request);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IUserService")]
+    public interface IUserService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
+        SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse AddWebsiteInfo(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
+        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse> AddWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddWebsiteInfo", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddWebsiteInfoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string userId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string url;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string[] keywords;
+        
+        public AddWebsiteInfoRequest() {
+        }
+        
+        public AddWebsiteInfoRequest(string userId, string url, string[] keywords) {
+            this.userId = userId;
+            this.url = url;
+            this.keywords = keywords;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddWebsiteInfoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddWebsiteInfoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool AddWebsiteInfoResult;
+        
+        public AddWebsiteInfoResponse() {
+        }
+        
+        public AddWebsiteInfoResponse(bool AddWebsiteInfoResult) {
+            this.AddWebsiteInfoResult = AddWebsiteInfoResult;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserServiceChannel : SeoFrontEnd.ServiceReference1.IUserService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<SeoFrontEnd.ServiceReference1.IUserService>, SeoFrontEnd.ServiceReference1.IUserService {
+        
+        public UserServiceClient() {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse AddWebsiteInfo(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request) {
+            return base.Channel.AddWebsiteInfo(request);
+        }
+        
+        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse> AddWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request) {
+            return base.Channel.AddWebsiteInfoAsync(request);
+        }
+    }
 }

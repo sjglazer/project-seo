@@ -13,10 +13,22 @@
   <wsdl:message name="IKeywordService_GetKeywordResults_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetKeywordResultsResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_AddWebsiteInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWebsiteInfo" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_AddWebsiteInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWebsiteInfoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IKeywordService">
     <wsdl:operation name="GetKeywordResults">
       <wsdl:input wsaw:Action="http://tempuri.org/IKeywordService/GetKeywordResults" message="tns:IKeywordService_GetKeywordResults_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKeywordService/GetKeywordResultsResponse" message="tns:IKeywordService_GetKeywordResults_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IUserService">
+    <wsdl:operation name="AddWebsiteInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/AddWebsiteInfo" message="tns:IUserService_AddWebsiteInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/AddWebsiteInfoResponse" message="tns:IUserService_AddWebsiteInfo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IKeywordService" type="tns:IKeywordService">
@@ -31,8 +43,23 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddWebsiteInfo">
+      <soap:operation soapAction="http://tempuri.org/IUserService/AddWebsiteInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="BasicHttpBinding_IKeywordService" binding="tns:BasicHttpBinding_IKeywordService">
+      <soap:address location="http://local.seoservices.com/Service1.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IUserService" binding="tns:BasicHttpBinding_IUserService">
       <soap:address location="http://local.seoservices.com/Service1.svc" />
     </wsdl:port>
   </wsdl:service>

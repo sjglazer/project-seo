@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace SEOServices
 {
-    public class Service1 : IKeywordService
+    public class Service1 : IKeywordService, IUserService
     {
         public List<string> GetKeywordResults(string lang, int num, string searchTerm, int start, string country)
         {
@@ -21,19 +21,20 @@ namespace SEOServices
             return WebUtils.GetGoogleResults(url);
         }
 
-        public bool AddKeyword(string keyword)
+        public bool AddWebsiteInfo(string userId, string url, List<string> keywords)
         {
             var client = new CouchbaseClient();
-
-            var newKeyword = new Keywords
+            var newKeyword = new UserWebsiteProperties
             {
-                Keyword = "test"
+                url = url,
+                keywords = keywords
             };
-            
-            var key = "Stephen1";
+
+            var key = userId;
             var result = client.StoreJson(StoreMode.Add, key, newKeyword);
 
-            return true;
+            return result;
         }
     }
+
 }

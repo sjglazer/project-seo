@@ -17,6 +17,31 @@ namespace SeoFrontEnd.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        [HttpGet]
+        public ActionResult Configure()
+        {
+            string method = HttpContext.Request.HttpMethod; 
+
+            if(method == "GET")
+            {
+                UserWebsiteModel model = new UserWebsiteModel();
+                model.keywords = new List<string>(5);
+
+            }
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Configure(UserWebsiteModel model)
+        {
+            var request = new ServiceReference1.AddWebsiteInfoRequest();
+            request.url = model.url;
+            request.userId = User.Identity.Name;
+            request.keywords = model.keywords.ToArray();
+            var response = new ServiceReference1.UserServiceClient().AddWebsiteInfo(request);
+            return View(model);
+        }
+     
         //
         // GET: /Account/Login
 

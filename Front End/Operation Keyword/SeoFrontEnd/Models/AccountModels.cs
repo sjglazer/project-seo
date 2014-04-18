@@ -27,6 +27,18 @@ namespace SeoFrontEnd.Models
         public string UserName { get; set; }
     }
 
+    public class UserWebsiteModel
+    {
+        [Required]
+        [Display(Name = "url")]
+        public string url { get; set; }
+
+        [Display(Name = "keywords")]
+        public List<string> keywords { get; set; }
+    }
+    
+    
+    
     public class RegisterExternalLoginModel
     {
         [Required]
