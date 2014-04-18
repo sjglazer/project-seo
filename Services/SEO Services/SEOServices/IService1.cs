@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -21,5 +22,21 @@ namespace SEOServices
     {
         [OperationContract]
         bool AddWebsiteInfo(string userId, string url, List<string> keywords);
+
+        [OperationContract]
+        WebsiteInfo GetWebsiteInfo(string userId);
+    }
+
+    [DataContract]
+    public class WebsiteInfo
+    {
+        [DataMember]
+        [JsonProperty("url")]
+        public string url { get; set; }
+
+        [DataMember]
+        [JsonProperty("keywords")]
+        public List<string> keywords { get; set; }
+       
     }
 }

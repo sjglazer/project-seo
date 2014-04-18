@@ -9,7 +9,70 @@
 //------------------------------------------------------------------------------
 
 namespace SeoFrontEnd.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WebsiteInfo", Namespace="http://schemas.datacontract.org/2004/07/SEOServices")]
+    [System.SerializableAttribute()]
+    public partial class WebsiteInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] keywordsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string urlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] keywords {
+            get {
+                return this.keywordsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.keywordsField, value) != true)) {
+                    this.keywordsField = value;
+                    this.RaisePropertyChanged("keywords");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string url {
+            get {
+                return this.urlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.urlField, value) != true)) {
+                    this.urlField = value;
+                    this.RaisePropertyChanged("url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IKeywordService")]
@@ -115,6 +178,12 @@ namespace SeoFrontEnd.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
         System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse> AddWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/GetWebsiteInfoResponse")]
+        SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse GetWebsiteInfo(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/GetWebsiteInfoResponse")]
+        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse> GetWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -157,6 +226,38 @@ namespace SeoFrontEnd.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetWebsiteInfo", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetWebsiteInfoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string userId;
+        
+        public GetWebsiteInfoRequest() {
+        }
+        
+        public GetWebsiteInfoRequest(string userId) {
+            this.userId = userId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetWebsiteInfoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetWebsiteInfoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public SeoFrontEnd.ServiceReference1.WebsiteInfo GetWebsiteInfoResult;
+        
+        public GetWebsiteInfoResponse() {
+        }
+        
+        public GetWebsiteInfoResponse(SeoFrontEnd.ServiceReference1.WebsiteInfo GetWebsiteInfoResult) {
+            this.GetWebsiteInfoResult = GetWebsiteInfoResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IUserServiceChannel : SeoFrontEnd.ServiceReference1.IUserService, System.ServiceModel.IClientChannel {
     }
@@ -190,6 +291,14 @@ namespace SeoFrontEnd.ServiceReference1 {
         
         public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse> AddWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request) {
             return base.Channel.AddWebsiteInfoAsync(request);
+        }
+        
+        public SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse GetWebsiteInfo(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request) {
+            return base.Channel.GetWebsiteInfo(request);
+        }
+        
+        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse> GetWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request) {
+            return base.Channel.GetWebsiteInfoAsync(request);
         }
     }
 }

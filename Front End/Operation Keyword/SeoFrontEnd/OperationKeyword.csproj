@@ -277,6 +277,9 @@
     <Content Include="Service References\ServiceReference1\SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ServiceReference1\SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServiceReference1\Service1.disco" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
@@ -337,6 +340,9 @@
     </None>
     <Content Include="Views\Shared\_DomainList.cshtml" />
     <Content Include="Views\Account\Configure.cshtml" />
+    <None Include="Service References\ServiceReference1\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

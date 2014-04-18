@@ -20,15 +20,24 @@ namespace SeoFrontEnd.Controllers
         [HttpGet]
         public ActionResult Configure()
         {
-            string method = HttpContext.Request.HttpMethod; 
 
-            if(method == "GET")
+            var request = new ServiceReference1.GetWebsiteInfoRequest();
+            request.userId = request.userId = User.Identity.Name;
+            var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
+
+            UserWebsiteModel model = new UserWebsiteModel();
+            if(response.GetWebsiteInfoResult != null)
             {
-                UserWebsiteModel model = new UserWebsiteModel();
-                model.keywords = new List<string>(5);
-
+                model.url = response.GetWebsiteInfoResult.url;
+                model.keywords = response.GetWebsiteInfoResult.keywords.ToList(); ;
             }
-            return View();
+            else
+            {
+                model.keywords = new List<string>(5);
+            }
+            
+            return View(model); 
+            
         }
         
         [HttpPost]
@@ -39,6 +48,7 @@ namespace SeoFrontEnd.Controllers
             request.userId = User.Identity.Name;
             request.keywords = model.keywords.ToArray();
             var response = new ServiceReference1.UserServiceClient().AddWebsiteInfo(request);
+            ViewBag.Message = "Website Saved!";
             return View(model);
         }
      

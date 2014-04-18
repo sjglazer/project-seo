@@ -15,11 +15,18 @@ namespace SEOServices
 {
     public class Service1 : IKeywordService, IUserService
     {
+
+        // IKeywordService Start
+        
         public List<string> GetKeywordResults(string lang, int num, string searchTerm, int start, string country)
         {
             string url = string.Format(SEOServices.Properties.Resources.GoogleSearch, lang, num, searchTerm, start, country);
             return WebUtils.GetGoogleResults(url);
         }
+
+        // IKeywordService End
+
+        // IUserService Start
 
         public bool AddWebsiteInfo(string userId, string url, List<string> keywords)
         {
@@ -31,10 +38,19 @@ namespace SEOServices
             };
 
             var key = userId;
-            var result = client.StoreJson(StoreMode.Add, key, newKeyword);
+            var result = client.StoreJson(StoreMode.Set, key, newKeyword);
 
             return result;
         }
+
+        public WebsiteInfo GetWebsiteInfo(string userId)
+        {
+            var client = new CouchbaseClient();
+            var websiteInfo = client.GetJson<WebsiteInfo>(userId);
+            return websiteInfo;
+        }
+
+        // IUserService Start
     }
 
 }
