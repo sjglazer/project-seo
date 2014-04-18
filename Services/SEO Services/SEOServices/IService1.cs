@@ -15,6 +15,12 @@ namespace SEOServices
     {
         [OperationContract]
         List<string> GetKeywordResults(string lang, int num, string searchTerm, int start, string country);
+
+        [OperationContract]
+        KeywordList GetAllKeywords();
+
+        [OperationContract]
+        void CrawlKeyword(string keyword);
     }
 
     [ServiceContract]
@@ -38,5 +44,14 @@ namespace SEOServices
         [JsonProperty("keywords")]
         public List<string> keywords { get; set; }
        
+    }
+
+    [DataContract]
+    public class KeywordList
+    {
+        [DataMember]
+        [JsonProperty("keywords")]
+        public List<string> keywords { get; set; }
+
     }
 }

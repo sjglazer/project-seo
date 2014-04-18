@@ -33,7 +33,7 @@ namespace SeoFrontEnd.Controllers
             }
             else
             {
-                model.keywords = new List<string>(5);
+                model.keywords = new List<string>(new string[5]);
             }
             
             return View(model); 
