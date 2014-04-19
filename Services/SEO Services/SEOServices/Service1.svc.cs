@@ -19,11 +19,10 @@ namespace SEOServices
     {
 
         // IKeywordService Start
-        public KeywordStats GetKeywordStats(string userId)
+        public Dictionary<string, KeywordStats> GetKeywordStats(string userId)
         {
             // Get the users domain and keywords
-            KeywordStats ret = new KeywordStats();
-            ret.stats = new List<KeywordStat>();
+            Dictionary<string, KeywordStats> returnVal = new Dictionary<string, KeywordStats>();
             WebsiteInfo websiteInfo = GetWebsiteInfo(userId);
             if(websiteInfo != null && websiteInfo.keywords != null && websiteInfo.keywords.Count > 0 && !string.IsNullOrEmpty(websiteInfo.url))
             {
@@ -33,6 +32,8 @@ namespace SEOServices
                     if(!string.IsNullOrEmpty(keyword))
                     {
                         // Get all the crawl results for the keyword
+                        KeywordStats current = new KeywordStats();
+                        current.stats = new List<KeywordStat>();
                         List<KeywordCrawlResult> results = GetCrawlsByKeyword(keyword);
                         if(results != null && results.Count > 0)
                         {
@@ -45,15 +46,18 @@ namespace SEOServices
                                     stat.TimeStamp = crawlResult.TimeStamp;
                                     int index = crawlResult.searchResults.FindIndex(x => x.StartsWith(websiteInfo.url));
                                     stat.position = index.ToString();
-                                    ret.stats.Add(stat);
+                                    current.stats.Add(stat);
                                 }
                             }
+
+                            returnVal[keyword] = current;
+
                         }
                     }
                 }
             }
 
-            return ret;
+            return returnVal;
         }
 
         

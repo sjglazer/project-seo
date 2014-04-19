@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SeoFrontEnd.ServiceReference1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -36,8 +37,11 @@ namespace SeoFrontEnd.Models
         [Display(Name = "keywords")]
         public List<string> keywords { get; set; }
     }
-    
-    
+
+    public class KeywordStatModel
+    {
+        public Dictionary<string, KeywordStats> stats { get; set; }
+    }
     
     public class RegisterExternalLoginModel
     {

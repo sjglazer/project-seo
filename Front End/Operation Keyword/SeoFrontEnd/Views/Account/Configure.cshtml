@@ -1,0 +1,37 @@
+﻿@model SeoFrontEnd.Models.UserWebsiteModel 
+@{
+    ViewBag.Title = "Configure Website";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Message</h1>
+</hgroup>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Configure Website</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.url)
+                @Html.TextBoxFor(m => m.url)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.keywords)
+                @for (int i = 0; i < 5; i++)
+                {
+                    @Html.EditorFor(m => m.keywords[i])
+                }
+            </li>
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

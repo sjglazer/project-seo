@@ -17,6 +17,36 @@ namespace SeoFrontEnd.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+
+        [HttpGet]
+        public ActionResult KeywordRanking()
+        {
+            var request = new ServiceReference1.GetWebsiteInfoRequest();
+            request.userId = User.Identity.Name;
+            var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
+
+            if (string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
+            {
+                ViewBag.Message = "Please add a website!";
+                return View();
+            }
+
+            if (response.GetWebsiteInfoResult.keywords != null && response.GetWebsiteInfoResult.keywords.Count() < 1)
+            {
+                ViewBag.Message = "Please add some keywords!";
+                return View();
+            }
+
+            var statRequest = new ServiceReference1.GetKeywordStatsRequest();
+            statRequest.userId = User.Identity.Name;
+            var statResponse = new ServiceReference1.KeywordServiceClient().GetKeywordStats(statRequest);
+            KeywordStatModel model = new KeywordStatModel();
+            model.stats = statResponse.GetKeywordStatsResult;
+            
+            return View(model);
+
+        }
+        
         [HttpGet]
         public ActionResult Configure()
         {

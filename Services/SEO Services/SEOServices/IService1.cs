@@ -23,7 +23,7 @@ namespace SEOServices
         bool CrawlKeyword(string keyword);
 
         [OperationContract]
-        KeywordStats GetKeywordStats(string userId);
+        Dictionary<string,KeywordStats> GetKeywordStats(string userId);
     }
 
     [ServiceContract]

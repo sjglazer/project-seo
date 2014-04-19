@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeoFrontEnd.ServiceReference1 {
+namespace SEOCrawler.SEOService {
     using System.Runtime.Serialization;
     using System;
     
@@ -68,7 +68,7 @@ namespace SeoFrontEnd.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SeoFrontEnd.ServiceReference1.KeywordStat[] statsField;
+        private SEOCrawler.SEOService.KeywordStat[] statsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string typeField;
@@ -84,7 +84,7 @@ namespace SeoFrontEnd.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SeoFrontEnd.ServiceReference1.KeywordStat[] stats {
+        public SEOCrawler.SEOService.KeywordStat[] stats {
             get {
                 return this.statsField;
             }
@@ -274,178 +274,41 @@ namespace SeoFrontEnd.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IKeywordService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SEOService.IKeywordService")]
     public interface IKeywordService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetKeywordResults", ReplyAction="http://tempuri.org/IKeywordService/GetKeywordResultsResponse")]
-        SeoFrontEnd.ServiceReference1.GetKeywordResultsResponse GetKeywordResults(SeoFrontEnd.ServiceReference1.GetKeywordResultsRequest request);
+        string[] GetKeywordResults(string lang, int num, string searchTerm, int start, string country);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetKeywordResults", ReplyAction="http://tempuri.org/IKeywordService/GetKeywordResultsResponse")]
-        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetKeywordResultsResponse> GetKeywordResultsAsync(SeoFrontEnd.ServiceReference1.GetKeywordResultsRequest request);
+        System.Threading.Tasks.Task<string[]> GetKeywordResultsAsync(string lang, int num, string searchTerm, int start, string country);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetAllKeywords", ReplyAction="http://tempuri.org/IKeywordService/GetAllKeywordsResponse")]
-        SeoFrontEnd.ServiceReference1.GetAllKeywordsResponse GetAllKeywords(SeoFrontEnd.ServiceReference1.GetAllKeywordsRequest request);
+        SEOCrawler.SEOService.KeywordList GetAllKeywords();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetAllKeywords", ReplyAction="http://tempuri.org/IKeywordService/GetAllKeywordsResponse")]
-        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetAllKeywordsResponse> GetAllKeywordsAsync(SeoFrontEnd.ServiceReference1.GetAllKeywordsRequest request);
+        System.Threading.Tasks.Task<SEOCrawler.SEOService.KeywordList> GetAllKeywordsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/CrawlKeyword", ReplyAction="http://tempuri.org/IKeywordService/CrawlKeywordResponse")]
-        SeoFrontEnd.ServiceReference1.CrawlKeywordResponse CrawlKeyword(SeoFrontEnd.ServiceReference1.CrawlKeywordRequest request);
+        bool CrawlKeyword(string keyword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/CrawlKeyword", ReplyAction="http://tempuri.org/IKeywordService/CrawlKeywordResponse")]
-        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.CrawlKeywordResponse> CrawlKeywordAsync(SeoFrontEnd.ServiceReference1.CrawlKeywordRequest request);
+        System.Threading.Tasks.Task<bool> CrawlKeywordAsync(string keyword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetKeywordStats", ReplyAction="http://tempuri.org/IKeywordService/GetKeywordStatsResponse")]
-        SeoFrontEnd.ServiceReference1.GetKeywordStatsResponse GetKeywordStats(SeoFrontEnd.ServiceReference1.GetKeywordStatsRequest request);
+        System.Collections.Generic.Dictionary<string, SEOCrawler.SEOService.KeywordStats> GetKeywordStats(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetKeywordStats", ReplyAction="http://tempuri.org/IKeywordService/GetKeywordStatsResponse")]
-        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetKeywordStatsResponse> GetKeywordStatsAsync(SeoFrontEnd.ServiceReference1.GetKeywordStatsRequest request);
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, SEOCrawler.SEOService.KeywordStats>> GetKeywordStatsAsync(string userId);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IKeywordServiceChannel : SEOCrawler.SEOService.IKeywordService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeywordResults", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetKeywordResultsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string lang;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public int num;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        public string searchTerm;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
-        public int start;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
-        public string country;
-        
-        public GetKeywordResultsRequest() {
-        }
-        
-        public GetKeywordResultsRequest(string lang, int num, string searchTerm, int start, string country) {
-            this.lang = lang;
-            this.num = num;
-            this.searchTerm = searchTerm;
-            this.start = start;
-            this.country = country;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeywordResultsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetKeywordResultsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string[] GetKeywordResultsResult;
-        
-        public GetKeywordResultsResponse() {
-        }
-        
-        public GetKeywordResultsResponse(string[] GetKeywordResultsResult) {
-            this.GetKeywordResultsResult = GetKeywordResultsResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAllKeywords", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetAllKeywordsRequest {
-        
-        public GetAllKeywordsRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAllKeywordsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetAllKeywordsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public SeoFrontEnd.ServiceReference1.KeywordList GetAllKeywordsResult;
-        
-        public GetAllKeywordsResponse() {
-        }
-        
-        public GetAllKeywordsResponse(SeoFrontEnd.ServiceReference1.KeywordList GetAllKeywordsResult) {
-            this.GetAllKeywordsResult = GetAllKeywordsResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CrawlKeyword", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class CrawlKeywordRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string keyword;
-        
-        public CrawlKeywordRequest() {
-        }
-        
-        public CrawlKeywordRequest(string keyword) {
-            this.keyword = keyword;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CrawlKeywordResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class CrawlKeywordResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public bool CrawlKeywordResult;
-        
-        public CrawlKeywordResponse() {
-        }
-        
-        public CrawlKeywordResponse(bool CrawlKeywordResult) {
-            this.CrawlKeywordResult = CrawlKeywordResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeywordStats", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetKeywordStatsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string userId;
-        
-        public GetKeywordStatsRequest() {
-        }
-        
-        public GetKeywordStatsRequest(string userId) {
-            this.userId = userId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeywordStatsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetKeywordStatsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public System.Collections.Generic.Dictionary<string, SeoFrontEnd.ServiceReference1.KeywordStats> GetKeywordStatsResult;
-        
-        public GetKeywordStatsResponse() {
-        }
-        
-        public GetKeywordStatsResponse(System.Collections.Generic.Dictionary<string, SeoFrontEnd.ServiceReference1.KeywordStats> GetKeywordStatsResult) {
-            this.GetKeywordStatsResult = GetKeywordStatsResult;
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IKeywordServiceChannel : SeoFrontEnd.ServiceReference1.IKeywordService, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class KeywordServiceClient : System.ServiceModel.ClientBase<SeoFrontEnd.ServiceReference1.IKeywordService>, SeoFrontEnd.ServiceReference1.IKeywordService {
+    public partial class KeywordServiceClient : System.ServiceModel.ClientBase<SEOCrawler.SEOService.IKeywordService>, SEOCrawler.SEOService.IKeywordService {
         
         public KeywordServiceClient() {
         }
@@ -466,135 +329,63 @@ namespace SeoFrontEnd.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public SeoFrontEnd.ServiceReference1.GetKeywordResultsResponse GetKeywordResults(SeoFrontEnd.ServiceReference1.GetKeywordResultsRequest request) {
-            return base.Channel.GetKeywordResults(request);
+        public string[] GetKeywordResults(string lang, int num, string searchTerm, int start, string country) {
+            return base.Channel.GetKeywordResults(lang, num, searchTerm, start, country);
         }
         
-        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetKeywordResultsResponse> GetKeywordResultsAsync(SeoFrontEnd.ServiceReference1.GetKeywordResultsRequest request) {
-            return base.Channel.GetKeywordResultsAsync(request);
+        public System.Threading.Tasks.Task<string[]> GetKeywordResultsAsync(string lang, int num, string searchTerm, int start, string country) {
+            return base.Channel.GetKeywordResultsAsync(lang, num, searchTerm, start, country);
         }
         
-        public SeoFrontEnd.ServiceReference1.GetAllKeywordsResponse GetAllKeywords(SeoFrontEnd.ServiceReference1.GetAllKeywordsRequest request) {
-            return base.Channel.GetAllKeywords(request);
+        public SEOCrawler.SEOService.KeywordList GetAllKeywords() {
+            return base.Channel.GetAllKeywords();
         }
         
-        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetAllKeywordsResponse> GetAllKeywordsAsync(SeoFrontEnd.ServiceReference1.GetAllKeywordsRequest request) {
-            return base.Channel.GetAllKeywordsAsync(request);
+        public System.Threading.Tasks.Task<SEOCrawler.SEOService.KeywordList> GetAllKeywordsAsync() {
+            return base.Channel.GetAllKeywordsAsync();
         }
         
-        public SeoFrontEnd.ServiceReference1.CrawlKeywordResponse CrawlKeyword(SeoFrontEnd.ServiceReference1.CrawlKeywordRequest request) {
-            return base.Channel.CrawlKeyword(request);
+        public bool CrawlKeyword(string keyword) {
+            return base.Channel.CrawlKeyword(keyword);
         }
         
-        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.CrawlKeywordResponse> CrawlKeywordAsync(SeoFrontEnd.ServiceReference1.CrawlKeywordRequest request) {
-            return base.Channel.CrawlKeywordAsync(request);
+        public System.Threading.Tasks.Task<bool> CrawlKeywordAsync(string keyword) {
+            return base.Channel.CrawlKeywordAsync(keyword);
         }
         
-        public SeoFrontEnd.ServiceReference1.GetKeywordStatsResponse GetKeywordStats(SeoFrontEnd.ServiceReference1.GetKeywordStatsRequest request) {
-            return base.Channel.GetKeywordStats(request);
+        public System.Collections.Generic.Dictionary<string, SEOCrawler.SEOService.KeywordStats> GetKeywordStats(string userId) {
+            return base.Channel.GetKeywordStats(userId);
         }
         
-        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetKeywordStatsResponse> GetKeywordStatsAsync(SeoFrontEnd.ServiceReference1.GetKeywordStatsRequest request) {
-            return base.Channel.GetKeywordStatsAsync(request);
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, SEOCrawler.SEOService.KeywordStats>> GetKeywordStatsAsync(string userId) {
+            return base.Channel.GetKeywordStatsAsync(userId);
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IUserService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SEOService.IUserService")]
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
-        SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse AddWebsiteInfo(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request);
+        bool AddWebsiteInfo(string userId, string url, string[] keywords);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
-        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse> AddWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request);
+        System.Threading.Tasks.Task<bool> AddWebsiteInfoAsync(string userId, string url, string[] keywords);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/GetWebsiteInfoResponse")]
-        SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse GetWebsiteInfo(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request);
+        SEOCrawler.SEOService.WebsiteInfo GetWebsiteInfo(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/GetWebsiteInfoResponse")]
-        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse> GetWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request);
+        System.Threading.Tasks.Task<SEOCrawler.SEOService.WebsiteInfo> GetWebsiteInfoAsync(string userId);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserServiceChannel : SEOCrawler.SEOService.IUserService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddWebsiteInfo", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddWebsiteInfoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string userId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public string url;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        public string[] keywords;
-        
-        public AddWebsiteInfoRequest() {
-        }
-        
-        public AddWebsiteInfoRequest(string userId, string url, string[] keywords) {
-            this.userId = userId;
-            this.url = url;
-            this.keywords = keywords;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddWebsiteInfoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddWebsiteInfoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public bool AddWebsiteInfoResult;
-        
-        public AddWebsiteInfoResponse() {
-        }
-        
-        public AddWebsiteInfoResponse(bool AddWebsiteInfoResult) {
-            this.AddWebsiteInfoResult = AddWebsiteInfoResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetWebsiteInfo", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetWebsiteInfoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string userId;
-        
-        public GetWebsiteInfoRequest() {
-        }
-        
-        public GetWebsiteInfoRequest(string userId) {
-            this.userId = userId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetWebsiteInfoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetWebsiteInfoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public SeoFrontEnd.ServiceReference1.WebsiteInfo GetWebsiteInfoResult;
-        
-        public GetWebsiteInfoResponse() {
-        }
-        
-        public GetWebsiteInfoResponse(SeoFrontEnd.ServiceReference1.WebsiteInfo GetWebsiteInfoResult) {
-            this.GetWebsiteInfoResult = GetWebsiteInfoResult;
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserServiceChannel : SeoFrontEnd.ServiceReference1.IUserService, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<SeoFrontEnd.ServiceReference1.IUserService>, SeoFrontEnd.ServiceReference1.IUserService {
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<SEOCrawler.SEOService.IUserService>, SEOCrawler.SEOService.IUserService {
         
         public UserServiceClient() {
         }
@@ -615,20 +406,20 @@ namespace SeoFrontEnd.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse AddWebsiteInfo(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request) {
-            return base.Channel.AddWebsiteInfo(request);
+        public bool AddWebsiteInfo(string userId, string url, string[] keywords) {
+            return base.Channel.AddWebsiteInfo(userId, url, keywords);
         }
         
-        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse> AddWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request) {
-            return base.Channel.AddWebsiteInfoAsync(request);
+        public System.Threading.Tasks.Task<bool> AddWebsiteInfoAsync(string userId, string url, string[] keywords) {
+            return base.Channel.AddWebsiteInfoAsync(userId, url, keywords);
         }
         
-        public SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse GetWebsiteInfo(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request) {
-            return base.Channel.GetWebsiteInfo(request);
+        public SEOCrawler.SEOService.WebsiteInfo GetWebsiteInfo(string userId) {
+            return base.Channel.GetWebsiteInfo(userId);
         }
         
-        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse> GetWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request) {
-            return base.Channel.GetWebsiteInfoAsync(request);
+        public System.Threading.Tasks.Task<SEOCrawler.SEOService.WebsiteInfo> GetWebsiteInfoAsync(string userId) {
+            return base.Channel.GetWebsiteInfoAsync(userId);
         }
     }
 }
