@@ -20,7 +20,10 @@ namespace SEOServices
         KeywordList GetAllKeywords();
 
         [OperationContract]
-        void CrawlKeyword(string keyword);
+        bool CrawlKeyword(string keyword);
+
+        [OperationContract]
+        KeywordStats GetKeywordStats(string userId);
     }
 
     [ServiceContract]

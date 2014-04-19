@@ -29,11 +29,13 @@ namespace SeoFrontEnd.Controllers
             if(response.GetWebsiteInfoResult != null)
             {
                 model.url = response.GetWebsiteInfoResult.url;
-                model.keywords = response.GetWebsiteInfoResult.keywords.ToList(); ;
+                model.keywords = response.GetWebsiteInfoResult.keywords.ToList();
+                ViewBag.Message = "Edit your keywords or website below.";
             }
             else
             {
                 model.keywords = new List<string>(new string[5]);
+                ViewBag.Message = "To get started add your website and upto 5 keywords to track.";
             }
             
             return View(model); 

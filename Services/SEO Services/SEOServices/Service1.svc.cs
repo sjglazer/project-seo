@@ -19,9 +19,79 @@ namespace SEOServices
     {
 
         // IKeywordService Start
-        public void CrawlKeyword(string keyword)
+        public KeywordStats GetKeywordStats(string userId)
         {
+            // Get the users domain and keywords
+            KeywordStats ret = new KeywordStats();
+            ret.stats = new List<KeywordStat>();
+            WebsiteInfo websiteInfo = GetWebsiteInfo(userId);
+            if(websiteInfo != null && websiteInfo.keywords != null && websiteInfo.keywords.Count > 0 && !string.IsNullOrEmpty(websiteInfo.url))
+            {
+                // loop through each keyword
+                foreach(string keyword in websiteInfo.keywords)
+                {
+                    if(!string.IsNullOrEmpty(keyword))
+                    {
+                        // Get all the crawl results for the keyword
+                        List<KeywordCrawlResult> results = GetCrawlsByKeyword(keyword);
+                        if(results != null && results.Count > 0)
+                        {
+                            foreach(KeywordCrawlResult crawlResult in results)
+                            {
+                                if(crawlResult != null)
+                                {
+                                    KeywordStat stat = new KeywordStat();
+                                    stat.keyword = crawlResult.keyword;
+                                    stat.TimeStamp = crawlResult.TimeStamp;
+                                    int index = crawlResult.searchResults.FindIndex(x => x.StartsWith(websiteInfo.url));
+                                    stat.position = index.ToString();
+                                    ret.stats.Add(stat);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
+            return ret;
+        }
+
+        
+        private List<KeywordCrawlResult> GetCrawlsByKeyword(string keyword)
+        {
+            var client = CouchbaseManager.Instance;
+            var view = client.GetView <KeywordCrawlResult>("crawlbykeyword", "crawlbykeyword", true).StartKey(keyword).EndKey(keyword);
+            var count = view.Count();
+            var list =  new List<KeywordCrawlResult>();
+
+            if (count > 0)
+            {
+                foreach (var row in view)
+                {
+                    list.Add(row);
+                }
+            }
+
+            return list;
+        }
+        
+        
+        public bool CrawlKeyword(string keyword)
+        {
+            string url = string.Format(SEOServices.Properties.Resources.GoogleSearch, string.Empty, 100, keyword, 0, string.Empty);
+            List<string> crawlUrls = WebUtils.GetGoogleResults(url);
+
+            var client = CouchbaseManager.Instance;
+            var keyIndex = client.Increment("keywordCrawResultCounter", 100, 1);
+            
+            string key = string.Format("keyword_{0}", keyIndex);
+            KeywordCrawlResult result = new KeywordCrawlResult();
+            result.TimeStamp = DateTime.Now;
+            result.searchResults = crawlUrls;
+            result.keyword = keyword;
+
+            var ret = client.StoreJson(StoreMode.Add, key, result);
+            return ret;
         }
         
         public List<string> GetKeywordResults(string lang, int num, string searchTerm, int start, string country)
