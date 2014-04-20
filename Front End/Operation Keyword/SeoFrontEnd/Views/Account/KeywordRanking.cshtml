@@ -6,7 +6,8 @@
 
 <h1>@ViewBag.Message</h1>
 
-@foreach (var keyValue in Model.stats.Keys)
+@if (Model != null && Model.stats != null) {
+foreach (var keyValue in Model.stats.Keys)
 {
     <p> Keyword: @keyValue</p>
     <table id="box-table-a">
@@ -26,6 +27,7 @@
             }
         </tbody>
     </table>
+}
 }
 
 <style>

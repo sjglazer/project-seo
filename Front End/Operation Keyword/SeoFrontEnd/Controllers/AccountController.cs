@@ -25,13 +25,13 @@ namespace SeoFrontEnd.Controllers
             request.userId = User.Identity.Name;
             var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
 
-            if ( response != null && response.GetWebsiteInfoResult != null && string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
+            if (response == null || response.GetWebsiteInfoResult == null || string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
             {
                 ViewBag.Message = "Please add a website!";
                 return View();
             }
 
-            if ((response.GetWebsiteInfoResult.keywords != null) || response.GetWebsiteInfoResult.keywords.Count() < 1)
+            if (response.GetWebsiteInfoResult.keywords != null && response.GetWebsiteInfoResult.keywords.Count() < 1)
             {
                 ViewBag.Message = "Please add some keywords!";
                 return View();
