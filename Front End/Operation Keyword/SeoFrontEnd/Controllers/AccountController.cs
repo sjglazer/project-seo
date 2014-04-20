@@ -25,7 +25,7 @@ namespace SeoFrontEnd.Controllers
             request.userId = User.Identity.Name;
             var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
 
-            if (string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
+            if ( response != null && response.GetWebsiteInfoResult != null && string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
             {
                 ViewBag.Message = "Please add a website!";
                 return View();
