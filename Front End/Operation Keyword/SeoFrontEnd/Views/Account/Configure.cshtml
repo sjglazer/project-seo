@@ -1,36 +1,65 @@
-﻿@model SeoFrontEnd.Models.UserWebsiteModel 
+﻿@model SeoFrontEnd.Models.UserWebsiteModel
 @{
     ViewBag.Title = "Configure Website";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Message</h1>
-</hgroup>
+<div id="page">
+    <div class="inner">
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-
-    <fieldset>
-        <legend>Configure Website</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.url)
-                @Html.TextBoxFor(m => m.url)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.keywords)
-                @for (int i = 0; i < 5; i++)
-                {
-                    @Html.EditorFor(m => m.keywords[i])
-                }
-            </li>
-        </ol>
-        <input type="submit" value="Save" />
-    </fieldset>
-}
+        <div id="main_part">
+            <ul class="sidebar">
+                <li><a id="new" href="#">New Estimate</a><div style="display: none" class="tip"><div class="left"></div><div class="right">New Estimate</div></div></li>
+            </ul>
+            <div class="message purple">
+                <a class="close_box" href="#">Close</a>
+                <h2>@ViewBag.InfoTitle</h2>
+                @ViewBag.InfoMessage
+            </div>
+            <div class="box">
+                <div id="account_overview_part" class="part">
+                    
+                    
+                    <div class="left_bar" style="float:right">
+                        <div class="fill_wrapper">
+                            <div style="width: 100%" class="fill">
+                                <span class="label">
+                                    <strong>@Model.Numkeywords</strong> of 5 Keywords Left
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    @using (Html.BeginForm())
+                    {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                       
+                        <div class="inline">
+                            @Html.LabelFor(m => m.url)
+                             <strong>@Model.url</strong>
+                        </div>
+                        
+     
+                        for (int i = 1; i < 6; i++)
+                        {
+                            <div class="inline">
+                                <label class="optional">Keyword  @i </label>
+                                @Html.EditorFor(m => m.keywords[i - 1], new { @class = "field" })
+                            </div>
+                        }
+                        
+                        <div class="control">
+                            <input type="submit" value="Start Tracking!" class="button save">
+                        </div>
+                    }
+                </div>
+            </div>
+            </div>
+    </div>
+    <div id="space"></div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

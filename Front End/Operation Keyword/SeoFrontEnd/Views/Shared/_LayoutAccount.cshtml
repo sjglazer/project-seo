@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/Account/css")
+</head>
+<body id="invoices">
+
+    <div id="head">
+        <div class="inner">
+            <h1 id="logo">scanner</h1>
+            <ul id="shortcuts">
+                <li><a href="http://testier.invoicemachine.com/upgrade">Upgrade</a></li>
+                <li><a href="http://testier.invoicemachine.com/account">Account</a></li>
+                <li><a href="http://testier.invoicemachine.com/settings">Settings</a></li>
+                <li><a href="http://testier.invoicemachine.com/users">Users</a></li>
+                <li><a href="http://testier.invoicemachine.com/profile">Profile</a></li>
+                <li><a class="blank" href="http://invoicemachine.com/help">Help</a></li>
+
+                <li>
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                    }
+                </li>
+
+                <li><a id="logout" href="http://testier.invoicemachine.com/logout">Logout</a></li>
+            </ul>
+            <ul id="navigation">
+                <li>@Html.ActionLink("Website", "Website", "Account", new { @class = "current" })</li>
+                <li>@Html.ActionLink("Keywords", "configure", "Account")</li>
+                <li><a href="http://testier.invoicemachine.com/recurring">Recurring</a></li>
+                <li><a href="http://testier.invoicemachine.com/projects">Projects</a></li>
+                <li><a href="http://testier.invoicemachine.com/clients">Clients</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

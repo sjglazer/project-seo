@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SEOServices" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SEOServices" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://local.seoservices.com/Service1.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="KeywordList">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywords" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KeywordList" nillable="true" type="tns:KeywordList" />
+  <xs:complexType name="KeywordStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="stats" nillable="true" type="tns:ArrayOfKeywordStat" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KeywordStats" nillable="true" type="tns:KeywordStats" />
+  <xs:complexType name="ArrayOfKeywordStat">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeywordStat" nillable="true" type="tns:KeywordStat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeywordStat" nillable="true" type="tns:ArrayOfKeywordStat" />
+  <xs:complexType name="KeywordStat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="position" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KeywordStat" nillable="true" type="tns:KeywordStat" />
+  <xs:complexType name="WebsiteInfo">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywords" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WebsiteInfo" nillable="true" type="tns:WebsiteInfo" />
+</xs:schema>

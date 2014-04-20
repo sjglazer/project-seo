@@ -1,0 +1,19 @@
+ul#layout_bar {
+	border-top: 1px solid #dbdbdb;
+	border-bottom: 1px solid #acacac;
+	background: #d8d8d8 url(/images/application.png) repeat-x 0 -1631px;
+}
+
+ul.layout_line {
+	border-bottom: 1px solid #eef0f0;
+}
+
+ul.layout_line.alt {
+	background-color: #fafafa;
+}
+
+div#layout_box {
+	background-color: #fafafa;
+	border-bottom: 1px solid #eef0f0;
+	border-top: 1px solid #eef0f0;
+}

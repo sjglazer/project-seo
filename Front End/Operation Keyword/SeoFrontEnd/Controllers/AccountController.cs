@@ -46,6 +46,53 @@ namespace SeoFrontEnd.Controllers
             return View(model);
 
         }
+
+        [HttpGet]
+        public ActionResult Website()
+        {
+
+            var request = new ServiceReference1.GetWebsiteInfoRequest();
+            request.userId = request.userId = User.Identity.Name;
+            var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
+
+            UserWebsiteModel model = new UserWebsiteModel();
+            if (response.GetWebsiteInfoResult != null)
+            {
+                model.url = response.GetWebsiteInfoResult.url;
+                ViewBag.InfoTitle = "Edit Website";
+                ViewBag.InfoMessage = "You can change the url of the website you want to track here. Please note that when you look over the past results your position will automatically update to match the new url of your website.";
+            }
+            else
+            {
+                ViewBag.InfoTitle = "Add Website";
+                ViewBag.InfoMessage = "Here is where you can add a website that you want to track. Please use the root url of your website and not an inner page so that we can match any page on your site that appears in the search engine results.";
+            }
+
+            return View(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult Website(UserWebsiteModel model)
+        {
+            var request = new ServiceReference1.AddWebsiteInfoRequest();
+            request.url = model.url;
+            request.userId = User.Identity.Name;
+            var response = new ServiceReference1.UserServiceClient().AddWebsiteInfo(request);
+
+            if(response.AddWebsiteInfoResult)
+            {
+                ViewBag.InfoTitle = "Website Succesfully Changed!";
+                ViewBag.InfoMessage = "Your reports will know reflect the position of your new url in the search engine results.";
+            }
+            else
+            {
+                ViewBag.InfoTitle = "Ooops. Something Went Wrong!";
+                ViewBag.InfoMessage = "This is terribly embarassing. Please contact support for assistance.";
+            }
+
+            return View(model);
+        }
         
         [HttpGet]
         public ActionResult Configure()
@@ -56,16 +103,29 @@ namespace SeoFrontEnd.Controllers
             var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
 
             UserWebsiteModel model = new UserWebsiteModel();
-            if(response.GetWebsiteInfoResult != null)
+            if (response.GetWebsiteInfoResult == null || string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
             {
-                model.url = response.GetWebsiteInfoResult.url;
+                return RedirectToAction("Website", "Account");
+            }
+
+            if(response.GetWebsiteInfoResult != null && response.GetWebsiteInfoResult.keywords != null)
+            {
                 model.keywords = response.GetWebsiteInfoResult.keywords.ToList();
-                ViewBag.Message = "Edit your keywords or website below.";
+                model.url = response.GetWebsiteInfoResult.url;
+                int count = 5 - model.keywords.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList().Count();
+                model.Numkeywords = count.ToString();
+                ViewBag.InfoTitle = "Edit Your Keywords - Change your Keywords Here";
+                ViewBag.InfoMessage = "Here is where you can add more keywords (if you haven’t used them all up) or modify existing keywords. * Please note: If you deleted a keyword or modify an existing keyword all tracking will be stopped for that keyword and the history deleted!";
             }
             else
             {
+                model.url = response.GetWebsiteInfoResult.url;
                 model.keywords = new List<string>(new string[5]);
-                ViewBag.Message = "To get started add your website and upto 5 keywords to track.";
+                model.Numkeywords = "5";
+                ViewBag.InfoTitle = "Getting Started - Add your Website and Keywords";
+                ViewBag.InfoMessage = "Here is where you add your website and the keywords that you want to track. Enter the root url of your site and add then add the keywords you are interested in. Once you are done we will automatically track your sites position for each keyword twice a day.";
+                
+
             }
             
             return View(model); 
@@ -76,11 +136,22 @@ namespace SeoFrontEnd.Controllers
         public ActionResult Configure(UserWebsiteModel model)
         {
             var request = new ServiceReference1.AddWebsiteInfoRequest();
-            request.url = model.url;
+            request.url = string.Empty;
             request.userId = User.Identity.Name;
             request.keywords = model.keywords.ToArray();
             var response = new ServiceReference1.UserServiceClient().AddWebsiteInfo(request);
-            ViewBag.Message = "Website Saved!";
+
+            var getRequest = new ServiceReference1.GetWebsiteInfoRequest();
+            getRequest.userId = request.userId = User.Identity.Name;
+            var getresponse = new ServiceReference1.UserServiceClient().GetWebsiteInfo(getRequest);
+
+            model.keywords = getresponse.GetWebsiteInfoResult.keywords.ToList();
+            model.url = getresponse.GetWebsiteInfoResult.url;
+            int count = 5 - model.keywords.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList().Count();
+            model.Numkeywords = count.ToString();
+            
+            ViewBag.InfoTitle = "Keywords Succesfully Changed!";
+            ViewBag.InfoMessage = "We will now start tracking your new keywords.";
             return View(model);
         }
      

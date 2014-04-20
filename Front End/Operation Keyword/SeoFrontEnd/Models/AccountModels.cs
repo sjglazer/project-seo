@@ -30,12 +30,14 @@ namespace SeoFrontEnd.Models
 
     public class UserWebsiteModel
     {
-        [Required]
+        
         [Display(Name = "url")]
         public string url { get; set; }
 
         [Display(Name = "keywords")]
         public List<string> keywords { get; set; }
+
+        public string Numkeywords { get; set; }
     }
 
     public class KeywordStatModel

@@ -1,0 +1,524 @@
+/* © Bombia Design AB (Inc.) 2009 */
+
+/* @group Fixes */
+
+:focus {
+	outline: none;
+}
+
+:active {
+	outline: none;
+}
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner { 
+	border: none; 
+}
+
+input.button,x:-moz-any-link {
+	padding-bottom: 1px;
+	height: 42px;
+}
+
+input.button:active,x:-moz-any-link {
+	height: 43px;
+	padding: 0 0 1px;
+}
+
+/* @end */
+
+/* @group Base */
+
+a, a:visited {
+	color: #223f51;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #3f7192;
+}
+
+p, h1, h2, h3, h4, h5, h6, ul, li, em {
+	margin: 0;
+	list-style-type: none;
+	padding: 0;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	float: left;
+}
+
+/* @end */
+
+/* @group Form Elements */
+
+.field, .textarea, .select_wrapper, .checkbox_wrapper {
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;	
+}
+
+input.field.disabled, textarea.textarea.disabled, input.checkbox.disabled, div.select_wrapper.disabled {
+	-moz-opacity: 0.5;
+	filter: alpha(opacity:0.5);
+	opacity: 0.5;
+}
+
+/* @group Field and Textarea */
+
+input.field, textarea.textarea {
+	resize: none;
+	font: 12px "Lucida Grande",Lucida,Verdana,sans-serif;
+	padding: 2px;
+	margin: 0;
+	float: left;
+	border-top: 1px solid #8e8e8e;
+	border-left: 1px solid #8e8e8e;
+	border-bottom: 1px solid #e1e1e1;
+	border-right: 1px solid #e1e1e1;
+	background: #fefefe url(/images/foundation.png) repeat-x 0 -188px;
+	width: 194px;
+}
+
+input.field:focus, textarea.textarea:focus {
+	background-color: #fefeee;
+}
+
+input.field.required, textarea.textarea.required {
+	background-color: #feecec;
+}
+
+input.field.small {
+	width: 154px;
+	float: left;
+}
+
+input.field.smaller {
+	width: 94px;
+	float: left;
+}
+
+input.field.smallest {
+	width: 54px;
+	float: left;
+}
+
+input.field.largest {
+	width: 394px;
+	float: left;
+}
+
+textarea.textarea.largest {
+	width: 394px;
+	float: left;
+	height: 74px;
+}
+
+textarea.textarea.large {
+	width: 294px;
+	float: left;
+	height: 74px;
+}
+
+textarea.textarea.tall {
+	height: 140px;
+}
+
+textarea.textarea.taller {
+	height: 240px;
+}
+
+/* @end */
+
+/* @group Select */
+
+select.select {
+	cursor: pointer;
+	-moz-opacity: 0;
+	filter: alpha(opacity:0);
+	opacity: 0;
+	font: 11px "Lucida Grande",Lucida,Verdana,sans-serif;
+	padding: 0;
+	margin: 0;
+	margin: 0;
+	z-index: 2;
+	height: 19px;
+	position: relative;
+	min-width: 48px;
+	width: inherit;
+}
+
+.select_wrapper {
+	font: 12px "Lucida Grande",Lucida,Verdana,sans-serif;
+	margin: 0;
+	border-top: 1px solid #8e8e8e;
+	border-left: 1px solid #8e8e8e;
+	border-bottom: 1px solid #e1e1e1;
+	border-right: 1px solid #e1e1e1;
+	float: left;
+	background: #fefefe url(/images/foundation.png) right -139px;
+	height: 19px;
+	position: relative;
+}
+
+.select_wrapper.required {
+	background: #feecec url(/images/foundation.png) right -158px;
+}
+
+.select_wrapper span {
+	z-index: 1;
+	position: absolute;
+	font-size: 11px;
+	height: 19px;
+	line-height: 19px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	left: 4px;
+	right: 20px;
+}
+
+/* @end */
+
+/* @group Checkbox */
+
+input.checkbox {
+	cursor: pointer;
+	-moz-opacity: 0;
+	filter: alpha(opacity:0);
+	opacity: 0;
+	padding: 3px;
+	z-index: 4;
+	width: 19px;
+	height: 19px;
+	position: relative;
+	margin: 0;
+}
+
+div.checkbox_wrapper {
+	cursor: pointer;
+	float: left;
+	width: 19px;
+	height: 19px;
+	background: #fefefe url(/images/foundation.png) -138px 0;
+	border-top: 1px solid #8e8e8e;
+	border-left: 1px solid #8e8e8e;
+	border-bottom: 1px solid #e1e1e1;
+	border-right: 1px solid #e1e1e1;
+}
+
+div.checkbox_wrapper.checked {
+	background-position: -138px -19px;
+}
+
+div.checkbox_wrapper:active {
+	background-position: -138px -38px;
+}
+
+div.checkbox_wrapper.required {
+	background: #feecec url(/images/foundation.png) -138px -57px;
+}
+
+
+
+/* @end */
+
+/* @group Button */
+
+input.button {
+	cursor: pointer;
+	height: 43px;
+	width: 128px;
+	border-style: none;
+	background: transparent url(/images/foundation.png) 0 0;
+	color: #000;
+	text-align: center;
+	font: bold 12px/40px "Lucida Grande",Lucida,Verdana,sans-serif;
+	text-shadow: rgba(255,254,255,0.8) 0 1px 2px;
+	text-decoration: none;
+}
+
+input.button:hover {
+	background-position: 0 -43px;
+}
+
+input.button:active {
+	background-position: 0 -86px;
+}
+
+input.button.pressed {
+	background-position: 0 -86px;
+}
+
+input.button.disabled {
+	cursor: default;
+	color: gray;
+	background-position: 0 0;
+	text-shadow: 0 1px 1px white;
+}
+
+/* @group a */
+
+a.button {
+	cursor: pointer;
+	height: 43px;
+	width: 128px;
+	border-style: none;
+	background: transparent url(/images/foundation.png) 0 0;
+	color: #000;
+	text-align: center;
+	font: bold 12px/43px "Lucida Grande",Lucida,Verdana,sans-serif;
+	text-shadow: rgba(255,254,255,0.8) 0 1px 2px;
+	text-decoration: none;
+	display: block;
+	float: left;
+}
+
+a:hover.button {
+	background-position: 0 -43px;
+}
+
+a:active.button {
+	background-position: 0 -86px;
+}
+
+a.button.pressed {
+	background-position: 0 -86px;
+}
+
+a.button.disabled {
+	cursor: default;
+	color: gray;
+	background-position: 0 0;
+	text-shadow: 0 1px 1px white;
+}
+
+
+
+/* @end */
+
+/* @end */
+
+/* @group Small Button */
+
+a.small_button {
+	float: left;
+	height: 24px;
+	color: #424242;
+	width: 74px;
+	font-size: 10px;
+	text-align: center;
+	line-height: 24px;
+	margin-right: 10px;
+	background: url(/images/application.png) 0 -519px;
+}
+
+a:hover.small_button {
+	background-position: 0 -543px;
+}
+
+a:active.small_button {
+	background-position: 0 -567px;
+}
+
+/* @group Large */
+
+a.small_button.large {
+	background-position: -74px -519px;
+	width: 96px;
+}
+
+a:hover.small_button.large {
+	background-position: -74px -543px;
+}
+
+a:active.small_button.large {
+	background-position: -74px -567px;
+}
+
+/* @end */
+
+/* @group Larger */
+
+a.small_button.larger {
+	background-position: -170px -519px;
+	width: 122px;
+}
+
+a:hover.small_button.larger {
+	background-position: -170px -543px;
+}
+
+a:active.small_button.larger {
+	background-position: -170px -567px;
+}
+
+/* @end */
+
+/* @group Largest */
+
+a.small_button.largest {
+	background-position: -292px -519px;
+	width: 160px;
+}
+
+a:hover.small_button.largest {
+	background-position: -292px -543px;
+}
+
+a:active.small_button.largest {
+	background-position: -292px -567px;
+}
+
+
+
+/* @end */
+
+/* @end */
+
+/* @end */
+
+/* @group Global */
+
+body#global div#container {
+	margin-top: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 440px;
+}
+
+body#global div#container div#box {
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	padding: 40px;
+	width: 360px;
+	float: left;
+	background: #f5f5f5 url(/images/page_fill.png) repeat-x 0 bottom;
+	border-top: 1px solid #e2e2e2;
+	border-right: 1px solid #e2e2e2;
+	border-left: 1px solid #e2e2e2;
+}
+
+body#global div#container div#box li {
+	width: 360px;
+	float: left;
+}
+
+body#global div#container div#box_foot {
+	width: 440px;
+	float: left;
+}
+
+body#global div#container div#box_foot p {
+	text-align: center;
+	width: 440px;
+	float: left;
+}
+
+body#global div#container div#box h1#heading {
+	width: 360px;
+	float: left;
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+body#global div#container p {
+	margin-bottom: 20px;
+	float: left;
+}
+
+body#global div#container input.field {
+	width: 354px;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+body#global div#container label {
+	font-weight: bold;
+	margin-bottom: 4px;
+	float: left;
+}
+
+body#global div#container div#remember_me {
+	width: 360px;
+	float: left;
+	margin-top: 4px;
+	margin-bottom: 10px;
+}
+
+body#global div#container div#remember_me div.checkbox_wrapper {
+	margin-right: 4px;
+}
+
+body#global div#container div#remember_me label {
+	margin-top: 1px;
+	margin-bottom: 0;
+}
+
+body#global div#container div#head {
+	-moz-border-radius-topleft: 2px;
+	-webkit-border-top-left-radius: 2px;
+	-moz-border-radius-topright: 2px;
+	-webkit-border-top-right-radius: 2px;
+	width: 360px;
+	height: 60px;
+	float: left;
+	margin-bottom: 16px;
+	background: #000 url(/images/foundation.png) -240px -73px;
+	position: relative;
+}
+
+body#global div#container div#head h1#logo {
+	width: 340px;
+	height: 60px;
+	float: left;
+	margin: 0;
+	padding-left: 20px;
+	top: 0;
+}
+
+body#global div#container a#forgot_password {
+	float: left;
+	margin-top: 17px;
+}
+
+/* @end */
+
+#login {
+	float: right;
+	margin-top: 8px;
+}
+
+div#forgot_part input#reset_password {
+	float: left;
+	margin-left: 60px;
+}
+
+div#forgot_part a.small_button {
+	margin-top: 8px;
+}
+
+body#global div#message {
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	float: left;
+	background-color: #f9e593;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	margin-top: -60px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #fdd63b;
+}
+
+body#global div#message.error {
+	border-bottom-color: #fa957b;
+	background-color: #f8b7a6;
+}

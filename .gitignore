@@ -172,3 +172,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+/Front End/Operation Keyword/SeoFrontEnd/bin/SeoFrontEnd.dll.config
+/Front End/Operation Keyword/SeoFrontEnd/bin/SeoFrontEnd.pdb
+/Front End/Operation Keyword/SeoFrontEnd/bin/SeoFrontEnd.dll

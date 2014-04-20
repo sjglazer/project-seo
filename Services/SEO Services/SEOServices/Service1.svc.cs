@@ -134,17 +134,49 @@ namespace SEOServices
         public bool AddWebsiteInfo(string userId, string url, List<string> keywords)
         {
             
-            // save the user's properties: domain + keywords
-            var client = CouchbaseManager.Instance;
-            var newKeyword = new UserWebsiteProperties
-            {
-                url = url,
-                keywords = keywords
-            };
+            WebsiteInfo info = GetWebsiteInfo(userId);
 
-            var key = userId;
-            var result = client.StoreJson(StoreMode.Set, key, newKeyword);
-            return result;
+            // This is a new User
+            if(info == null)
+            {
+                var newKeyword = new UserWebsiteProperties
+                {
+                    url = url,
+                    keywords = keywords
+                };
+
+                var key = userId;
+                var client = CouchbaseManager.Instance;
+                var result = client.StoreJson(StoreMode.Add, key, newKeyword);
+                return result;
+            }
+            else
+            {
+                var newKeyword = new UserWebsiteProperties();
+                if (!string.IsNullOrEmpty(url))
+                {
+                    newKeyword.url = url;
+                } 
+                else
+                {
+                    newKeyword.url = info.url;
+                }
+
+                if (keywords != null)
+                {
+                    newKeyword.keywords = keywords;
+                }
+                else
+                {
+                    newKeyword.keywords = info.keywords;
+                }
+
+                var key = userId;
+                var client = CouchbaseManager.Instance;
+                var result = client.StoreJson(StoreMode.Replace, key, newKeyword);
+                return result;
+               
+            }
         }
 
         public WebsiteInfo GetWebsiteInfo(string userId)

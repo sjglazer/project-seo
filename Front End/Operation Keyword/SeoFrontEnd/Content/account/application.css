@@ -1,0 +1,4629 @@
+/* @group Global */
+
+body {
+	margin: 0;
+	color: #000;
+	font: 12px/18px "Lucida Grande",Lucida,Verdana,sans-serif;
+	background-color: #e6e6e6;
+	width: 100%;
+	height: 100%;
+}
+
+div.progress {
+	cursor: progress;
+	width: 100%;
+	height: 100%;
+	z-index: 1000000;
+	position: absolute;
+}
+
+/* @end */
+
+/* @group Head */
+
+div#head {
+	width: 100%;
+	height: 100px;
+	background: black url(/images/application.png) repeat-x 0 -170px;
+}
+
+div#head .inner {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 100px;
+	position: relative;
+}
+
+/* @group Logo */
+
+h1#logo {
+	color: white;
+	height: 60px;
+	line-height: 60px;
+	font-size: 24px;
+	white-space: nowrap;
+	width: 320px;
+	position: absolute;
+	top: 20px;
+}
+
+h1#logo.image {
+	font-size: 1px;
+	text-indent: -9000px;
+}
+
+h1#logo.small {
+	font-size: 18px;
+}
+
+h1#logo.smaller {
+	font-size: 16px;
+}
+
+h1#logo.smallest {
+	font-size: 14px;
+}
+
+/* @end */
+
+/* @group Navigation */
+
+ul#navigation {
+	width: 460px;
+	position: absolute;
+	right: -3px;
+	bottom: 0;
+}
+
+ul#navigation li a {
+	width: 90px;
+	height: 40px;
+	float: left;
+	margin-right: 2px;
+	color: white;
+	line-height: 40px;
+	text-align: center;
+	background-image: url(/images/application.png);
+	font-weight: normal;
+	font-style: normal;
+	font-size: 13px;
+}
+
+ul#navigation li a:hover {
+	background-position: 0 -40px;
+}
+
+ul#navigation li a:active {
+	background-position: 0 -80px;
+}
+
+ul#navigation li a.current {
+	color: black;
+	background-position: 0 -120px;
+}
+
+/* @end */
+
+/* @group Shortcuts */
+
+ul#shortcuts {
+	height: 20px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+ul#shortcuts li a {
+	color: white;
+	font-size: 11px;
+	margin-right: 6px;
+	margin-left: 6px;
+	font-weight: bold;
+	float: left;
+	margin-top: 6px;
+}
+
+ul#shortcuts li a.upgrade {
+	color: #c0ecfc;
+}
+
+ul#shortcuts li a:hover.upgrade {
+	border-bottom-color: #c0ecfc;
+}
+
+ul#shortcuts li a:hover {
+	border-bottom: 1px solid white;
+}
+
+/* @group Logout */
+
+ul#shortcuts a#logout {
+	width: 34px;
+	height: 30px;
+	font-size: 1px;
+	text-indent: -9000px;
+	float: left;
+	background: url(/images/application.png) -100px 0;
+	margin: 0 0 0 6px;
+}
+
+ul#shortcuts a#logout:hover {
+	border-style: none;
+	background-position: -100px -30px;
+}
+
+ul#shortcuts a#logout:active {
+	border-style: none;
+	background-position: -100px -60px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @end */
+
+/* @group Page */
+
+div#page {
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+div#page div.inner {
+	width: 700px;
+	border-left: 1px solid #e2e2e2;
+	border-right: 1px solid #e2e2e2;
+	padding: 50px 50px 64px;
+	background: #f5f5f5 url(/images/page_fill.png) repeat-x 0 bottom;
+	float: left;
+}
+
+/* @group Sidebar */
+
+ul.sidebar {
+	margin-right: -81px;
+	float: right;
+	width: 61px;
+	margin-top: -8px;
+}
+
+ul.sidebar.left {
+	margin-left: -81px;
+	margin-right: 0;
+	float: left;
+}
+
+ul.sidebar li {
+	z-index: 100;
+	width: 61px;
+	height: 61px;
+	float: left;
+	background: url(/images/application.png) -144px 0;
+}
+
+ul.sidebar.left li {
+	background-position: -144px -71px;
+}
+
+ul.sidebar li a {
+	height: 41px;
+	width: 41px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	background-image: url(/images/application.png);
+}
+
+/* @group New */
+
+ul.sidebar li a#new {
+	background-position: 0 -601px;
+}
+
+ul.sidebar li a:hover#new {
+	background-position: 0 -642px;
+}
+
+ul.sidebar li a:active#new {
+	background-position: 0 -683px;
+}
+
+/* @group Animation Frames */
+
+ul.sidebar li a#new.one {
+	background-position: -51px -601px;
+}
+
+ul.sidebar li a#new.two {
+	background-position: -51px -806px;
+}
+
+ul.sidebar li a#new.three {
+	background-position: -51px -765px;
+}
+
+ul.sidebar li a#new.four {
+	background-position: -51px -724px;
+}
+
+/* @end */
+
+/* @group Droppable */
+
+ul.sidebar li a#new.droppable {
+	background-position: 0 -724px;
+}
+
+ul.sidebar li a#new.drop_it {
+	background-position: 0 -765px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group Go Back */
+
+ul.sidebar li a#go_back {
+	height: 41px;
+	width: 41px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	background: url(/images/application.png) -153px -601px;
+}
+
+ul.sidebar li a:hover#go_back {
+	background-position: -153px -642px;
+}
+
+ul.sidebar li a:active#go_back {
+	background-position: -153px -683px;
+}
+
+/* @end */
+
+/* @group Cancel */
+
+ul.sidebar li a#cancel {
+	background-position: -51px -601px;
+}
+
+ul.sidebar li a:hover#cancel {
+	background-position: -51px -642px;
+}
+
+ul.sidebar li a:active#cancel {
+	background-position: -51px -683px;
+}
+
+/* @group Animation Frames */
+
+ul.sidebar li a#cancel.one {
+	background-position: 0 -683px;
+}
+
+ul.sidebar li a#cancel.two {
+	background-position: -51px -724px;
+}
+
+ul.sidebar li a#cancel.three {
+	background-position: -51px -765px;
+}
+
+ul.sidebar li a#cancel.four {
+	background-position: -51px -806px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group Send */
+
+ul.sidebar li a#send {
+	background-position: -204px -601px;
+}
+
+ul.sidebar li a:hover#send {
+	background-position: -204px -642px;
+}
+
+ul.sidebar li a:active#send, ul.sidebar li a#send.pressed {
+	background-position: -204px -683px;
+}
+
+/* @end */
+
+/* @group Download */
+
+ul.sidebar li a#download {
+	background-position: -255px -601px;
+}
+
+ul.sidebar li a:hover#download {
+	background-position: -255px -642px;
+}
+
+ul.sidebar li a:active#download {
+	background-position: -255px -683px;
+}
+
+/* @end */
+
+/* @group Reminder */
+
+ul.sidebar li a#reminder {
+	background-position: -612px -601px;
+}
+
+ul.sidebar li a:hover#reminder {
+	background-position: -612px -642px;
+}
+
+ul.sidebar li a:active#reminder, ul.sidebar li a#reminder.pressed {
+	background-position: -612px -683px;
+}
+
+ul.sidebar li a#reminder.selected {
+	background-position: -612px -724px;
+}
+
+ul.sidebar li a:active#reminder.selected {
+	background-position: -612px -765px;
+}
+
+/* @end */
+
+/* @group Thank You */
+
+ul.sidebar li a#thank_you {
+	background-position: -561px -601px;
+}
+
+ul.sidebar li a:hover#thank_you {
+	background-position: -561px -642px;
+}
+
+ul.sidebar li a:active#thank_you, ul.sidebar li a#thank_you.pressed {
+	background-position: -561px -683px;
+}
+
+/* @end */
+
+/* @group Move */
+
+ul.sidebar li a#move {
+	background-position: -153px -724px;
+}
+
+ul.sidebar li a:hover#move {
+	background-position: -153px -765px;
+}
+
+ul.sidebar li a:active#move {
+	background-position: -153px -806px;
+}
+
+/* @end */
+
+/* @group Copy */
+
+ul.sidebar li a#copy {
+	background-position: -102px -724px;
+}
+
+ul.sidebar li a:hover#copy {
+	background-position: -102px -765px;
+}
+
+ul.sidebar li a:active#copy {
+	background-position: -102px -806px;
+}
+
+/* @end */
+
+/* @group Convert */
+
+ul.sidebar li a#convert {
+	background-position: -204px -724px;
+}
+
+ul.sidebar li a:hover#convert {
+	background-position: -204px -765px;
+}
+
+ul.sidebar li a:active#convert {
+	background-position: -204px -806px;
+}
+
+/* @end */
+
+/* @group Timer */
+
+ul.sidebar li a#timer {
+	background-position: -102px -601px;
+}
+
+ul.sidebar li a:hover#timer {
+	background-position: -102px -642px;
+}
+
+ul.sidebar li a:active#timer {
+	background-position: -102px -683px;
+}
+
+/* @end */
+
+/* @group Payment */
+
+ul.sidebar li a#payments {
+	background-position: -306px -601px;
+}
+
+ul.sidebar li a:hover#payments {
+	background-position: -306px -642px;
+}
+
+ul.sidebar li a:active#payments, ul.sidebar li a#payments.pressed {
+	background-position: -306px -683px;
+}
+
+/* @end */
+
+/* @group Accept */
+
+ul.sidebar li a#accept {
+	background-position: -357px -601px;
+}
+
+ul.sidebar li a:hover#accept {
+	background-position: -357px -642px;
+}
+
+ul.sidebar li a:active#accept, ul.sidebar li a#accept.pressed {
+	background-position: -357px -683px;
+}
+
+/* @end */
+
+/* @group Permalink */
+
+ul.sidebar li a#permalink {
+	background-position: -408px -601px;
+}
+
+ul.sidebar li a:hover#permalink {
+	background-position: -408px -642px;
+}
+
+ul.sidebar li a:active#permalink {
+	background-position: -408px -683px;
+}
+
+/* @end */
+
+/* @group Edit */
+
+ul.sidebar li a#edit {
+	background-position: -459px -601px;
+}
+
+ul.sidebar li a:hover#edit {
+	background-position: -459px -642px;
+}
+
+ul.sidebar li a:active#edit {
+	background-position: -459px -683px;
+}
+
+/* @end */
+
+/* @group Remove */
+
+ul.sidebar li a#remove {
+	background-position: -510px -601px;
+}
+
+ul.sidebar li a:hover#remove {
+	background-position: -510px -642px;
+}
+
+ul.sidebar li a:active#remove {
+	background-position: -510px -683px;
+}
+
+ul.sidebar li a#remove.pressed {
+	background-position: -510px -847px;
+}
+
+/* @group Frames */
+
+/* @group Normal */
+
+ul.sidebar li a#remove.one {
+	background-position: -510px -724px;	
+}
+
+ul.sidebar li a#remove.two {
+	background-position: -510px -765px;	
+}
+
+ul.sidebar li a#remove.three {
+	background-position: -510px -806px;	
+}
+
+ul.sidebar li a#remove.four {
+	background-position: -510px -847px;	
+}
+
+/* @end */
+
+/* @group Reverse */
+
+ul.sidebar li a#remove.reverse.one {
+	background-position: -510px -847px;	
+}
+
+ul.sidebar li a#remove.reverse.two {
+	background-position: -510px -806px;	
+}
+
+ul.sidebar li a#remove.reverse.three {
+	background-position: -510px -765px;	
+}
+
+ul.sidebar li a#remove.reverse.four {
+	background-position: -510px -724px;	
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Tab */
+
+ul#tab {
+	width: 680px;
+	float: left;
+	margin: 0;
+	padding-left: 20px;
+	background-color: black;
+	height: 34px;
+	color: white;
+}
+
+ul#tab li a {
+	height: 34px;
+	font-size: 11px;
+	display: block;
+	float: left;
+	color: #fff;
+	text-align: center;
+	line-height: 36px;
+	background: url(/images/application.png) -394px 0;
+	padding-left: 12px;
+	margin-right: 2px;
+}
+
+ul#tab li a span {
+	min-width: 60px;
+	float: left;
+	display: block;
+	height: 34px;
+	padding-right: 12px;
+	background: url(/images/application.png) right 0;
+}
+
+ul#tab a#edit_tabs {
+	color: white;
+	font-size: 11px;
+	background-image: none;
+	margin-top: 8px;
+	float: left;
+	margin-left: 10px;
+}
+
+/* @group Hover */
+
+ul#tab li a:hover {
+	background-position: -394px -34px;
+}
+
+ul#tab li a:hover span {
+	background-position: right -34px;
+}
+
+/* @end */
+
+/* @group Active */
+
+ul#tab li a:active {
+	background-position: -394px -68px;
+}
+
+ul#tab li a:active span {
+	background-position: right -68px;
+}
+
+/* @end */
+
+/* @group Current */
+
+ul#tab li a.current {
+	color: #000;
+	background-position: -394px -102px;
+}
+
+ul#tab li a.current span {
+	background-position: right -102px;
+}
+
+/* @end */
+
+/* @group Droppable */
+
+ul#tab li a.droppable {
+
+	background-position: -394px -380px;
+}
+
+ul#tab li a.droppable span {
+
+	background-position: right -380px;
+}
+
+/* @end */
+
+/* @group Drop It */
+
+ul#tab li a.drop_it {
+	background-position: -394px -414px;
+}
+
+ul#tab li a.drop_it span {
+	background-position: right -414px;
+}
+
+/* @end */
+
+/* @group Toggle Filter */
+
+a#toggle_filter {
+	float: right;
+	color: white;
+	font-size: 11px;
+	line-height: 24px;
+	margin-right: 20px;
+	margin-top: 6px;
+	padding: 0;
+	background-image: none;
+}
+
+a#toggle_filter span#bulb {
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	background: url(/images/application.png) -100px -100px;
+	margin-right: 2px;
+}
+
+a#toggle_filter span#bulb.on {
+	background-position: -100px -112px;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Filter */
+
+div#filter {
+	width: 660px;
+	float: left;
+	border-bottom: 1px solid #d3d7d7;
+	padding: 12px 20px;
+	font-size: 11px;
+	background: #ededed url(/images/application.png) 0 -1569px;
+}
+
+div#filter label {
+	float: left;
+	margin-right: 4px;
+	font-weight: bold;
+	margin-top: 3px;
+}
+
+div#filter .select_wrapper {
+	float: left;
+	margin-right: 20px;
+	border-bottom-color: #d3d7d7;
+	margin-top: 2px;
+	margin-bottom: -2px;
+	border-right-color: #d3d7d7;
+}
+
+div#filter .select {
+	max-width: 140px;
+}
+
+a#reset {
+	float: right;
+	margin-right: 0;
+}
+
+
+
+/* @end */
+
+/* @group Helper */
+
+.helper {
+	height: 35px;
+	line-height: 33px;
+	font-size: 11px;
+	font-weight: bold;
+	z-index: 5;
+}
+
+.helper .left {
+	width: 7px;
+	height: 35px;
+	background: url(/images/application.png) 0 -1185px;
+	float: left;
+}
+
+.helper .right {
+	float: left;
+	background: url(/images/application.png) no-repeat right -1150px;
+	height: 35px;
+	padding-right: 14px;
+	padding-left: 6px;
+	margin-bottom: -30px;
+}
+
+/* @end */
+
+/* @group Tip */
+
+.tip {
+	height: 35px;
+	line-height: 32px;
+	font-size: 11px;
+	font-weight: bold;
+	margin-bottom: -35px;
+	position: relative;
+	float: left;
+	left: 214px;
+	top: 14px;
+	margin-left: -200px;
+}
+
+.tip .left {
+	width: 13px;
+	height: 35px;
+	background: url(/images/application.png) 0 -1150px;
+	float: left;
+}
+
+.tip .right {
+	float: left;
+	background: url(/images/application.png) right -1150px;
+	height: 35px;
+	padding-right: 14px;
+	padding-left: 6px;
+	white-space: nowrap;
+}
+
+
+
+/* @end */
+
+/* @group Actions */
+
+span.actions {
+	float: left;
+	width: 110px;
+	margin-left: -70px;
+	height: 44px;
+	margin-top: -12px;
+	z-index: 10000;
+	background: transparent url(/images/application.png) -215px 0;
+	margin-bottom: -42px;
+}
+
+/* @group Remove */
+
+span.actions a.remove {
+	height: 26px;
+	width: 26px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	margin-top: 9px;
+	margin-left: 8px;
+	margin-right: -6px;
+	background: url(/images/application.png) 0 -867px;
+}
+
+span.actions div.no_remove {
+	opacity: 0.5;
+	height: 26px;
+	width: 26px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	margin-top: 9px;
+	margin-left: 8px;
+	margin-right: -6px;
+	background: url(/images/application.png) 0 -867px;
+}
+
+span.actions a:hover.remove {
+	background-position: 0 -893px;
+}
+
+span.actions a:active.remove {
+	background-position: 0 -919px;
+}
+
+span.actions a.remove.pressed {
+	background-position: 0 -945px;
+}
+
+span.actions a.remove.disabled {
+	background-position: 0 -971px;
+}
+
+/* @group Animation Frames */
+
+/* @group Normal */
+
+span.actions a.remove.one {
+	background-position: -26px -867px;
+}
+
+span.actions a.remove.two {
+	background-position: -26px -893px;
+}
+
+span.actions a.remove.three {
+	background-position: -26px -919px;
+}
+
+span.actions a.remove.four {
+	background-position: 0 -945px;
+}
+
+/* @end */
+
+/* @group Reverse */
+
+span.actions a.remove.reverse.one {
+	background-position: -26px -919px;
+}
+
+span.actions a.remove.reverse.two {
+	background-position: -26px -893px;
+}
+
+span.actions a.remove.reverse.three {
+	background-position: -26px -867px;
+}
+
+span.actions a.remove.reverse.four {
+	background-position: -26px -867px;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @end */
+
+span.actions a.edit {
+	float: left;
+	margin-top: 12px;
+	margin-left: 10px;
+	background-color: #f5f5f5;
+}
+
+span.actions .handle {
+	cursor: default;
+	width: 38px;
+	height: 22px;
+	float: left;
+	background: url(/images/application.png) -100px -134px;
+	position: relative;
+	margin-top: 12px;
+	margin-left: 16px;
+	margin-right: -14px;
+}
+
+/* @end */
+
+/* @group Pager */
+
+.pager {
+	margin-top: 16px;
+	float: right;
+	width: 700px;
+}
+
+.pager a.digit {
+	color: #515151;
+	float: left;
+	min-width: 16px;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	height: 21px;
+	padding-left: 4px;
+	padding-right: 4px;
+	background-color: #efefef;
+	border-bottom: 1px solid #acacac;
+	border-top: 1px solid #e0e0e0;
+	line-height: 21px;
+	font-weight: bold;
+}
+
+.pager a:hover.digit {
+	background-color: #e7e7e7;
+}
+
+.pager a:active.digit, .pager a.digit.current, .pager a.digit.pressed {
+	background-color: #ddd;
+	border-bottom-color: #acacac;
+	border-top-color: #e0e0e0;
+	cursor: default;
+}
+
+/* @group Prev */
+
+.pager a.prev {
+	width: 33px;
+	height: 33px;
+	text-indent: -9000px;
+	display: block;
+	padding: 0;
+	z-index: 3;
+	background: url(/images/application.png) 0 -1007px;
+	position: relative;
+	margin: -5px;
+	font-size: 1px;
+	float: left;
+}
+
+.pager a:hover.prev {
+	background-position: 0 -1040px;
+}
+
+.pager a:active.prev, .pager a.prev.pressed {
+	background-position: 0 -1073px;
+}
+
+.pager a.prev.disabled {
+	cursor: default;
+	width: 33px;
+	height: 33px;
+	float: left;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	line-height: 0;
+	background: url(/images/application.png) 0 -1106px;
+	margin: -5px;
+	color: #f5f5f5;
+	cursor: default;
+}
+
+/* @end */
+
+/* @group Next */
+
+.pager a.next {
+	width: 33px;
+	height: 33px;
+	float: left;
+	text-indent: -9000px;
+	display: block;
+	z-index: 3;
+	background: url(/images/application.png) -33px -1007px;
+	margin: -5px;
+	position: relative;
+	font-size: 1px;
+	padding: 0;
+}
+
+.pager a:hover.next {
+	background-position: -33px -1040px;
+}
+
+.pager a:active.next, .pager a.next.pressed {
+	background-position: -33px -1073px;
+}
+
+.pager a.next.disabled {
+	cursor: default;
+	width: 33px;
+	height: 33px;
+	float: left;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	line-height: 0;
+	background: url(/images/application.png) -33px -1106px;
+	margin: -5px;
+	color: #f5f5f5;
+	cursor: default;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Box */
+
+div.box {
+	float: left;
+	width: 660px;
+	padding: 20px;
+	border-bottom: 1px solid #e2e2e2;
+	background-color: #ededed;
+	position: relative;
+}
+
+div.box div.inline {
+	float: left;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	width: 660px;
+}
+
+div.box.less_space div.inline, div.inner_box.less_space div.inline {
+	padding-top: 2px;
+}
+
+/* @group Inline Group */
+
+div.box div.inline div.group {
+	float: left;
+	width: 500px;
+	position: relative;
+}
+
+div.box div.inline div.group input.field, div.box div.inline div.group textarea.textarea {
+	width: 298px;
+	float: left;
+}
+
+div.box div.inline div.group input.field {
+	margin-bottom: 10px;
+}
+
+div.box div.inline div.group div.tags_part {
+	width: 180px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+div.box div.inline div.group div.tags_part h3 {
+	width: 180px;
+	float: left;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+div.box div.inline div.group div.tags_part ul li {
+	width: 180px;
+	float: left;
+	margin-top: 2px;
+}
+
+div.box div.inline div.group div.tags_part ul li a {
+	color: black;
+	font-weight: normal;
+	font-style: normal;
+}
+
+div.box div.inline div.group div.tags_part a.small_button {
+	margin-top: 10px;
+}
+
+/* @end */
+
+body#invoices div.box div.inline.boxed {
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 20px;
+	width: 610px;
+	padding: 10px 10px 10px 0;
+	background-color: #d5d5d5;
+}
+
+span.inlabel {
+	float: left;
+	margin-left: 8px;
+	margin-top: 1px;
+}
+
+span.inlabel.no_space_left {
+	margin-left: 0;
+}
+
+div.box div.inline.id span.inlabel {
+	margin-top: 5px;
+}
+
+div.box div.inline.space {
+	padding-bottom: 16px;
+}
+
+div.box div.inline.border {
+	border-bottom: 1px solid #d4d4d4;
+	padding-bottom: 20px;
+}
+
+div.box div.inline.last {
+	padding-bottom: 0;
+}
+
+/* @group ID */
+
+div.box div.inline.id input.field {
+	font-size: 20px;
+}
+
+div.box div.inline.id label {
+	margin-top: 5px;
+}
+
+/* @end */
+
+body#invoices div.box div.inline, body#recurring div.box div.inline, body#projects div.box div.inline, body#estimates div.box div.inline, body#clients div.box div.inline, body#users div.box div.inline, body#profile div.box div.inline {
+	padding-top: 2px;
+}
+
+div#settings_part div.inline, div.inner_box div.inline {
+	padding-top: 2px;
+	width: 620px;
+}
+
+.box .inline label {
+	width: 140px;
+	text-align: right;
+	font-weight: bold;
+	margin-right: 14px;
+	float: left;
+}
+
+.box .inline label.optional {
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* @group Toggle Settings */
+
+a#toggle_settings {
+	margin-left: 154px;
+}
+
+a#toggle_settings.tabbed {
+	background-position: -138px -480px;
+	position: relative;
+	z-index: 1;
+	margin-bottom: -1px;
+}
+
+/* @end */ {
+	float: left;
+}
+
+/* @end */
+
+/* @group Line Part */
+
+div#line_part, div.inner_box_light {
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	width: 618px;
+	padding: 20px;
+	float: left;
+	background-color: #fff;
+	border: 1px solid #e4e4e4;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+div.inner_box_light {
+	margin-top: 6px;
+}
+
+div#line_part li.line {
+	width: 600px;
+	border-bottom: 1px solid #e1e1e1;
+	font-size: 11px;
+	padding: 10px;
+	border-top: 1px solid #e1e1e1;
+	height: 56px;
+	float: left;
+	margin-bottom: -1px;
+	background-color: #fff;
+}
+
+div#line_part #lines {
+	background-color: #ededed;
+	margin-top: -1px;
+}
+
+/* @group Bar */
+
+div#line_part div.bar {
+	width: 580px;
+	font-weight: bold;
+	font-size: 11px;
+	padding: 10px 20px;
+	background: url(/images/application.png) 0 -330px;
+	float: left;
+	color: #fff;
+}
+
+div#line_part div.bar span.qty {
+	float: left;
+	margin-right: 20px;
+	width: 140px;
+	margin-left: 20px;
+}
+
+div#line_part div.bar span.description {
+	float: left;
+	margin-right: 20px;
+	width: 200px;
+}
+
+div#line_part div.bar span.price {
+	float: left;
+	margin-right: 20px;
+	width: 80px;
+}
+
+div#line_part div.bar span.total {
+	float: left;
+	width: 80px;
+	text-align: right;
+}
+
+/* @end */
+
+/* @group Remove Line, Remove Task and Remove Contact */
+
+a.remove_line, a.remove_task, a.remove_contact {
+	height: 26px;
+	width: 26px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	margin-left: -5px;
+	margin-right: 9px;
+	margin-top: -2px;
+	background: url(/images/application.png) 0 -867px;
+}
+
+a.remove_contact {
+	position: absolute;
+	top: 10px;
+	left: 14px;
+}
+
+a:hover.remove_line, a:hover.remove_task, a:hover.remove_contact {
+	background-position: 0 -893px;
+}
+
+a:active.remove_line, a:active.remove_task, a:active.remove_contact {
+	background-position: 0 -919px;
+}
+
+a.remove_line.pressed, a.remove_task.pressed, a.remove_contact.pressed {
+	background-position: 0 -945px;
+}
+
+/* @group Animation Frames */
+
+/* @group Normal */
+
+a.remove_line.one, a.remove_task.one, a.remove_contact.one {
+	background-position: -26px -867px;
+}
+
+a.remove_line.two, a.remove_task.two, a.remove_contact.two {
+	background-position: -26px -893px;
+}
+
+a.remove_line.three, a.remove_task.three, a.remove_contact.three {
+	background-position: -26px -919px;
+}
+
+a.remove_line.four, a.remove_task.four, a.remove_contact.four {
+	background-position: 0 -945px;
+}
+
+/* @end */
+
+/* @group Reverse */
+
+a.remove_line.reverse.one, a.remove_task.reverse.one, a.remove_contact.reverse.one {
+	background-position: -26px -919px;
+}
+
+a.remove_line.reverse.two, a.remove_task.reverse.two, a.remove_contact.reverse.two {
+	background-position: -26px -893px;
+}
+
+a.remove_line.reverse.three, a.remove_task.reverse.three, a.remove_contact.reverse.three {
+	background-position: -26px -867px;
+}
+
+a.remove_line.reverse.four, a.remove_task.reverse.four, a.remove_contact.reverse.four {
+	background-position: -26px -867px;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @end */
+
+div#line_part li.line span.qty {
+	float: left;
+	margin-right: 20px;
+	width: 140px;
+}
+
+div#line_part li.line a.save_item {
+	float: left;
+	position: relative;
+	font-size: 10px;
+	left: 0;
+	top: 38px;
+	z-index: 2;
+	margin-bottom: -18px;
+}
+
+div#line_part li.line span.qty div.select_wrapper {
+	margin-top: 0;
+	width: 88px;
+	margin-left: 10px;
+}
+
+div#line_part li.line span.qty select.select {
+	width: 88px;
+}
+
+div#line_part li.line span.qty input.field {
+	width: 34px;
+}
+
+div#line_part li.line span.description {
+	float: left;
+	margin-right: 20px;
+	width: 200px;
+}
+
+div#line_part li.line span.description textarea.textarea {
+	width: 194px;
+	margin-bottom: 0;
+	height: 50px;
+}
+
+div#line_part li.line span.price {
+	float: left;
+	margin-right: 20px;
+	width: 80px;
+}
+
+div#line_part li.line span.price input.field {
+	width: 74px;
+}
+
+div#line_part li.line span.price .select_wrapper {
+	width: 78px;
+	margin-top: 14px;
+	float: left;
+}
+
+div#line_part li.line span.total {
+	float: left;
+	width: 80px;
+	text-align: right;
+	line-height: 24px;
+}
+
+div#line_part li.line a.handle, div#line_part li.line a#handle_placeholder {
+	cursor: default;
+	width: 7px;
+	height: 22px;
+	float: right;
+	background: url(/images/application.png) -100px -134px;
+	margin-right: -10px;
+	margin-top: 2px;
+}
+
+/* @group Subtotal */
+
+div#line_part div#subtotal, div#task_part div#subtotal {
+	margin-top: 10px;
+	margin-right: 10px;
+	float: right;
+	width: 290px;
+}
+
+div#line_part div#subtotal div.left, div#task_part div#subtotal div.left {
+	margin-right: 10px;
+	float: left;
+	width: 140px;
+}
+
+div#line_part div#subtotal div.right, div#task_part div#subtotal div.right {
+	text-align: right;
+	float: left;
+	width: 140px;
+}
+
+div#line_part div#subtotal div.left p,div#line_part div#subtotal div.right p, div#task_part div#subtotal div.left p,div#task_part div#subtotal div.right p {
+	float: right;
+	text-align: right;
+	width: 140px;
+	margin-bottom: 2px;
+	white-space: nowrap;
+}
+
+div#line_part div#subtotal p.total_display, div#task_part div#subtotal p.total_display, div#task_part div#subtotal p.hours_display {
+	font-weight: bold;
+	font-size: 16px;
+	margin-top: 6px;
+}
+
+div#line_part div#subtotal #total_highlight, div#task_part div#subtotal #total_highlight {
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	margin: -2px -6px;
+	padding: 2px 6px;
+	color: #10363c;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+input.add, input.save, input.copy {
+	float: right;
+}
+
+/* @group Task Part */
+
+div#task_part {
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	width: 618px;
+	padding: 20px;
+	float: left;
+	background-color: #fff;
+	border: 1px solid #e4e4e4;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* @group Bar */
+
+div#task_part div.bar {
+	width: 580px;
+	font-weight: bold;
+	font-size: 11px;
+	padding: 10px 20px;
+	background: url(/images/application.png) 0 -330px;
+	float: left;
+	color: #fff;
+}
+
+div#task_part div.bar span.rate {
+	float: left;
+	margin-right: 20px;
+	width: 80px;
+}
+
+div#task_part div.bar span.hours {
+	float: left;
+	margin-right: 20px;
+	width: 80px;
+	margin-left: 20px;
+}
+
+div#task_part div.bar span.description {
+	float: left;
+	margin-right: 20px;
+	width: 200px;
+}
+
+div#task_part div.bar span.billed {
+	float: left;
+	margin-right: 20px;
+	width: 40px;
+}
+
+div#task_part div.bar span.task_total {
+	float: left;
+	text-align: right;
+	width: 80px;
+}
+
+/* @end */
+
+div#task_part li.task {
+	width: 600px;
+	border-bottom: 1px solid #e1e1e1;
+	font-size: 11px;
+	padding: 10px;
+	border-top: 1px solid #e1e1e1;
+	height: 56px;
+	float: left;
+	margin-bottom: -1px;
+	background-color: #fff;
+}
+
+div#task_part #tasks {
+	background-color: #ededed;
+	margin-top: -1px;
+}
+
+/* @group Remove Line */
+
+/* @group Animation Frames */
+
+/* @group Normal */
+
+a.remove_line.one {
+	background-position: -26px -867px;
+}
+
+a.remove_line.two {
+	background-position: -26px -893px;
+}
+
+a.remove_line.three {
+	background-position: -26px -919px;
+}
+
+a.remove_line.four {
+	background-position: 0 -945px;
+}
+
+/* @end */
+
+/* @group Reverse */
+
+a.remove_line.reverse.one {
+	background-position: -26px -919px;
+}
+
+a.remove_line.reverse.two {
+	background-position: -26px -893px;
+}
+
+a.remove_line.reverse.three {
+	background-position: -26px -867px;
+}
+
+a.remove_line.reverse.four {
+	background-position: -26px -867px;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @end */
+
+div#task_part li.task span.rate {
+	float: left;
+	margin-right: 20px;
+	width: 80px;
+}
+
+div#task_part li.task span.rate input.field {
+	width: 74px;
+}
+
+div#task_part li.task span.hours {
+	float: left;
+	margin-right: 20px;
+	width: 80px;
+}
+
+div#task_part li.task span.hours input.field {
+	width: 74px;
+}
+
+div#task_part li.task span.description {
+	float: left;
+	margin-right: 20px;
+	width: 200px;
+}
+
+div#task_part li.task span.description textarea.textarea {
+	width: 194px;
+	margin-bottom: 0;
+	height: 50px;
+}
+
+div#task_part li.task span.billed {
+	float: left;
+	margin-right: 20px;
+	width: 40px;
+}
+
+div#task_part li.task span.total {
+	float: left;
+	width: 80px;
+	text-align: right;
+	line-height: 24px;
+}
+
+div#task_part li.task a.handle, div#task_part li.task a#handle_placeholder {
+	cursor: default;
+	width: 7px;
+	height: 22px;
+	float: right;
+	background: url(/images/application.png) -100px -134px;
+	margin-right: -10px;
+	margin-top: 2px;
+}
+
+/* @group Subtotal */
+
+div#line_part div#subtotal {
+	margin-top: 10px;
+	margin-right: 10px;
+	float: right;
+	width: 290px;
+}
+
+div#line_part div#subtotal div.left {
+	margin-right: 10px;
+	float: left;
+	width: 140px;
+}
+
+div#line_part div#subtotal div.right {
+	text-align: right;
+	float: left;
+	width: 140px;
+}
+
+div#line_part div#subtotal div.left p,div#line_part div#subtotal div.right p {
+	float: right;
+	text-align: right;
+	width: 140px;
+	margin-bottom: 2px;
+	white-space: nowrap;
+}
+
+div#line_part div#subtotal p.total_display {
+	font-weight: bold;
+	font-size: 16px;
+	margin-top: 6px;
+}
+
+#total_highlight {
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	margin: -2px -6px;
+	padding: 2px 6px;
+	color: #10363c;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Show Insert Menu */
+
+a#show_insert_menu {
+	height: 33px;
+	width: 48px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+	background: url(/images/application.png) -76px -1007px;
+}
+
+a:hover#show_insert_menu {
+	background-position: -76px -1040px;
+}
+
+a:active#show_insert_menu, a#show_insert_menu.pressed {
+	background-position: -76px -1073px;
+}
+
+
+
+/* @end */
+
+/* @group Insert */
+
+a#insert {
+	height: 33px;
+	width: 33px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+	background: url(/images/application.png) -62px -867px;
+}
+
+a:hover#insert {
+	background-position: -62px -900px;
+}
+
+a:active#insert {
+	background-position: -62px -933px;
+}
+
+
+
+/* @end */
+
+/* @group Settings Part */
+
+div.inner_box {
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background-color: #dedede;
+	width: 618px;
+	float: left;
+	padding: 20px;
+	border: 1px solid #d4d4d4;
+	margin-bottom: 14px;
+}
+
+div.inner_box h3 {
+	width: 618px;
+	float: left;
+	margin-bottom: 6px;
+}
+
+/* @group Contact */
+
+div.inner_box div.contact {
+	width: 618px;
+	float: left;
+	border-bottom: 1px solid #d2d4d4;
+	margin-top: -1px;
+	border-top: 1px solid #d2d4d4;
+	padding-top: 10px;
+	position: relative;
+}
+
+
+
+/* @end */
+
+div.inner_box p.text {
+	width: 618px;
+	margin-bottom: 20px;
+}
+
+div.inner_box div.left {
+	width: 370px;
+	float: left;
+	margin-right: 18px;
+	margin-bottom: -6px;
+}
+
+div.inner_box div.left p {
+	width: 340px;
+	margin-bottom: 6px;
+}
+
+div.inner_box div.left p.first {
+	margin-top: 6px;
+}
+
+div.inner_box div.right {
+	width: 230px;
+	float: left;
+	margin-bottom: -6px;
+}
+
+div.inner_box div.right p {
+	margin-bottom: 6px;
+	width: 260px;
+	float: left;
+}
+
+div.inner_box a.small_button.upper {
+	float: right;
+	margin-bottom: -24px;
+	margin-right: 0;
+	z-index: 100;
+	position: relative;
+}
+
+div.inner_box a.small_button.upper_below {
+	float: right;
+	margin-bottom: -56px;
+	margin-right: 0;
+	z-index: 100;
+	position: relative;
+	margin-top: 32px;
+}
+
+div.box div.control {
+	width: 660px;
+	float: left;
+	padding-top: 16px;
+	border-top: 1px solid #f9f9f9;
+}
+
+body#invoices div.inner_box {
+	margin-bottom: 0;
+}
+
+div.inner_box textarea.textarea {
+	width: 354px;
+	height: 80px;
+}
+
+.no_label, div.inner_box textarea.no_label {
+	margin-left: 154px;
+	margin-top: 10px;
+}
+
+/* @end */
+
+/* @group Spaces */
+
+#space {
+	width: 800px;
+	height: 20px;
+	float: left;
+}
+
+input.field.space_right, div.select_wrapper.space_right {
+	margin-right: 6px;
+}
+
+input.field.space_left, div.select_wrapper.space_left {
+	margin-left: 6px;
+}
+
+
+
+/* @end */
+
+/* @group Title */
+
+h2.title {
+	width: 680px;
+	height: 46px;
+	line-height: 46px;
+	color: white;
+	float: left;
+	padding-left: 20px;
+	font-size: 16px;
+	background: black url(/images/application.png) no-repeat 0 -280px;
+}
+
+span.indicator {
+	width: 24px;
+	height: 24px;
+	float: right;
+	background-image: url(../images/indicator.gif);
+	margin-top: 11px;
+	margin-right: 11px;
+}
+
+/* @end */
+
+/* @group Bar */
+
+div.bar {
+	width: 700px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	float: left;
+	border-bottom: 1px solid #e2e2e2;
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #ededed;
+}
+
+div.bar a {
+	color: #5f5f5f;
+}
+
+div.bar a:hover {
+	color: #434343;
+}
+
+div.bar a.down {
+	background: url(/images/application.png) right -556px;
+	color: #323232;
+	padding-right: 16px;
+}
+
+div.bar a.up {
+	background: url(/images/application.png) right -582px;
+	color: #323232;
+	padding-right: 16px;
+}
+
+/* @group Invoices */
+
+body#invoices div.bar span.id {
+	margin-left: 20px;
+	margin-right: 10px;
+	float: left;
+	width: 142px;
+}
+
+body#invoices div.bar span.date {
+	margin-right: 10px;
+	float: left;
+	width: 100px;
+}
+
+body#invoices div.bar span.client {
+	margin-right: 10px;
+	float: left;
+	width: 180px;
+}
+
+body#invoices div.bar span.amount {
+	margin-right: 10px;
+	float: left;
+	width: 134px;
+}
+
+body#invoices div.bar span.status {
+	margin-right: 10px;
+	float: left;
+	width: 66px;
+}
+
+/* @end */
+
+/* @group Estimates */
+
+body#estimates div.bar span.id {
+	margin-left: 20px;
+	margin-right: 10px;
+	float: left;
+	width: 142px;
+}
+
+body#estimates div.bar span.date {
+	margin-right: 10px;
+	float: left;
+	width: 100px;
+}
+
+body#estimates div.bar span.client {
+	margin-right: 10px;
+	float: left;
+	width: 180px;
+}
+
+body#estimates div.bar span.amount {
+	margin-right: 10px;
+	float: left;
+	width: 134px;
+}
+
+body#estimates div.bar span.status {
+	margin-right: 10px;
+	float: left;
+	width: 66px;
+}
+
+/* @end */
+
+/* @group Recurring */
+
+body#recurring div.bar span.name {
+	margin-left: 20px;
+	margin-right: 10px;
+	float: left;
+	width: 242px;
+}
+
+body#recurring div.bar span.client {
+	margin-right: 10px;
+	float: left;
+	width: 210px;
+}
+
+body#recurring div.bar span.next_date {
+	margin-right: 10px;
+	float: left;
+	width: 114px;
+}
+
+body#recurring div.bar span.status {
+	margin-right: 10px;
+	float: left;
+	width: 66px;
+}
+
+/* @end */
+
+/* @group Projects */
+
+body#projects div#main_part div.bar span.name {
+	margin-left: 20px;
+	margin-right: 10px;
+	float: left;
+	width: 212px;
+}
+
+body#projects div#main_part div.bar span.client {
+	margin-right: 10px;
+	float: left;
+	width: 160px;
+}
+
+body#projects div#main_part div.bar span.hours {
+	margin-right: 10px;
+	float: left;
+	width: 80px;
+}
+
+body#projects div#main_part div.bar span.total {
+	margin-right: 10px;
+	float: left;
+	width: 104px;
+}
+
+body#projects div#main_part div.bar span.status {
+	float: left;
+	width: 66px;
+}
+
+
+
+/* @end */
+
+/* @group Clients */
+
+body#clients div#main_part div.bar span.company {
+	margin-left: 20px;
+	margin-right: 10px;
+	float: left;
+	width: 242px;
+}
+
+body#clients div#main_part div.bar span.contact_name {
+	margin-right: 10px;
+	float: left;
+	width: 200px;
+}
+
+body#clients div#main_part div.bar span.contact_email {
+	margin-right: 10px;
+	float: left;
+	width: 200px;
+}
+
+
+
+/* @end */
+
+/* @group Users */
+
+body#users div.bar span.name {
+	margin-left: 20px;
+	margin-right: 10px;
+	float: left;
+	width: 216px;
+}
+
+body#users div.bar span.email {
+	margin-right: 10px;
+	float: left;
+	width: 220px;
+}
+
+body#users div.bar span.last_login_date {
+	margin-right: 10px;
+	float: left;
+	width: 130px;
+}
+
+body#users div.bar span.type {
+	float: left;
+	width: 66px;
+}
+
+
+
+/* @end */
+
+/* @end */
+
+/* @group Row */
+
+li.row {
+	width: 700px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	float: left;
+	border-bottom: 1px solid #e7e7e7;
+	font-size: 11px;
+	line-height: 20px;
+	font-weight: bold;
+}
+
+li.row span {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+li.no_results {
+	width: 680px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	float: left;
+	border-bottom: 1px solid #e7e7e7;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 20px;
+	padding-left: 20px;
+}
+
+li.row.alt {
+	background-color: #f2f2f2;
+}
+
+/* @group Information */
+
+li.row span.information {
+	position: relative;
+	margin-bottom: -73px;
+	float: left;
+	top: -44px;
+	left: 684px;
+	height: 73px;
+}
+
+li.row span.information span.left {
+	height: 73px;
+	float: left;
+	background: url(/images/application.png) 0 -1230px;
+	width: 20px;
+}
+
+li.row span.information span.right {
+	height: 61px;
+	float: left;
+	background: url(/images/application.png) right -1195px;
+	padding-top: 12px;
+	padding-right: 20px;
+	padding-left: 10px;
+}
+
+li.row span.information span.right p {
+	height: 20px;
+	float: left;
+	clear: left;
+	margin-bottom: 6px;
+}
+
+/* @end */
+
+/* @group Invoices */
+
+body#invoices li.row span.id {
+	height: 20px;
+	float: left;
+	margin-left: 20px;
+	padding-left: 24px;
+	width: 118px;
+	margin-right: 10px;
+	background: url(/images/application.png) no-repeat -680px -1921px;
+}
+
+body#invoices li.row span.date {
+	width: 100px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#invoices li.row span.client {
+	width: 180px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#invoices li.row span.amount {
+	width: 134px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+/* @group Status */
+
+body#invoices li.row span.status {
+	width: 66px;
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 10px;
+	color: white;
+	margin-top: 2px;
+	background-image: url(/images/application.png);
+}
+
+body#invoices li.row span.status.draft {
+	background-position: 0 -2165px;
+}
+
+body#invoices li.row span.status.sent {
+	background-position: 0 -2183px;
+}
+
+body#invoices li.row span.status.paid {
+	background-position: 0 -2201px;
+}
+
+body#invoices li.row span.status.due {
+	background-position: 0 -2219px;
+}
+
+body#invoices li.row span.status.partial {
+	background-position: 0 -2237px;
+}
+
+body#invoices li.row span.status.partial.one {
+	background-position: -66px -2165px;
+}
+
+body#invoices li.row span.status.partial.two {
+	background-position: -66px -2183px;
+}
+
+body#invoices li.row span.status.partial.three {
+	background-position: -66px -2201px;
+}
+
+body#invoices li.row span.status.partial.four {
+	background-position: -66px -2219px;
+}
+
+body#invoices li.row span.status.partial.five {
+	background-position: -66px -2237px;
+}
+
+body#invoices li.row span.status.partial.six {
+	background-position: -132px -2165px;
+}
+
+body#invoices li.row span.status.partial.seven {
+	background-position: -132px -2201px;
+}
+
+body#invoices li.row span.status.partial.eight {
+	background-position: -132px -2201px;
+}
+
+body#invoices li.row span.status.partial.nine {
+	background-position: -132px -2219px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group Recurring */
+
+body#recurring li.row span.name {
+	height: 20px;
+	float: left;
+	margin-left: 20px;
+	padding-left: 24px;
+	width: 218px;
+	margin-right: 10px;
+	background: url(/images/application.png) no-repeat -680px -1961px;
+}
+
+body#recurring li.row span.client {
+	width: 210px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#recurring li.row span.next_date {
+	width: 114px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#recurring li.row span.status {
+	width: 66px;
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 10px;
+	color: white;
+	margin-top: 2px;
+	background-image: url(/images/application.png);
+}
+
+body#recurring li.row span.status.off {
+	background-position: 0 -2165px;
+}
+
+body#recurring li.row span.status.on {
+	background-position: 0 -2201px;
+}
+
+
+
+/* @end */
+
+/* @group Estimates */
+
+body#estimates li.row span.id {
+	height: 20px;
+	float: left;
+	margin-left: 20px;
+	padding-left: 24px;
+	width: 118px;
+	margin-right: 10px;
+	background: url(/images/application.png) no-repeat -680px -1941px;
+}
+
+body#estimates li.row span.date {
+	width: 100px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#estimates li.row span.client {
+	width: 180px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#estimates li.row span.amount {
+	width: 134px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+/* @group Status */
+
+body#estimates li.row span.status {
+	width: 66px;
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 10px;
+	color: white;
+	margin-top: 2px;
+	background-image: url(/images/application.png);
+}
+
+body#estimates li.row span.status.draft {
+	background-position: 0 -2165px;
+}
+
+body#estimates li.row span.status.accepted {
+	background-position: 0 -2201px;
+}
+
+body#estimates li.row span.status.sent {
+	background-position: 0 -2183px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group Projects */
+
+body#projects li.row span.name {
+	height: 20px;
+	float: left;
+	margin-left: 20px;
+	padding-left: 24px;
+	width: 188px;
+	margin-right: 10px;
+	background: url(/images/application.png) no-repeat -680px -1981px;
+}
+
+body#projects li.row span.client {
+	width: 160px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#projects li.row span.hours {
+	width: 80px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#projects li.row span.total {
+	width: 104px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+/* @group Status */
+
+body#projects li.row span.status {
+	width: 66px;
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 10px;
+	color: white;
+	margin-top: 2px;
+	background-image: url(/images/application.png);
+}
+
+body#projects li.row span.status.draft {
+	background-position: 0 -2165px;
+}
+
+body#projects li.row span.status.billed {
+	background-position: 0 -2201px;
+}
+
+body#projects li.row span.status.partial {
+	background-position: 0 -2237px;
+}
+
+body#projects li.row span.status.partial.one {
+	background-position: -66px -2165px;
+}
+
+body#projects li.row span.status.partial.two {
+	background-position: -66px -2183px;
+}
+
+body#projects li.row span.status.partial.three {
+	background-position: -66px -2201px;
+}
+
+body#projects li.row span.status.partial.four {
+	background-position: -66px -2219px;
+}
+
+body#projects li.row span.status.partial.five {
+	background-position: -66px -2237px;
+}
+
+body#projects li.row span.status.partial.six {
+	background-position: -132px -2165px;
+}
+
+body#projects li.row span.status.partial.seven {
+	background-position: -132px -2201px;
+}
+
+body#projects li.row span.status.partial.eight {
+	background-position: -132px -2201px;
+}
+
+body#projects li.row span.status.partial.nine {
+	background-position: -132px -2219px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group Clients */
+
+body#clients li.row span.company {
+	float: left;
+	margin-left: 20px;
+	padding-left: 24px;
+	width: 218px;
+	margin-right: 10px;
+	background: url(/images/application.png) no-repeat -680px -2021px;
+}
+
+body#clients li.row span.company span.address {
+	width: 218px;
+	float: left;
+	font-weight: normal;
+	font-style: normal;
+}
+
+body#clients li.row span.contact_name {
+	width: 200px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#clients li.row span.contact_email {
+	width: 200px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+/* @end */
+
+/* @group Users */
+
+body#users li.row span.name {
+	height: 20px;
+	float: left;
+	margin-left: 20px;
+	padding-left: 24px;
+	width: 192px;
+	margin-right: 10px;
+	background: url(/images/application.png) no-repeat -680px -2001px;
+}
+
+body#users li.row span.email {
+	width: 220px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+body#users li.row span.last_login_date {
+	width: 130px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+/* @group Type */
+
+body#users li.row span.type {
+	width: 66px;
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 10px;
+	color: white;
+	margin-top: 2px;
+	background-image: url(/images/application.png);
+}
+
+body#users li.row span.type.user {
+	background-position: 0 -2165px;
+}
+
+body#users li.row span.type.admin {
+	background-position: 0 -2183px;
+}
+
+body#users li.row span.type.holder {
+	background-position: 0 -2201px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @end */
+
+/* @end */
+
+/* @group Dialog */
+
+div.dialog {
+	width: 320px;
+	padding: 20px 20px 0;
+	float: left;
+	background: #f5f5f5 url(../images/dialog_fill.png) repeat-x;
+}
+
+.scroll_one, .scroll_two {
+	float: left;
+}
+
+.scroll_wrapper {
+	float: left;
+	width: 240px;
+	overflow: hidden;
+	margin-top: -20px;
+	padding-top: 20px;
+	height: 340px;
+}
+
+.scroll {
+	float: left;
+	width: 240px;
+	overflow: hidden;
+	position: relative;
+	top: 0;
+}
+
+/* @group Shadow */
+
+div.dialog div.shadow {
+	width: 400px;
+	height: 80px;
+	float: left;
+	margin-left: -40px;
+	margin-bottom: -60px;
+	margin-top: -40px;
+	position: relative;
+	z-index: -1;
+}
+
+div.dialog div.shadow div.left {
+	height: 80px;
+	width: 20%;
+	float: left;
+	background: url(/images/application.png) 0 -1313px;
+	margin: 0;
+	padding: 0;
+}
+
+div.dialog div.shadow div.right {
+	height: 80px;
+	width: 80%;
+	float: left;
+	background: url(/images/application.png) right -1313px;
+	margin: 0;
+	padding: 0;
+}
+
+/* @end */
+
+div.dialog p {
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+div.dialog li.centered {
+	text-align: center;
+	width: 320px;
+	margin-top: 0;
+	margin-bottom: 8px;
+	float: left;
+}
+
+div.dialog .add_more {
+	margin-left: 60px;
+	margin-bottom: 14px;
+	margin-top: 4px;
+}
+
+div.dialog input.field {
+	width: 314px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+div.dialog div.select_wrapper {
+	width: 318px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+div.dialog label {
+	margin-bottom: 2px;
+	float: left;
+	font-weight: bold;
+	width: 154px;
+}
+
+div.dialog label.optional {
+	font-weight: normal;
+	font-style: normal;
+}
+
+div.dialog div.control {
+	float: left;
+	margin-top: 6px;
+	border-style: none;
+}
+
+div.dialog div.control input.button {
+	float: left;
+	margin-left: 58px;
+}
+
+div.dialog div.control a.small_button {
+	margin-left: 2px;
+	float: left;
+	margin-top: 10px;
+}
+
+/* @group History Dialog */
+
+div#history_dialog ul {
+	width: 460px;
+	float: left;
+}
+
+div#history_dialog ul li {
+	width: 440px;
+	float: left;
+	font-size: 11px;
+	border-bottom: 1px solid #eaeaea;
+	margin: 0;
+	padding: 10px;
+}
+
+div#history_dialog ul li p {
+	text-align: left;
+	font-weight: normal;
+	font-style: normal;
+	padding: 0;
+	margin: 0;
+}
+
+div#history_dialog ul li.first {
+	padding-top: 0;
+}
+
+div#history_dialog ul li.alt {
+	background-color: #f2f2f2;
+}
+
+div#history_dialog ul li strong {
+	width: 460px;
+	margin-bottom: 2px;
+	float: left;
+}
+
+div#history_dialog a.small_button {
+	margin-top: 10px;
+	float: right;
+	margin-right: 0;
+}
+
+
+
+/* @end */
+
+/* @group Payments Dialog */
+
+div#payments_dialog {
+	
+}
+
+div#payments_dialog input.field {
+	font-size: 20px;
+}
+
+/* @group Date */
+
+div#payments_dialog div.date {
+	width: 240px;
+	float: left;
+}
+
+div#payments_dialog div.select_wrapper {
+	width: auto;
+}
+
+div#payments_dialog div.date .select_wrapper#day {
+	width: 54px;
+}
+
+div#payments_dialog div.date .select_wrapper#month {
+	width: 100px;
+}
+
+div#payments_dialog div.date .select_wrapper#year {
+	width: 68px;
+}
+
+/* @end */
+
+div#payments_dialog .control {
+	
+}
+
+/* @group Payments */
+
+div#payments_dialog div#payments_area {
+	width: 240px;
+	float: left;
+	margin-top: 16px;
+}
+
+/* @group Bar */
+
+div#payments_dialog div#payment_bar  {
+	color: white;
+	width: 240px;
+	padding-bottom: 4px;
+	padding-top: 4px;
+	float: left;
+	font-size: 11px;
+	font-weight: bold;
+	background: url(/images/application.png) -460px -493px;
+}
+
+div#payments_dialog div#payment_bar span.amount {
+	padding-left: 28px;
+	float: left;
+	width: 96px;
+	margin-right: 8px;
+}
+
+div#payments_dialog div#payment_bar span.date {
+	padding-left: 24px;
+	float: left;
+	width: 74px;
+	text-align: right;
+}
+
+/* @end */
+
+/* @group Row */
+
+div#payments_dialog li.payment_row  {
+	width: 240px;
+	padding-bottom: 6px;
+	padding-top: 6px;
+	float: left;
+	font-size: 11px;
+	border-bottom: 1px solid #e7e7e7;
+}
+
+div#payments_dialog li.payment_no_result  {
+	width: 212px;
+	padding-bottom: 6px;
+	padding-top: 6px;
+	float: left;
+	font-size: 11px;
+	border-bottom: 1px solid #e7e7e7;
+	padding-left: 28px;
+}
+
+div#payments_dialog li.payment_row.adding  {
+	width: 240px;
+	padding-bottom: 6px;
+	padding-top: 6px;
+	float: left;
+	font-size: 11px;
+	border-bottom: 1px solid #e7e7e7;
+	text-align: center;
+}
+
+div#payments_dialog li.payment_row.alt {
+	background-color: #f2f2f2;
+}
+
+/* @group Remove */
+
+div#payments_dialog li.payment_row a.remove_payment {
+	height: 26px;
+	width: 26px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	background: url(/images/application.png) 0 -867px;
+	margin-top: -4px;
+	margin-right: 2px;
+	margin-bottom: -4px;
+}
+
+div#payments_dialog li.payment_row a:hover.remove_payment {
+	background-position: 0 -893px;
+}
+
+div#payments_dialog li.payment_row a:active.remove_payment {
+	background-position: 0 -919px;
+}
+
+div#payments_dialog li.payment_row a.remove_payment.pressed {
+	background-position: 0 -945px;
+}
+
+div#payments_dialog li.payment_row a.remove_payment.disabled {
+	background-position: 0 -971px;
+}
+
+/* @group Animation Frames */
+
+/* @group Normal */
+
+div#payments_dialog li.payment_row a.remove_payment.one {
+	background-position: -26px -867px;
+}
+
+div#payments_dialog li.payment_row a.remove_payment.two {
+	background-position: -26px -893px;
+}
+
+div#payments_dialog li.payment_row a.remove_payment.three {
+	background-position: -26px -919px;
+}
+
+div#payments_dialog li.payment_row a.remove_payment.four {
+	background-position: 0 -945px;
+}
+
+/* @end */
+
+/* @group Reverse */
+
+div#payments_dialog li.payment_row a.remove_payment.reverse.one {
+	background-position: -26px -919px;
+}
+
+div#payments_dialog li.payment_row a.remove_payment.reverse.two {
+	background-position: -26px -893px;
+}
+
+div#payments_dialog li.payment_rows a.remove_payment.reverse.three {
+	background-position: -26px -867px;
+}
+
+div#payments_dialog li.payment_row a.remove_payment.reverse.four {
+	background-position: -26px -867px;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @end */
+
+div#payments_dialog li.payment_row span.amount {
+	float: left;
+	width: 96px;
+	margin-right: 8px;
+}
+
+div#payments_dialog li.payment_row span.date {
+	padding-left: 24px;
+	float: left;
+	width: 74px;
+	text-align: right;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Small */
+
+div.dialog.small {
+	width: 240px;
+}
+
+div.dialog.small div.shadow {
+	width: 320px;
+}
+
+div.dialog.small input.field {
+	width: 234px;
+}
+
+div.dialog.small div.select_wrapper {
+	width: 238px;
+}
+
+div.dialog.small div.control input.button {
+	margin-left: 18px;
+}
+
+
+
+/* @end */
+
+/* @group Large */
+
+div.dialog.large {
+	width: 460px;
+}
+
+div.dialog.large div.shadow {
+	width: 540px;
+}
+
+div.dialog.large div.control {
+	float: left;
+	margin-top: 6px;
+	border-style: none;
+	width: 460px;
+	padding: 0;
+}
+
+
+
+/* @end */
+
+/* @group Localization Dialog */
+
+#localization_dialog label {
+	margin-bottom: 2px;
+	float: left;
+	font-weight: bold;
+	width: 100px;
+	font-size: 10px;
+}
+
+#localization_dialog input.field {
+	width: 94px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+#localization_dialog div.inner_one {
+	width: 100px;
+	margin-right: 20px;
+	float: left;
+}
+
+#localization_dialog div.inner_two {
+	width: 100px;
+	margin-right: 20px;
+	float: left;
+}
+
+#localization_dialog div.inner_three {
+	width: 100px;
+	margin-right: 20px;
+	float: left;
+}
+
+#localization_dialog div.inner_four {
+	width: 100px;
+	float: left;
+}
+
+#localization_dialog #reset {
+	float: left;
+	margin-top: 10px;
+	margin-left: 0;
+}
+
+#localization_dialog input.button {
+	float: right;
+}
+
+
+
+/* @end */
+
+/* @group Email Messages Dialog */
+
+#email_messages_dialog ul.sub {
+	width: 460px;
+}
+
+#email_messages_dialog li.tag {
+	
+}
+
+#email_messages_dialog label {
+	width: 300px;
+}
+
+#email_messages_dialog input.field {
+	width: 296px;
+	margin-bottom: 10px;
+}
+
+#email_messages_dialog h3 {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+#email_messages_dialog textarea.textarea {
+	width: 296px;
+	height: 120px;
+}
+
+#email_messages_dialog div.inner_left {
+	width: 300px;
+	margin-right: 40px;
+	float: left;
+}
+
+#email_messages_dialog div.inner_right {
+	width: 120px;
+	float: left;
+	margin-top: 20px;
+}
+
+#email_messages_dialog div.inner_right.last {
+	margin-top: 0;
+}
+
+#email_messages_dialog #reset {
+	float: left;
+	margin-top: 10px;
+	margin-left: 0;
+}
+
+#email_messages_dialog input.button {
+	float: right;
+	margin-right: -4px;
+}
+
+
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Menu */
+
+ul#insert_menu {
+	float: left;
+	z-index: 10000;
+	position: relative;
+	background: url(/images/application.png) -220px -1403px;
+	width: 140px;
+	height: 69px;
+	margin: -18px -22px -95px;
+	padding: 28px 32px 36px;
+	left: -22px;
+	top: 18px;
+	font-size: 11px;
+}
+
+ul#insert_menu span.inner {
+	width: 140px;
+	height: 69px;
+	float: left;
+	padding: 10px;
+	margin: -10px;
+}
+
+ul#insert_menu a {
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	width: 132px;
+	height: 23px;
+	padding: 0 2px 0 6px;
+	float: left;
+	line-height: 23px;
+	color: #000;
+	font-weight: normal;
+	font-style: normal;
+}
+
+ul#insert_menu a:hover {
+	color: #fff;
+	background: #000 url(/images/application.png) -20px -280px;
+}
+
+ul#insert_menu li.disabled {
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	width: 132px;
+	height: 23px;
+	padding: 0 2px 0 6px;
+	float: left;
+	line-height: 23px;
+	color: #777;
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* @group Basecamp */
+
+ul#insert_menu.basecamp {
+	float: left;
+	z-index: 10000;
+	position: relative;
+	background: url(/images/application.png) 0 -1403px;
+	width: 156px;
+	margin: -18px -22px -188px;
+	padding: 28px 32px 36px;
+	left: -22px;
+	top: 18px;
+	font-size: 11px;
+	height: 92px;
+}
+
+ul#insert_menu.basecamp a {
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	width: 148px;
+	height: 23px;
+	padding: 0 2px 0 6px;
+	float: left;
+	line-height: 23px;
+	color: #000;
+	font-weight: normal;
+	font-style: normal;
+}
+
+ul#insert_menu.basecamp a:hover {
+	color: #fff;
+	background: #000 url(/images/application.png) -20px -280px;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Field Label */
+
+.field_label {
+	height: 21px;
+	float: left;
+	line-height: 20px;
+	margin-left: 8px;
+}
+
+
+
+/* @end */
+
+/* @group Close Field */
+
+a.close_field {
+	width: 17px;
+	height: 17px;
+	float: left;
+	margin-left: 4px;
+	background: url(/images/application.png) -328px -380px;
+	font-size: 1px;
+	text-indent: -9000px;
+	display: block;
+	margin-top: 2px;
+}
+
+a:hover.close_field {
+	background-position: -328px -397px;
+}
+
+a:active.close_field {
+	background-position: -328px -414px;
+}
+
+a.close_box {
+	width: 17px;
+	height: 17px;
+	background: url(/images/application.png) -328px -380px;
+	font-size: 1px;
+	text-indent: -9000px;
+	display: block;
+	position: absolute;
+	top: -8px;
+	left: -8px;
+}
+
+a:hover.close_box {
+	background-position: -328px -397px;
+}
+
+a:active.close_box {
+	background-position: -328px -414px;
+}
+
+/* @end */
+
+div.box .save {
+	float: right;
+	margin-top: 0;
+}
+
+/* @group Save Item Box */
+
+div.save_item_box {
+	width: 600px;
+	height: 56px;
+	padding: 10px;
+	z-index: 2;
+	background: #f9f9f9 url(/images/application.png) 0 bottom;
+	float: left;
+	margin-top: -66px;
+	margin-left: -10px;
+	position: relative;
+}
+
+div.save_item_box label {
+	margin-left: 129px;
+	float: left;
+	font-weight: bold;
+	margin-top: 17px;
+}
+
+div.save_item_box .field {
+	float: left;
+	margin-top: 16px;
+	margin-left: 6px;
+	width: 134px;
+}
+
+div.save_item_box .button {
+	float: left;
+	margin-top: 5px;
+	margin-left: 6px;
+}
+
+/* @end */
+
+/* @group Close Box */
+
+/* @end */
+
+/* @group File */
+
+div.file_wrapper {
+	height: 24px;
+	margin-left: 0;
+	background: url(/images/application.png) 0 -519px;
+	overflow: hidden;
+	float: left;
+	margin-top: -2px;
+}
+
+div:hover.file_wrapper {
+	background-position: 0 -543px;
+}
+
+div:active.file_wrapper {
+	background-position: 0 -567px;
+}
+
+div.file_wrapper input {
+	-moz-opacity: 0;
+	filter: alpha(opacity:0);
+	opacity: 0;
+	z-index: 2;
+	height: 24px;
+	position: relative;
+	width: 74px;
+	float: left;
+}
+
+div.file_wrapper span {
+	width: 74px;
+	float: left;
+	z-index: 1;
+	position: relative;
+	height: 24px;
+	color: #424242;
+	font-size: 10px;
+	line-height: 24px;
+	text-align: center;
+	margin-left: -74px;
+	font-weight: bold;
+}
+
+/* @end */
+
+/* @group Layouts */
+
+#layouts {
+	width: 312px;
+	float: left;
+}
+
+#layouts .layout {
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-moz-box-shadow: rgba(0,0,0,0.1) 0 1px 2px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	height: 180px;
+	width: 122px;
+	float: left;
+	background-color: white;
+	margin-right: 14px;
+	padding: 10px;
+}
+
+#layouts .layout span.layout_one {
+	width: 122px;
+	height: 180px;
+	background: url(/images/application.png) 0 -1975px;
+	float: left;
+}
+
+#layouts .layout span.layout_two {
+	width: 122px;
+	height: 180px;
+	background: url(/images/application.png) -122px -1975px;
+	float: left;
+}
+
+#layouts .layout.selected {
+	-moz-box-shadow: #5dd1fc 0 0 4px;
+	-webkit-box-shadow: 0 0 4px #5dd1fc;
+	border: 2px solid #5dd1fc;
+	margin: -2px 12px -2px -2px;
+}
+
+#layouts .layout.last {
+	margin-right: 0;
+}
+
+/* @end */
+
+/* @group Colors */
+
+#colors {
+	width: 312px;
+	float: left;
+}
+
+#colors .color {
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-moz-box-shadow: rgba(0,0,0,0.1) 0 1px 2px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	height: 44px;
+	width: 44px;
+	float: left;
+	padding: 10px;
+	background-color: #fffeff;
+	margin-right: 14px;
+}
+
+#colors .color span.grey {
+	width: 44px;
+	height: 44px;
+	background: url(/images/application.png) 0 -1921px;
+	float: left;
+}
+
+#colors .color span.black {
+	width: 44px;
+	height: 44px;
+	background: url(/images/application.png) -44px -1921px;
+	float: left;
+}
+
+#colors .color span.red {
+	width: 44px;
+	height: 44px;
+	background: url(/images/application.png) -88px -1921px;
+	float: left;
+}
+
+#colors .color span.green {
+	width: 44px;
+	height: 44px;
+	background: url(/images/application.png) -132px -1921px;
+	float: left;
+}
+
+#colors .color span.blue {
+	width: 44px;
+	height: 44px;
+	background: url(/images/application.png) -176px -1921px;
+	float: left;
+}
+
+#colors .color span.orange {
+	width: 44px;
+	height: 44px;
+	background: url(/images/application.png) -220px -1921px;
+	float: left;
+}
+
+#colors .color span.purple {
+	width: 44px;
+	height: 44px;
+	background: url(/images/application.png) -264px -1921px;
+	float: left;
+}
+
+#colors .color span.graphite {
+	width: 44px;
+	height: 44px;
+	background: url(/images/application.png) -308px -1921px;
+	float: left;
+}
+
+#colors .color.selected {
+	-moz-box-shadow: #5dd1fc 0 0 4px;
+	-webkit-box-shadow: 0 0 4px #5dd1fc;
+	border: 2px solid #5dd1fc;
+	margin: -2px 12px -2px -2px;
+}
+
+#colors .color.below.selected {
+	-moz-box-shadow: #5dd1fc 0 0 4px;
+	-webkit-box-shadow: 0 0 4px #5dd1fc;
+	border: 2px solid #5dd1fc;
+	margin: 12px 12px -2px -2px;
+}
+
+#colors .color.last {
+	margin-right: 0;
+}
+
+#colors .color.below {
+	margin-top: 14px;
+}
+
+/* @end */
+
+/* @group Logos */
+
+.logos {
+	width: 480px;
+	float: left;
+}
+
+div#layout_logo_part, div#application_logo_part {
+	float: left;
+	width: 480px;
+}
+
+div#layout_logo_part a.small_button {
+	margin-top: 32px;
+	margin-left: 10px;
+}
+
+div#application_logo_part a.small_button {
+	margin-top: 34px;
+	margin-left: 10px;
+}
+
+div.logos p {
+	font-size: 11px;
+	width: 480px;
+}
+
+div#layout_logo_part div.image_border {
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-moz-box-shadow: rgba(0,0,0,0.1) 0 1px 2px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	width: 276px;
+	height: 46px;
+	padding: 11px;
+	background-color: white;
+	float: left;
+	margin-top: 10px;
+}
+
+div#layout_logo_part div.image_border img {
+	width: 276px;
+	height: 46px;
+	background-color: white;
+}
+
+div#application_logo_part div.image_border {
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-moz-box-shadow: rgba(0,0,0,0.1) 0 1px 2px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	width: 320px;
+	height: 60px;
+	padding: 11px;
+	background-color: white;
+	float: left;
+	margin-top: 10px;
+}
+
+div#application_logo_part div.image_border img {
+	width: 320px;
+	height: 60px;
+	background: black url(/images/application.png) repeat-x 0 -170px;
+}
+
+/* @end */
+
+/* @group Sub */
+
+ul.sub {
+	float: left;
+	width: 660px;
+	margin-top: -20px;
+	margin-left: -20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #d3d7d7;
+	height: 24px;
+	background: #ededed url(/images/application.png) 0 -1569px;
+	padding: 10px 20px;
+}
+
+ul.sub li a {
+	float: left;
+	font-size: 11px;
+	height: 24px;
+	color: #424242;
+	padding-left: 10px;
+	line-height: 24px;
+}
+
+ul.sub li a span {
+	height: 24px;
+	float: left;
+	padding-right: 10px;
+}
+
+ul.sub li a.current {
+	background: url(/images/application.png) -500px -459px;
+}
+
+ul.sub li a.current span {
+	background: url(/images/application.png) right -459px;
+}
+
+/* @end */
+
+/* @group Position */
+
+.space_left {
+	margin-left: 10px;
+}
+
+.button.right {
+	float: right;
+}
+
+.space_right {
+	margin-right: 10px;
+}
+
+.upper_offset {
+	margin-top: -2px;
+}
+
+
+
+/* @end */
+
+/* @group Badge */
+
+div#badge {
+	width: 95px;
+	height: 93px;
+	float: left;
+	margin: -31px 95px -93px -31px;
+	z-index: 100;
+	position: relative;
+	background-image: url(/images/application.png);
+}
+
+div#badge.draft {
+	background-position: -225px -1007px;
+}
+
+div#badge.sent {
+	background-position: -320px -1007px;
+}
+
+div#badge.paid {
+	background-position: -415px -1007px;
+}
+
+div#badge.due {
+	background-position: -510px -1007px;
+}
+
+div#badge.partial {
+	background-position: -605px -1007px;
+}
+
+div#badge.accepted {
+	background-position: -130px -1007px;
+}
+
+/* @end */
+
+/* @group Message */
+
+div.message {
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	float: left;
+	width: 658px;
+	padding: 20px;
+	margin-bottom: 40px;
+	border-width: 1px;
+	border-style: solid;
+	position: relative;
+}
+
+div.message p {
+	width: 658px;
+	float: left;
+}
+
+div.message p.center {
+	text-align: center;
+}
+
+div.message h2 {
+	font-size: 14px;
+	margin-bottom: 4px;
+	float: left;
+	width: 658px;
+	font-weight: bold;
+}
+
+div.message a.button {
+	float: left;
+	margin-left: 228px;
+	margin-top: 10px;
+}
+
+div.message a.small_button {
+	margin-top: 20px;
+	float: left;
+}
+
+div.message.yellow {
+	background-color: #f9e593;
+	border-color: #fdd63b;
+}
+
+div.message.purple {
+	background-color: #e1c4dd;
+	border-color: #d9b0d3;
+}
+
+div.message.green {
+	background-color: #bce8bb;
+	border-color: #94df93;
+}
+
+div.message.red {
+	background-color: #f8b7a6;
+	border-color: #fa957b;
+}
+
+
+
+/* @end */
+
+div.enabled {
+	float: left;
+	z-index: 1;
+	position: relative;
+}
+
+div.enabled div.over {
+	-moz-opacity: 0.5;
+	filter: alpha(opacity:0.5);
+	opacity: 0.5;
+	width: 100%;
+	height: 100%;
+	background-color: #ededed;
+	z-index: 2000000000000;
+	position: absolute;
+	margin-top: -1px;
+}
+
+div.inline span.information {
+	display: block;
+	float: left;
+	top: 0;
+	left: 120px;
+	width: 400px;
+	margin-left: 154px;
+	margin-top: 6px;
+	font-size: 11px;
+}
+
+div#contacts div.no_label {
+	margin-top: 0;
+}
+
+ul.sidebar li p {
+	width: 13px;
+	height: 13px;
+	float: right;
+	margin-right: 10px;
+	background: url(/images/application.png) -370px -380px;
+	margin-bottom: -26px;
+	margin-top: 13px;
+	z-index: 2;
+	position: relative;
+}
+
+/* @group Remove Contact */
+
+
+
+/* @end */
+
+/* @group Subscription Plan */
+
+/* @group Subscription */
+
+div#subscription {
+	width: 620px;
+	float: left;
+	margin-left: -1px;
+	margin-top: 10px;
+}
+
+div#subscription span.feature {
+	width: 152px;
+	float: left;
+	height: 40px;
+	text-align: right;
+	direction: rtl;
+	text-indent: 10px;
+	line-height: 40px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+div#subscription span.column {
+	width: 116px;
+	float: left;
+	height: 40px;
+	text-align: center;
+	border-left: 1px solid #edefef;
+	font-size: 13px;
+	font-weight: bold;
+	position: relative;
+}
+
+div#subscription span.column span.text {
+	font-size: 11px;
+	line-height: 18px;
+	width: 117px;
+	float: left;
+	display: block;
+}
+
+div#subscription span.column span.text.current_plan {
+	font-weight: bold;
+	margin-top: 8px;
+	white-space: nowrap;
+}
+
+div#subscription span.column span.text.remove_users {
+	color: #7f8080;
+	font-weight: normal;
+	font-style: normal;
+}
+
+div#subscription span.column a.small_button {
+	float: left;
+	margin-left: 10px;
+	margin-top: 6px;
+}
+
+div#subscription span.column span.icon {
+	width: 13px;
+	height: 13px;
+	float: left;
+	position: absolute;
+	top: 14px;
+	left: 51px;
+	font-size: 1px;
+	text-indent: -9000px;
+	background-image: url(/images/application.png);
+}
+
+div#subscription span.column span.icon.yes {
+	background-position: -370px -380px;
+}
+
+div#subscription span.column span {
+	z-index: 3;
+	position: relative;
+	line-height: 40px;
+}
+
+div#subscription span.column span.icon.no {
+	background-position: -370px -403px;
+}
+
+div#subscription span.column span.current_plan {
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+}
+
+div#subscription ul.head {
+	width: 620px;
+	background-color: black;
+	border-bottom-style: none;
+	float: left;
+	padding: 0;
+	color: white;
+	position: relative;
+	height: 60px;
+}
+
+div#subscription ul.head div.top {
+	width: 620px;
+	height: 40px;
+	position: absolute;
+	top: -10px;
+	background: url(/images/application.png) 0 -330px;
+}
+
+div#subscription ul.head li.column {
+	width: 117px;
+	float: left;
+	margin-top: 6px;
+	z-index: 2;
+	position: relative;
+}
+
+div#subscription ul.head li.column h3 {
+	width: 116px;
+	text-align: center;
+	float: left;
+	font-size: 14px;
+}
+
+div#subscription ul.head li.column p {
+	font-size: 11px;
+	color: #d5d5d5;
+	text-align: center;
+	width: 116px;
+	margin-bottom: 2px;
+}
+
+div#subscription ul.head li.column span {
+	width: 116px;
+	float: left;
+	text-align: center;
+	margin-top: 0;
+}
+
+div#subscription ul.head li.column.first {
+	margin-left: 152px;
+}
+
+div#subscription li.subscription_row {
+	width: 620px;
+	border-bottom: 1px solid #edefef;
+	float: left;
+	padding: 0;
+}
+
+div#subscription li.subscription_row.last {
+	border-bottom-style: none;
+	margin-top: 10px;
+	float: left;
+}
+
+div#subscription li.subscription_row.last span.column {
+	border-left-style: none;
+	padding-left: 1px;
+}
+
+div#subscription li.subscription_row.alt {
+	background-color: #f9fbfb;
+}
+
+#info {
+	width: 620px;
+	margin-top: 20px;
+	float: left;
+}
+
+
+
+/* @end */
+
+div#plans {
+	width: 660px;
+	height: 240px;
+	background: url(/images/application.png) 0 -2155px;
+	float: left;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+/* @group Questions */
+
+div#questions {
+	width: 660px;
+	float: left;
+}
+
+div#questions h3 {
+	font-size: 13px;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+div#questions p {
+	height: 90px;
+}
+
+div#questions div.left {
+	width: 310px;
+	margin-right: 40px;
+	float: left;
+}
+
+div#questions div.right {
+	width: 310px;
+	float: left;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Left Bar */
+
+div.left_bar {
+	width: 230px;
+	height: 36px;
+	float: left;
+	position: relative;
+	background: url(/images/application.png) -105px -867px;
+	margin-bottom: 10px;
+}
+
+h4.left_title {
+	width: 230px;
+	margin-bottom: 6px;
+	float: left;
+	font-size: 14px;
+	text-align: center;
+}
+
+h4.left_title.first {
+	margin-top: -6px;
+}
+
+div.left_bar div.fill_wrapper {
+	width: 214px;
+	height: 23px;
+	position: absolute;
+	top: 6px;
+	left: 8px;
+	z-index: 1;
+}
+
+div.left_bar div.fill_wrapper div.fill {
+	width: 214px;
+	height: 23px;
+	position: absolute;
+	background: url(/images/application.png) -105px -913px;
+}
+
+div.left_bar div.fill_wrapper div.fill span.label {
+	z-index: 2;
+	width: 214px;
+	height: 23px;
+	line-height: 23px;
+	text-align: center;
+	color: white;
+	font-size: 13px;
+	float: left;
+}
+
+
+
+/* @end */
+
+/* @group Schedule Ohter */
+
+div#schedule_other {
+	float: left;
+	margin-left: 10px;
+}
+
+div#schedule_other span#every  {
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	margin-right: 4px;
+}
+
+div#schedule_other input.field {
+	width: 26px;
+}
+
+div#schedule_other span#days  {
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	margin-left: 4px;
+}
+
+
+
+/* @end */
+
+a#import_from_basecamp {
+	top: 12px;
+	right: 4px;
+	position: absolute;
+}
+
+div.dialog p.projects, p.items, p.time_entries, p.companies, p.people {
+	height: 21px;
+	line-height: 21px;
+}
+
+/* @group Timer */
+
+body#timer {
+	background: #f5f5f5 url(/images/application.png) repeat-x 0 -2480px;
+}
+
+body#timer #wrapper {
+	width: 200px;
+	height: 320px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	z-index: 2;
+}
+
+body#timer #time {
+	font-size: 24px;
+	color: white;
+	width: 160px;
+	height: 60px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	line-height: 60px;
+	text-align: center;
+	background: url(/images/application.png) 0 -2420px;
+}
+
+body#timer div#projects_part {
+	position: absolute;
+	top: 200px;
+	width: 160px;
+	left: 20px;
+	height: 21px;
+}
+
+body#timer div#tasks_part {
+	position: absolute;
+	top: 230px;
+	width: 120px;
+	left: 20px;
+	height: 21px;
+}
+
+body#timer select.select {
+	width: 156px;
+}
+
+body#timer a#reset {
+	font-size: 11px;
+	color: white;
+	right: 10px;
+	position: absolute;
+	top: 156px;
+	font-weight: normal;
+	font-style: normal;
+}
+
+body#timer p {
+	height: 21px;
+	text-align: center;
+	width: 160px;
+	font-weight: bold;
+}
+
+body#timer a#start {
+	width: 71px;
+	height: 71px;
+	position: absolute;
+	top: 94px;
+	left: 64px;
+	font-size: 1px;
+	text-indent: -9000px;
+	display: block;
+	background-image: url(/images/application.png);
+}
+
+body#timer a#start.not_started, body#timer a#start.resume {
+	background-position: -170px -2409px;
+}
+
+body#timer a:hover#start.not_started, body#timer a:hover#start.resume {
+	background-position: -241px -2409px;
+}
+
+body#timer a:active#start.not_started, body#timer a:active#start.resume {
+	background-position: -312px -2409px;
+}
+
+body#timer a#start.pause {
+	background-position: -383px -2409px;
+}
+
+body#timer a:hover#start.pause {
+	background-position: -454px -2409px;
+}
+
+body#timer a:active#start.pause {
+	background-position: -525px -2409px;
+}
+
+body#timer .button {
+	position: absolute;
+	top: 262px;
+	left: 36px;
+}
+
+
+
+/* @end */
+
+/* @group Upgrade */
+
+body#global div#container div#box div.left {
+	width: 160px;
+	margin-right: 20px;
+	float: left;
+	padding-right: 19px;
+	border-right: 1px solid #e9ebeb;
+}
+
+body#global div#container div#box div.left h2#dibs {
+	width: 160px;
+	height: 40px;
+	float: left;
+	margin-bottom: 10px;
+	background: url(/images/application.png) -540px -1403px;
+	font-size: 1px;
+	text-indent: -9000px;
+}
+
+body#global div#container div#box div.right {
+	width: 160px;
+	float: left;
+}
+
+body#global div#container div#box div.right h2#paypal {
+	width: 160px;
+	height: 40px;
+	float: left;
+	margin-bottom: 10px;
+	background: url(/images/application.png) -540px -1443px;
+	text-indent: -9000px;
+	font-size: 1px;
+}
+
+body#global div#container div#box div.left p, body#global div#container div#box div.right p {
+	width: 160px;
+	height: 130px;
+	margin-bottom: 0;
+	text-align: center;
+	font-size: 11px;
+}
+
+body#global div#container div#box div.left h3, body#global div#container div#box div.right h3 {
+	width: 160px;
+	float: left;
+	text-align: center;
+	font-size: 13px;
+	margin-bottom: 10px;
+}
+
+body#global div#container div#box div.left input.button, body#global div#container div#box div.right input.button {
+	float: left;
+	margin-left: 16px;
+	margin-top: 4px;
+}
+
+/* @end */
+
+#strings_part a.small_button {
+	float: right;
+	margin-right: 0;
+	margin-bottom: -24px;
+	position: relative;
+	z-index: 1;
+}
+
+#country .select {
+	width: 198px;
+}
+
+/* @group Item Dialog */
+
+#insert_item_dialog div.select_wrapper {
+	width: 214px;
+	margin-right: 4px;
+	float: left;
+}
+
+#insert_item_dialog a.remove_line {
+	float: right;
+	margin-right: -6px;
+	margin-top: -3px;
+}
+
+/* @group Remove Item */
+
+a.remove_item {
+	height: 26px;
+	width: 26px;
+	text-indent: -9000px;
+	font-size: 1px;
+	display: block;
+	float: left;
+	margin-left: -5px;
+	margin-right: 9px;
+	margin-top: -2px;
+	background: url(/images/application.png) 0 -867px;
+}
+
+a.remove_item.disabled, a:hover.remove_item.disabled, a:active.remove_item.disabled {
+	cursor: default;
+	width: 26px;
+	float: left;
+	background-position: 0 -971px;
+}
+
+a:hover.remove_item {
+	background-position: 0 -893px;
+}
+
+a:active.remove_item {
+	background-position: 0 -919px;
+}
+
+a.remove_item.pressed {
+	background-position: 0 -945px;
+}
+
+a.remove_item.one {
+	background-position: -26px -867px;
+}
+
+a.remove_item.two {
+	background-position: -26px -893px;
+}
+
+a.remove_item.three {
+	background-position: -26px -919px;
+}
+
+a.remove_item.four {
+	background-position: 0 -945px;
+}
+
+a.remove_item.reverse.one {
+	background-position: -26px -919px;
+}
+
+a.remove_item.reverse.two {
+	background-position: -26px -893px;
+}
+
+a.remove_item.reverse.three {
+	background-position: -26px -867px;
+}
+
+a.remove_item.reverse.four {
+	background-position: -26px -867px;
+}
+
+#insert_item_dialog a.remove_item {
+	float: right;
+	margin-right: -6px;
+	margin-top: -3px;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+.dialog .edit_message_part {
+	width: 320px;
+	float: left;
+}
+
+.dialog .edit_message {
+	margin-left: 84px;
+	margin-bottom: 4px;
+	margin-top: 6px;
+}
+
+.dialog .edit_message_part label {
+	width: 320px;
+	float: left;
+	margin-bottom: 2px;
+}
+
+.dialog .edit_message_part .field {
+	width: 314px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+.dialog .edit_message_part .textarea {
+	width: 314px;
+	float: left;
+	margin-bottom: 4px;
+	height: 240px;
+}
+
+/* @group Payment Form */
+
+body#global div#container #payment_form input.field.amount {
+	font-size: 20px;
+}
+
+#payment_form {
+	width: 180px;
+	float: left;
+	margin-left: 20px;
+}
+
+#payment_form p {
+}
+
+body#global div#container #payment_form input.field {
+	width: 174px;
+	font-size: 12px;
+	margin-bottom: 0;
+}
+
+body#global div#container #payment_form h2#paypal {
+	width: 180px;
+	height: 40px;
+	float: left;
+	text-indent: -9000px;
+	font-size: 1px;
+	background-image: url(../images/paypal_logo.png);
+	margin-bottom: 10px;
+}
+
+body#global div#container #payment_form input.field.small {
+	width: 34px;
+}
+
+body#global div#container #payment_form span#csv_info {
+	float: left;
+	width: 104px;
+	height: 21px;
+	margin-left: 6px;
+	background: url(../images/ccv.png) no-repeat;
+	line-height: 21px;
+	font-size: 11px;
+	padding-left: 28px;
+	white-space: nowrap;
+}
+
+body#global div#container #payment_form select.select {
+	width: 178px;
+}
+
+body#global div#container.small {
+	width: 320px;
+}
+
+body#global div#container.small div#box {
+	width: 220px;
+}
+
+body#global div#container #payment_form div.inline {
+	width: 200px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+body#global div#container #payment_form div.inline div.left {
+	width: 70px;
+	float: left;
+	border-right-style: none;
+	padding: 0;
+	margin-right: 10px;
+}
+
+body#global div#container #payment_form div.inline div.left .select, body#global div#container #payment_form div.inline div.right .select {
+	width: 68px;
+}
+
+body#global div#container #payment_form div.inline div.right {
+	width: 70px;
+	float: left;
+	padding: 0;
+}
+
+body#global div#container #payment_form label {
+	width: 240px;
+}
+
+body#global div#container div.control {
+	width: 220px;
+	float: left;
+	margin-top: 10px;
+}
+
+body#global div#container div.control .button {
+	float: left;
+	margin-left: 6px;
+}
+
+body#global div#container div.control .small_button {
+	float: left;
+	margin-top: 9px;
+}
+
+
+
+/* @end */

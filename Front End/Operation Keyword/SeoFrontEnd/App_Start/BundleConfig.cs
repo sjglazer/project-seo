@@ -32,6 +32,14 @@ namespace SeoFrontEnd
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+           
+            
+            bundles.Add(new StyleBundle("~/Content/Account/css").Include(
+                        "~/Content/account/application.css",
+                        "~/Content/account/foundation.css",
+                        "~/Content/account/grey.css",
+                        "~/Content/account/layout_one.css",
+                        "~/Content/account/scroll.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

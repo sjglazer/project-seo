@@ -10,21 +10,14 @@ namespace SeoFrontEnd.Controllers
 {
     public class HomeController : Controller
     {
-        //public ActionResult Index()
-        //{
-        //    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-        //    var model = new HomeModel();
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        return PartialView("_DomainList", model);
-        //    }
-
-        //    return View(model);
-        //}
-
+      
         public ActionResult Index(HomeModel model)
         {
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("Website", "Account");
+            }
+            
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
             if (model.domains == null)
