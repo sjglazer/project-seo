@@ -31,7 +31,7 @@ namespace SeoFrontEnd.Controllers
                 return View();
             }
 
-            if (response.GetWebsiteInfoResult.keywords != null && response.GetWebsiteInfoResult.keywords.Count() < 1)
+            if ((response.GetWebsiteInfoResult.keywords != null) || response.GetWebsiteInfoResult.keywords.Count() < 1)
             {
                 ViewBag.Message = "Please add some keywords!";
                 return View();
