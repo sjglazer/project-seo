@@ -265,6 +265,7 @@
     <Content Include="Images\application.png" />
     <Content Include="Images\foundation.png" />
     <Content Include="Images\page_fill.png" />
+    <Content Include="Scripts\application.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -363,6 +364,7 @@
     <Content Include="Views\Account\KeywordRanking.cshtml" />
     <Content Include="Views\Shared\_LayoutAccount.cshtml" />
     <Content Include="Views\Account\Website.cshtml" />
+    <Content Include="Views\Account\Reports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
