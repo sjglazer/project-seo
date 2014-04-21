@@ -2296,7 +2296,7 @@ body#invoices li.row span.amount {
 
 /* @group Status */
 
-body#invoices li.row span.status {
+body#invoices  span.status {
 	width: 66px;
 	float: left;
 	height: 18px;
@@ -2309,7 +2309,7 @@ body#invoices li.row span.status {
 	background-image: url(/images/application.png);
 }
 
-body#invoices li.row span.status.draft {
+body#invoices span.status.draft {
 	background-position: 0 -2165px;
 }
 

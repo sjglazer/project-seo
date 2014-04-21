@@ -82,19 +82,37 @@ namespace SeoFrontEnd.Controllers
         public ActionResult Website()
         {
 
-            var request = new ServiceReference1.GetWebsiteInfoRequest();
-            request.userId = request.userId = User.Identity.Name;
-            var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
+            var request = new ServiceReference1.GetUserRequest();
+            request.id = User.Identity.Name;
+            ServiceReference1.User user = new ServiceReference1.UserServiceClient().GetUser(request).GetUserResult;
 
-            UserWebsiteModel model = new UserWebsiteModel();
-            if (response.GetWebsiteInfoResult != null)
+            UserModel model = new UserModel();
+            model.urlKeywordSets = new List<UrlKeywordSet>();
+            model.urlLimit = 5;
+         
+            if (user != null)
             {
-                model.url = response.GetWebsiteInfoResult.url;
+                // get the list of url's
+                var keywordUrlList = user.urllKeywordSets;
+                if (keywordUrlList != null)
+                {
+                    
+                    foreach (var set in keywordUrlList)
+                    {
+                        model.urlKeywordSets.Add(new UrlKeywordSet(set));
+                    }
+                }
+                
                 ViewBag.InfoTitle = "Edit Website";
                 ViewBag.InfoMessage = "You can change the url of the website you want to track here. Please note that when you look over the past results your position will automatically update to match the new url of your website.";
             }
             else
             {
+                for(int i = 0; i < model.urlLimit; i ++ )
+                {
+                    model.urlKeywordSets.Add(new UrlKeywordSet());
+                }
+                
                 ViewBag.InfoTitle = "Add Website";
                 ViewBag.InfoMessage = "Here is where you can add a website that you want to track. Please use the root url of your website and not an inner page so that we can match any page on your site that appears in the search engine results.";
             }
@@ -104,14 +122,50 @@ namespace SeoFrontEnd.Controllers
         }
 
         [HttpPost]
-        public ActionResult Website(UserWebsiteModel model)
+        public ActionResult Website(UserModel model)
         {
-            var request = new ServiceReference1.AddWebsiteInfoRequest();
-            request.url = model.url;
-            request.userId = User.Identity.Name;
-            var response = new ServiceReference1.UserServiceClient().AddWebsiteInfo(request);
+            var request = new ServiceReference1.GetUserRequest();
+            request.id = User.Identity.Name;
+            ServiceReference1.User user = new ServiceReference1.UserServiceClient().GetUser(request).GetUserResult;
 
-            if(response.AddWebsiteInfoResult)
+            bool response = false;
+            if(user == null)
+            {
+                user = new ServiceReference1.User();
+                user.keywordlLimit = 5;
+                user.urlLimit = 3;
+                user.id = User.Identity.Name;
+                user.urllKeywordSets = new ServiceReference1.UrlKeywordSet[model.urlKeywordSets.Count()];
+
+                int i = 0;
+                foreach(var set in model.urlKeywordSets)
+                {
+                    user.urllKeywordSets[i] = set.GetSet();
+                    i++;
+                }
+                
+                var addUserRequest = new ServiceReference1.AddUserRequest();
+                addUserRequest.user = user;
+                response = new ServiceReference1.UserServiceClient().AddUser(addUserRequest).AddUserResult;
+
+            }
+            else 
+            { 
+                //foreach(var set in model.urlKeywordSets)
+                //{
+                //    int count = user.urllKeywordSets.Where(p => p.url == set.url).Count();
+                //    if(count < 1)
+                //    {
+                //        user.urllKeywordSets
+                //    }
+
+                //}
+            
+            
+            
+            }
+
+            if (response)
             {
                 ViewBag.InfoTitle = "Website Succesfully Changed!";
                 ViewBag.InfoMessage = "Your reports will know reflect the position of your new url in the search engine results.";
@@ -166,23 +220,23 @@ namespace SeoFrontEnd.Controllers
         [HttpPost]
         public ActionResult Configure(UserWebsiteModel model)
         {
-            var request = new ServiceReference1.AddWebsiteInfoRequest();
-            request.url = string.Empty;
-            request.userId = User.Identity.Name;
-            request.keywords = model.keywords.ToArray();
-            var response = new ServiceReference1.UserServiceClient().AddWebsiteInfo(request);
+            //var request = new ServiceReference1.AddWebsiteInfoRequest();
+            //request.url = string.Empty;
+            //request.userId = User.Identity.Name;
+            //request.keywords = model.keywords.ToArray();
+            //var response = new ServiceReference1.UserServiceClient().AddWebsiteInfo(request);
 
-            var getRequest = new ServiceReference1.GetWebsiteInfoRequest();
-            getRequest.userId = request.userId = User.Identity.Name;
-            var getresponse = new ServiceReference1.UserServiceClient().GetWebsiteInfo(getRequest);
+            //var getRequest = new ServiceReference1.GetWebsiteInfoRequest();
+            //getRequest.userId = request.userId = User.Identity.Name;
+            //var getresponse = new ServiceReference1.UserServiceClient().GetWebsiteInfo(getRequest);
 
-            model.keywords = getresponse.GetWebsiteInfoResult.keywords.ToList();
-            model.url = getresponse.GetWebsiteInfoResult.url;
-            int count = 5 - model.keywords.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList().Count();
-            model.Numkeywords = count.ToString();
+            //model.keywords = getresponse.GetWebsiteInfoResult.keywords.ToList();
+            //model.url = getresponse.GetWebsiteInfoResult.url;
+            //int count = 5 - model.keywords.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList().Count();
+            //model.Numkeywords = count.ToString();
             
-            ViewBag.InfoTitle = "Keywords Succesfully Changed!";
-            ViewBag.InfoMessage = "We will now start tracking your new keywords.";
+            //ViewBag.InfoTitle = "Keywords Succesfully Changed!";
+            //ViewBag.InfoMessage = "We will now start tracking your new keywords.";
             return View(model);
         }
      

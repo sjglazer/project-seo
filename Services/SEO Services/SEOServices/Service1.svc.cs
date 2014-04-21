@@ -60,7 +60,6 @@ namespace SEOServices
             return returnVal;
         }
 
-        
         private List<KeywordCrawlResult> GetCrawlsByKeyword(string keyword)
         {
             var client = CouchbaseManager.Instance;
@@ -130,54 +129,103 @@ namespace SEOServices
         // IKeywordService End
 
         // IUserService Start
+        public bool AddUser(User user)
+        {
+            var key = user.id;
+            var client = CouchbaseManager.Instance;
+            var result = client.StoreJson(StoreMode.Add, key, user);
+            return result;
+        }
+
+        public bool UpdateUser(User user)
+        {
+            var key = user.id;
+            var client = CouchbaseManager.Instance;
+            var result = client.StoreJson(StoreMode.Replace, key, user);
+            return result;
+        }
+
+        public User GetUser(string id)
+        {
+            var client = CouchbaseManager.Instance;
+            var user = client.GetJson<User>(id);
+            return user;
+        }
 
         public bool AddWebsiteInfo(string userId, string url, List<string> keywords)
         {
             
             WebsiteInfo info = GetWebsiteInfo(userId);
-
-            // This is a new User
             if(info == null)
             {
-                var newKeyword = new UserWebsiteProperties
-                {
-                    url = url,
-                    keywords = keywords
-                };
+                //return AddUser(userId, url, keywords);
+                
+                //var newKeyword = new User
+                //{
+                //    url = url,
+                //    keywords = keywords
+                //};
 
-                var key = userId;
-                var client = CouchbaseManager.Instance;
-                var result = client.StoreJson(StoreMode.Add, key, newKeyword);
-                return result;
+                //var key = userId;
+                //var client = CouchbaseManager.Instance;
+                //var result = client.StoreJson(StoreMode.Add, key, newKeyword);
+                //return result;
             }
             else
             {
-                var newKeyword = new UserWebsiteProperties();
-                if (!string.IsNullOrEmpty(url))
-                {
-                    newKeyword.url = url;
-                } 
-                else
-                {
-                    newKeyword.url = info.url;
-                }
+               //return AddUser(userId, url, keywords);
+                
+                //var newKeyword = new User();
+                //if (!string.IsNullOrEmpty(url))
+                //{
+                //    newKeyword.url = url;
+                //} 
+                //else
+                //{
+                //    newKeyword.url = info.url;
+                //}
 
-                if (keywords != null)
-                {
-                    newKeyword.keywords = keywords;
-                }
-                else
-                {
-                    newKeyword.keywords = info.keywords;
-                }
+                //if (keywords != null)
+                //{
+                //    newKeyword.keywords = keywords;
+                //}
+                //else
+                //{
+                //    newKeyword.keywords = info.keywords;
+                //}
 
-                var key = userId;
-                var client = CouchbaseManager.Instance;
-                var result = client.StoreJson(StoreMode.Replace, key, newKeyword);
-                return result;
+                //var key = userId;
+                //var client = CouchbaseManager.Instance;
+                //var result = client.StoreJson(StoreMode.Replace, key, newKeyword);
+                //return result;
                
             }
+            return true;
         }
+
+        //private bool AddUser(string userId, string url, List<string> keywords)
+        //{
+        //    User user = new User();
+        //    UrlKeywordSet urlKeywordSet = new UrlKeywordSet();
+            
+        //    if(!string.IsNullOrEmpty(url))
+        //    {
+        //        urlKeywordSet.url = url;
+
+        //        if (keywords != null)
+        //        {
+        //            urlKeywordSet.keywords = keywords;
+        //        }
+
+        //        user.urllKeywordSets = new List<UrlKeywordSet>();
+        //        user.urllKeywordSets.Add(urlKeywordSet);
+        //    }
+
+        //    var key = userId;
+        //    var client = CouchbaseManager.Instance;
+        //    var result = client.StoreJson(StoreMode.Add, key, user);
+        //    return result;
+        //}
 
         public WebsiteInfo GetWebsiteInfo(string userId)
         {

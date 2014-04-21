@@ -6,18 +6,6 @@ using System.Web;
 
 namespace SEOServices
 {
-    public class UserWebsiteProperties
-    {
-        [JsonProperty("url")]
-        public string url { get; set; }
-
-        [JsonProperty("keywords")]
-        public List<string> keywords { get; set; }
-
-        [JsonProperty("type")]
-        public string type = "UserWebsiteProperties";
-    }
-
    
     public class KeywordCrawlResult
     {

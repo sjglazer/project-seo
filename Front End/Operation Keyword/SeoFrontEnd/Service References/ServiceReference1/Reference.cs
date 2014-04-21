@@ -214,6 +214,160 @@ namespace SeoFrontEnd.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/SEOServices")]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int keywordlLimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int urlLimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SeoFrontEnd.ServiceReference1.UrlKeywordSet[] urllKeywordSetsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idField, value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int keywordlLimit {
+            get {
+                return this.keywordlLimitField;
+            }
+            set {
+                if ((this.keywordlLimitField.Equals(value) != true)) {
+                    this.keywordlLimitField = value;
+                    this.RaisePropertyChanged("keywordlLimit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int urlLimit {
+            get {
+                return this.urlLimitField;
+            }
+            set {
+                if ((this.urlLimitField.Equals(value) != true)) {
+                    this.urlLimitField = value;
+                    this.RaisePropertyChanged("urlLimit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SeoFrontEnd.ServiceReference1.UrlKeywordSet[] urllKeywordSets {
+            get {
+                return this.urllKeywordSetsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.urllKeywordSetsField, value) != true)) {
+                    this.urllKeywordSetsField = value;
+                    this.RaisePropertyChanged("urllKeywordSets");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UrlKeywordSet", Namespace="http://schemas.datacontract.org/2004/07/SEOServices")]
+    [System.SerializableAttribute()]
+    public partial class UrlKeywordSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] keywordsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string urlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] keywords {
+            get {
+                return this.keywordsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.keywordsField, value) != true)) {
+                    this.keywordsField = value;
+                    this.RaisePropertyChanged("keywords");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string url {
+            get {
+                return this.urlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.urlField, value) != true)) {
+                    this.urlField = value;
+                    this.RaisePropertyChanged("url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="WebsiteInfo", Namespace="http://schemas.datacontract.org/2004/07/SEOServices")]
     [System.SerializableAttribute()]
     public partial class WebsiteInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -503,11 +657,23 @@ namespace SeoFrontEnd.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IUserService")]
     public interface IUserService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
-        SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse AddWebsiteInfo(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
+        SeoFrontEnd.ServiceReference1.AddUserResponse AddUser(SeoFrontEnd.ServiceReference1.AddUserRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
-        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse> AddWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
+        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddUserResponse> AddUserAsync(SeoFrontEnd.ServiceReference1.AddUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        SeoFrontEnd.ServiceReference1.UpdateUserResponse UpdateUser(SeoFrontEnd.ServiceReference1.UpdateUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.UpdateUserResponse> UpdateUserAsync(SeoFrontEnd.ServiceReference1.UpdateUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
+        SeoFrontEnd.ServiceReference1.GetUserResponse GetUser(SeoFrontEnd.ServiceReference1.GetUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
+        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetUserResponse> GetUserAsync(SeoFrontEnd.ServiceReference1.GetUserRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/GetWebsiteInfoResponse")]
         SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse GetWebsiteInfo(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request);
@@ -518,41 +684,97 @@ namespace SeoFrontEnd.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddWebsiteInfo", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddWebsiteInfoRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddUser", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddUserRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string userId;
+        public SeoFrontEnd.ServiceReference1.User user;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public string url;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        public string[] keywords;
-        
-        public AddWebsiteInfoRequest() {
+        public AddUserRequest() {
         }
         
-        public AddWebsiteInfoRequest(string userId, string url, string[] keywords) {
-            this.userId = userId;
-            this.url = url;
-            this.keywords = keywords;
+        public AddUserRequest(SeoFrontEnd.ServiceReference1.User user) {
+            this.user = user;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddWebsiteInfoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddWebsiteInfoResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddUserResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddUserResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public bool AddWebsiteInfoResult;
+        public bool AddUserResult;
         
-        public AddWebsiteInfoResponse() {
+        public AddUserResponse() {
         }
         
-        public AddWebsiteInfoResponse(bool AddWebsiteInfoResult) {
-            this.AddWebsiteInfoResult = AddWebsiteInfoResult;
+        public AddUserResponse(bool AddUserResult) {
+            this.AddUserResult = AddUserResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateUser", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class UpdateUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public SeoFrontEnd.ServiceReference1.User user;
+        
+        public UpdateUserRequest() {
+        }
+        
+        public UpdateUserRequest(SeoFrontEnd.ServiceReference1.User user) {
+            this.user = user;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateUserResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class UpdateUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool UpdateUserResult;
+        
+        public UpdateUserResponse() {
+        }
+        
+        public UpdateUserResponse(bool UpdateUserResult) {
+            this.UpdateUserResult = UpdateUserResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetUser", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string id;
+        
+        public GetUserRequest() {
+        }
+        
+        public GetUserRequest(string id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetUserResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public SeoFrontEnd.ServiceReference1.User GetUserResult;
+        
+        public GetUserResponse() {
+        }
+        
+        public GetUserResponse(SeoFrontEnd.ServiceReference1.User GetUserResult) {
+            this.GetUserResult = GetUserResult;
         }
     }
     
@@ -615,12 +837,28 @@ namespace SeoFrontEnd.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse AddWebsiteInfo(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request) {
-            return base.Channel.AddWebsiteInfo(request);
+        public SeoFrontEnd.ServiceReference1.AddUserResponse AddUser(SeoFrontEnd.ServiceReference1.AddUserRequest request) {
+            return base.Channel.AddUser(request);
         }
         
-        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddWebsiteInfoResponse> AddWebsiteInfoAsync(SeoFrontEnd.ServiceReference1.AddWebsiteInfoRequest request) {
-            return base.Channel.AddWebsiteInfoAsync(request);
+        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.AddUserResponse> AddUserAsync(SeoFrontEnd.ServiceReference1.AddUserRequest request) {
+            return base.Channel.AddUserAsync(request);
+        }
+        
+        public SeoFrontEnd.ServiceReference1.UpdateUserResponse UpdateUser(SeoFrontEnd.ServiceReference1.UpdateUserRequest request) {
+            return base.Channel.UpdateUser(request);
+        }
+        
+        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.UpdateUserResponse> UpdateUserAsync(SeoFrontEnd.ServiceReference1.UpdateUserRequest request) {
+            return base.Channel.UpdateUserAsync(request);
+        }
+        
+        public SeoFrontEnd.ServiceReference1.GetUserResponse GetUser(SeoFrontEnd.ServiceReference1.GetUserRequest request) {
+            return base.Channel.GetUser(request);
+        }
+        
+        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetUserResponse> GetUserAsync(SeoFrontEnd.ServiceReference1.GetUserRequest request) {
+            return base.Channel.GetUserAsync(request);
         }
         
         public SeoFrontEnd.ServiceReference1.GetWebsiteInfoResponse GetWebsiteInfo(SeoFrontEnd.ServiceReference1.GetWebsiteInfoRequest request) {

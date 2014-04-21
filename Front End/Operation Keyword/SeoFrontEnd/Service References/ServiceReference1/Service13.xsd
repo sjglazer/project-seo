@@ -29,9 +29,31 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="KeywordStat" nillable="true" type="tns:KeywordStat" />
-  <xs:complexType name="WebsiteInfo">
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="keywordlLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="urlLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="urllKeywordSets" nillable="true" type="tns:ArrayOfUrlKeywordSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfUrlKeywordSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UrlKeywordSet" nillable="true" type="tns:UrlKeywordSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUrlKeywordSet" nillable="true" type="tns:ArrayOfUrlKeywordSet" />
+  <xs:complexType name="UrlKeywordSet">
     <xs:sequence>
       <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywords" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UrlKeywordSet" nillable="true" type="tns:UrlKeywordSet" />
+  <xs:complexType name="WebsiteInfo">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywords" nillable="true" type="q3:ArrayOfstring" />
       <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

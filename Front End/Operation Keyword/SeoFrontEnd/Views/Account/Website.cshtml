@@ -1,4 +1,4 @@
-﻿@model SeoFrontEnd.Models.UserWebsiteModel
+﻿@model SeoFrontEnd.Models.UserModel
 @{
     ViewBag.Title = "Website";
     Layout = "~/Views/Shared/_LayoutAccount.cshtml";
@@ -24,11 +24,21 @@
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary()
 
-                        <div class="inline">
-                            @Html.LabelFor(m => m.url)
-                            @Html.TextBoxFor(m => m.url, new { @class = "field" })
-                        </div>
-
+                        for(int i = 1 ; i < Model.urlLimit + 1; i ++ )
+                        {
+                            <div class="inline">
+                             <label>url @i</label>
+                            @if (!string.IsNullOrEmpty(Model.urlKeywordSets[i - 1].url))
+                            {
+                                @Html.TextBoxFor(m => m.urlKeywordSets[i - 1].url, new { @class = "field", @readonly = true })
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(m => m.urlKeywordSets[i - 1].url, new { @class = "field" })
+                            }
+                            </div>
+                        }
+                 
                         <div class="control">
                             <input type="submit" value="Save" class="button save">
                         </div>

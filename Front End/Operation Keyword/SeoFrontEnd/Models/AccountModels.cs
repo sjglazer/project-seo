@@ -28,6 +28,40 @@ namespace SeoFrontEnd.Models
         public string UserName { get; set; }
     }
 
+    public class UserModel
+    {
+        public List<UrlKeywordSet> urlKeywordSets { get; set; }
+
+        public int urlLimit { get; set; }
+    }
+
+    public class UrlKeywordSet
+    {
+        
+        // Copy constructor. 
+        public UrlKeywordSet(ServiceReference1.UrlKeywordSet set)
+        {
+            url = set.url;
+            if (set.keywords != null) keywords = new List<string>(set.keywords);
+        }
+
+        public ServiceReference1.UrlKeywordSet GetSet()
+        {
+            ServiceReference1.UrlKeywordSet set = new ServiceReference1.UrlKeywordSet();
+            if (this.keywords != null) set.keywords = this.keywords.ToArray();
+            set.url = this.url;
+            return set;
+        }
+
+        public UrlKeywordSet() { }
+       
+        public List<string> keywords { get; set; }
+
+        public string url { get; set; }
+
+        public int urlLimit { get; set; }
+    }
+
     public class UserWebsiteModel
     {
         

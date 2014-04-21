@@ -29,13 +29,60 @@ namespace SEOServices
     [ServiceContract]
     public interface IUserService
     {
+        
         [OperationContract]
-        bool AddWebsiteInfo(string userId, string url, List<string> keywords);
+        bool AddUser(User user);
 
+        [OperationContract]
+        bool UpdateUser(User user);
+
+        [OperationContract]
+        User GetUser(string id);
+        
         [OperationContract]
         WebsiteInfo GetWebsiteInfo(string userId);
     }
 
+    [DataContract]
+    public class User
+    {
+
+        [DataMember]
+        [JsonProperty("id")]
+        public string id { get; set; }
+        
+        [DataMember]
+        [JsonProperty("urlLimit")]
+        public int urlLimit { get; set; }
+
+        [DataMember]
+        [JsonProperty("keywordlLimit")]
+        public int keywordlLimit { get; set; }
+
+        [DataMember]
+        [JsonProperty("urllKeywordSets")]
+        public List<UrlKeywordSet> urllKeywordSets { get; set; }
+
+        [JsonProperty("type")]
+        public string Type
+        {
+            get { return "user"; }
+        }
+    }
+
+    [DataContract]
+    public class UrlKeywordSet
+    {
+        [DataMember]
+        [JsonProperty("url")]
+        public string url { get; set; }
+
+        [DataMember]
+        [JsonProperty("keywords")]
+        public List<string> keywords { get; set; }
+    }
+    
+    
     [DataContract]
     public class WebsiteInfo
     {
