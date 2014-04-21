@@ -18,6 +18,31 @@ namespace SeoFrontEnd.Controllers
     public class AccountController : Controller
     {
 
+
+        [HttpGet]
+        public ActionResult RemoveWebsite(string url)
+        {
+            
+            // Get the user
+            var request = new ServiceReference1.GetUserRequest();
+            request.id = User.Identity.Name;
+            ServiceReference1.User user = new ServiceReference1.UserServiceClient().GetUser(request).GetUserResult;
+            
+            if(user != null && user.urllKeywordSets != null && user.urllKeywordSets.Count() > 0)
+            {
+                List<ServiceReference1.UrlKeywordSet> set = new List<ServiceReference1.UrlKeywordSet>(user.urllKeywordSets);
+                set.RemoveAll(p => p.url == url);
+                user.urllKeywordSets = set.ToArray();
+
+                var updateUserRequest = new ServiceReference1.UpdateUserRequest();
+                updateUserRequest.user = user;
+                var response = new ServiceReference1.UserServiceClient().UpdateUser(updateUserRequest).UpdateUserResult;
+
+            }
+
+            return RedirectToAction("Website");
+        }
+        
         [HttpGet]
         public ActionResult Reports()
         {
@@ -46,8 +71,6 @@ namespace SeoFrontEnd.Controllers
             return View(model);
 
         }
-        
-        
         
         [HttpGet]
         public ActionResult KeywordRanking()
@@ -99,8 +122,8 @@ namespace SeoFrontEnd.Controllers
                 model.urlLimit = 5;
             }
 
-            ViewBag.InfoTitle = "Add Website";
-            ViewBag.InfoMessage = "Here is where you can add a website that you want to track. Please use the root url of your website and not an inner page so that we can match any page on your site that appears in the search engine results.";
+            ViewBag.InfoTitle = "Add or Remove a Website";
+            ViewBag.InfoMessage = "Here is where you can add or remove a website. To add a new website simply click on the + on the side menu and enter the url. Once the site is added tracking will begin immediately. Click the “remove” link next to any website to delete it. You will lose all keywords and history for any website you remove.";
 
             return View(model);
 
@@ -123,6 +146,8 @@ namespace SeoFrontEnd.Controllers
                 user.urllKeywordSets = new ServiceReference1.UrlKeywordSet[1];
                 user.urllKeywordSets[0] = new ServiceReference1.UrlKeywordSet();
                 user.urllKeywordSets[0].url = model.url;
+                model.urls = user.urllKeywordSets.Select(x => x.url).ToList();
+
                 var addUserRequest = new ServiceReference1.AddUserRequest();
                 addUserRequest.user = user;
                 response = new ServiceReference1.UserServiceClient().AddUser(addUserRequest).AddUserResult;
@@ -133,21 +158,11 @@ namespace SeoFrontEnd.Controllers
                 List<ServiceReference1.UrlKeywordSet> newList = new List<ServiceReference1.UrlKeywordSet>(user.urllKeywordSets);
                 newList.Add(new ServiceReference1.UrlKeywordSet { url = model.url });
                 user.urllKeywordSets = newList.ToArray();
+                model.urls = newList.Select(x => x.url).ToList();
 
                 var updateUserRequest = new ServiceReference1.UpdateUserRequest();
                 updateUserRequest.user = user;
                 response = new ServiceReference1.UserServiceClient().UpdateUser(updateUserRequest).UpdateUserResult;
-            }
-
-            if (response)
-            {
-                ViewBag.InfoTitle = "Website Succesfully Added!";
-                ViewBag.InfoMessage = "Your reports will know reflect the position of your new url in the search engine results.";
-            }
-            else
-            {
-                ViewBag.InfoTitle = "Ooops. Something Went Wrong!";
-                ViewBag.InfoMessage = "This is terribly embarassing. Please contact support for assistance.";
             }
 
             return View(model);

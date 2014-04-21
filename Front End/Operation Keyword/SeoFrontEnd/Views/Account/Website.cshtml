@@ -10,7 +10,7 @@
 
         <div style="display: none;" id="new_part">
             <ul class="sidebar">
-                <li><a id="cancel"  href="#" class="cancel">Cancel</a><div style="display: none;" class="tip"><div class="left"></div><div class="right">Cancel</div></div></li>
+                <li><a id="cancel" href="#" class="cancel">Cancel</a><div style="display: none;" class="tip"><div class="left"></div><div class="right">Cancel</div></div></li>
             </ul>
             <div class="message purple">
                 <a class="close_box" href="#">Close</a>
@@ -41,24 +41,9 @@
 
         </div>
 
-        <div style="display: none;" id="remove_part">
-            <ul class="sidebar">
-                <li><a id="cancel" href="#" class="cancel">Cancel</a><div style="display: none;" class="tip"><div class="left"></div><div class="right">Cancel</div></div></li>
-            </ul>
-            <div class="message purple">
-                <a class="close_box" href="#">Close</a>
-                <h2>@ViewBag.InfoTitle</h2>
-                @ViewBag.InfoMessage
-            </div>
-
-           
-
-        </div>
-
         <div id="main_part">
             <ul class="sidebar">
-                <li><a id="new" href="#">New Website</a><div style="display: none" class="tip"><div class="left"></div><div class="right">New Website</div></div></li>
-                <li><a id="remove" href="#">Remove Website</a><div style="display: none;" class="tip"><div class="left"></div><div class="right">Remove Website</div></div></li>
+                <li><a id="new" href="#">Add Website</a><div style="display: none" class="tip"><div class="left"></div><div class="right">Add Website</div></div></li>
             </ul>
             <div class="message purple">
                 <a class="close_box" href="#">Close</a>
@@ -66,41 +51,25 @@
                 @ViewBag.InfoMessage
             </div>
 
-           
-                
-                    <div class="bar">
-                        <span class="company">Website</span>
-                    </div>  
+            <div class="bar">
+                <span class="company">Website</span>
+            </div>
 
-                     <ul class="rows">
-                <li id="439005" class="row ui-draggable">
-                    <span class="company">
-                        <span class="company_name"><a class="toggle_address show" href="#">Sample Company</a></span>
-                        <span style="display: none" class="address">
-                            Invoice Street<br>
-                            Invoice City CA 92329<br>
-                            United States
-                        </span>
-                    </span>
-                    <span class="contact_name">Remove</span>
-                    <span class="contact_email"><a href="mailto: sample@invoicemachine.com">See Report</a></span>
-                </li>
-            </ul>
-                    
-                    
-                    @*@foreach (string url in Model.urls)
+            <ul class="rows">
+
+                @if (Model.urls != null)
+                {
+                    foreach (string url in Model.urls)
                     {
-                        <a href="#">@url</a><br/>
-                    }*@
-                
-            
-
+                        <li class="row">
+                            <span class="contact_email"><a href="@url">@url</a></span>
+                            @Html.ActionLink("Remove", "RemoveWebsite", new { url = @url })
+                            <span class="contact_email"><a href="@url">Edit Keywords</a></span>
+                        </li>
+                    }
+                }
+            </ul>
         </div>
-
-
-
-
-
     </div>
     <div id="space"></div>
 </div>
@@ -117,14 +86,26 @@
         $("#remove").on("click", function () {
             $("#main_part").hide();
             $("#new_part").hide();
-            $("#remove_part").show();
             return false
         });
 
         $(".cancel").on("click", function () {
             $("#new_part").hide();
             $("#main_part").show();
-            $("#remove_part").hide();
+            return false
+        });
+
+        $(".sidebar li a").hover(
+             function () {
+                 $(".tip").hide();
+                 $(this).next(".tip").show();
+             }, function () {
+                 $(this).next(".tip").fadeOut("fast")
+             }
+        );
+
+        $(".message .close_box").on("click", function () {
+            $(".message").fadeOut();
             return false
         });
 

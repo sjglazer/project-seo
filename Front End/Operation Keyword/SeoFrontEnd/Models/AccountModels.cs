@@ -39,15 +39,6 @@ namespace SeoFrontEnd.Models
     }
 
 
-
-
-    public class UserModel
-    {
-        public List<UrlKeywordSet> urlKeywordSets { get; set; }
-
-        public int urlLimit { get; set; }
-    }
-
     public class UrlKeywordSet
     {
         
