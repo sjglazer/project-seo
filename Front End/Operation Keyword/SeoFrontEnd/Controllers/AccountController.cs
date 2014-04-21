@@ -86,43 +86,28 @@ namespace SeoFrontEnd.Controllers
             request.id = User.Identity.Name;
             ServiceReference1.User user = new ServiceReference1.UserServiceClient().GetUser(request).GetUserResult;
 
-            UserModel model = new UserModel();
-            model.urlKeywordSets = new List<UrlKeywordSet>();
-            model.urlLimit = 5;
+            WebsiteModel model = new WebsiteModel();
+            
          
             if (user != null)
             {
-                // get the list of url's
-                var keywordUrlList = user.urllKeywordSets;
-                if (keywordUrlList != null)
-                {
-                    
-                    foreach (var set in keywordUrlList)
-                    {
-                        model.urlKeywordSets.Add(new UrlKeywordSet(set));
-                    }
-                }
-                
-                ViewBag.InfoTitle = "Edit Website";
-                ViewBag.InfoMessage = "You can change the url of the website you want to track here. Please note that when you look over the past results your position will automatically update to match the new url of your website.";
+                model.urlLimit = user.urlLimit;
+                model.urls = user.urllKeywordSets.Select(o => o.url).ToList();
             }
             else
             {
-                for(int i = 0; i < model.urlLimit; i ++ )
-                {
-                    model.urlKeywordSets.Add(new UrlKeywordSet());
-                }
-                
-                ViewBag.InfoTitle = "Add Website";
-                ViewBag.InfoMessage = "Here is where you can add a website that you want to track. Please use the root url of your website and not an inner page so that we can match any page on your site that appears in the search engine results.";
+                model.urlLimit = 5;
             }
+
+            ViewBag.InfoTitle = "Add Website";
+            ViewBag.InfoMessage = "Here is where you can add a website that you want to track. Please use the root url of your website and not an inner page so that we can match any page on your site that appears in the search engine results.";
 
             return View(model);
 
         }
 
         [HttpPost]
-        public ActionResult Website(UserModel model)
+        public ActionResult Website(WebsiteModel model)
         {
             var request = new ServiceReference1.GetUserRequest();
             request.id = User.Identity.Name;
@@ -135,39 +120,28 @@ namespace SeoFrontEnd.Controllers
                 user.keywordlLimit = 5;
                 user.urlLimit = 3;
                 user.id = User.Identity.Name;
-                user.urllKeywordSets = new ServiceReference1.UrlKeywordSet[model.urlKeywordSets.Count()];
-
-                int i = 0;
-                foreach(var set in model.urlKeywordSets)
-                {
-                    user.urllKeywordSets[i] = set.GetSet();
-                    i++;
-                }
-                
+                user.urllKeywordSets = new ServiceReference1.UrlKeywordSet[1];
+                user.urllKeywordSets[0] = new ServiceReference1.UrlKeywordSet();
+                user.urllKeywordSets[0].url = model.url;
                 var addUserRequest = new ServiceReference1.AddUserRequest();
                 addUserRequest.user = user;
                 response = new ServiceReference1.UserServiceClient().AddUser(addUserRequest).AddUserResult;
 
             }
             else 
-            { 
-                //foreach(var set in model.urlKeywordSets)
-                //{
-                //    int count = user.urllKeywordSets.Where(p => p.url == set.url).Count();
-                //    if(count < 1)
-                //    {
-                //        user.urllKeywordSets
-                //    }
+            {
+                List<ServiceReference1.UrlKeywordSet> newList = new List<ServiceReference1.UrlKeywordSet>(user.urllKeywordSets);
+                newList.Add(new ServiceReference1.UrlKeywordSet { url = model.url });
+                user.urllKeywordSets = newList.ToArray();
 
-                //}
-            
-            
-            
+                var updateUserRequest = new ServiceReference1.UpdateUserRequest();
+                updateUserRequest.user = user;
+                response = new ServiceReference1.UserServiceClient().UpdateUser(updateUserRequest).UpdateUserResult;
             }
 
             if (response)
             {
-                ViewBag.InfoTitle = "Website Succesfully Changed!";
+                ViewBag.InfoTitle = "Website Succesfully Added!";
                 ViewBag.InfoMessage = "Your reports will know reflect the position of your new url in the search engine results.";
             }
             else

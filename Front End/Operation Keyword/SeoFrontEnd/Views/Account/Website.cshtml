@@ -1,4 +1,4 @@
-﻿@model SeoFrontEnd.Models.UserModel
+﻿@model SeoFrontEnd.Models.WebsiteModel
 @{
     ViewBag.Title = "Website";
     Layout = "~/Views/Shared/_LayoutAccount.cshtml";
@@ -8,15 +8,16 @@
 <div id="page">
     <div class="inner">
 
-        <div id="main_part">
+        <div style="display: none;" id="new_part">
             <ul class="sidebar">
-                <li><a id="new" href="#">New Estimate</a><div style="display: none" class="tip"><div class="left"></div><div class="right">New Estimate</div></div></li>
+                <li><a id="cancel"  href="#" class="cancel">Cancel</a><div style="display: none;" class="tip"><div class="left"></div><div class="right">Cancel</div></div></li>
             </ul>
             <div class="message purple">
                 <a class="close_box" href="#">Close</a>
                 <h2>@ViewBag.InfoTitle</h2>
                 @ViewBag.InfoMessage
             </div>
+
             <div class="box">
                 <div id="account_overview_part" class="part">
                     @using (Html.BeginForm())
@@ -24,32 +25,109 @@
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary()
 
-                        for(int i = 1 ; i < Model.urlLimit + 1; i ++ )
-                        {
-                            <div class="inline">
-                             <label>url @i</label>
-                            @if (!string.IsNullOrEmpty(Model.urlKeywordSets[i - 1].url))
-                            {
-                                @Html.TextBoxFor(m => m.urlKeywordSets[i - 1].url, new { @class = "field", @readonly = true })
-                            }
-                            else
-                            {
-                                @Html.TextBoxFor(m => m.urlKeywordSets[i - 1].url, new { @class = "field" })
-                            }
-                            </div>
-                        }
-                 
+                        <div class="inline">
+
+                            <label>website</label>
+                            @Html.TextBoxFor(m => m.url, new { @class = "field" })
+
+                        </div>
+
                         <div class="control">
                             <input type="submit" value="Save" class="button save">
                         </div>
                     }
                 </div>
             </div>
+
         </div>
+
+        <div style="display: none;" id="remove_part">
+            <ul class="sidebar">
+                <li><a id="cancel" href="#" class="cancel">Cancel</a><div style="display: none;" class="tip"><div class="left"></div><div class="right">Cancel</div></div></li>
+            </ul>
+            <div class="message purple">
+                <a class="close_box" href="#">Close</a>
+                <h2>@ViewBag.InfoTitle</h2>
+                @ViewBag.InfoMessage
+            </div>
+
+           
+
+        </div>
+
+        <div id="main_part">
+            <ul class="sidebar">
+                <li><a id="new" href="#">New Website</a><div style="display: none" class="tip"><div class="left"></div><div class="right">New Website</div></div></li>
+                <li><a id="remove" href="#">Remove Website</a><div style="display: none;" class="tip"><div class="left"></div><div class="right">Remove Website</div></div></li>
+            </ul>
+            <div class="message purple">
+                <a class="close_box" href="#">Close</a>
+                <h2>@ViewBag.InfoTitle</h2>
+                @ViewBag.InfoMessage
+            </div>
+
+           
+                
+                    <div class="bar">
+                        <span class="company">Website</span>
+                    </div>  
+
+                     <ul class="rows">
+                <li id="439005" class="row ui-draggable">
+                    <span class="company">
+                        <span class="company_name"><a class="toggle_address show" href="#">Sample Company</a></span>
+                        <span style="display: none" class="address">
+                            Invoice Street<br>
+                            Invoice City CA 92329<br>
+                            United States
+                        </span>
+                    </span>
+                    <span class="contact_name">Remove</span>
+                    <span class="contact_email"><a href="mailto: sample@invoicemachine.com">See Report</a></span>
+                </li>
+            </ul>
+                    
+                    
+                    @*@foreach (string url in Model.urls)
+                    {
+                        <a href="#">@url</a><br/>
+                    }*@
+                
+            
+
+        </div>
+
+
+
+
+
     </div>
     <div id="space"></div>
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $("#new").on("click", function () {
+            $("#main_part").hide();
+            $("#new_part").show();
+            return false
+        });
+
+        $("#remove").on("click", function () {
+            $("#main_part").hide();
+            $("#new_part").hide();
+            $("#remove_part").show();
+            return false
+        });
+
+        $(".cancel").on("click", function () {
+            $("#new_part").hide();
+            $("#main_part").show();
+            $("#remove_part").hide();
+            return false
+        });
+
+    </script>
 }
+

@@ -2135,20 +2135,20 @@ body#projects div#main_part div.bar span.status {
 
 /* @group Clients */
 
-body#clients div#main_part div.bar span.company {
+body#invoices div#main_part div.bar span.company {
 	margin-left: 20px;
 	margin-right: 10px;
 	float: left;
 	width: 242px;
 }
 
-body#clients div#main_part div.bar span.contact_name {
+body#invoices div#main_part div.bar span.contact_name {
 	margin-right: 10px;
 	float: left;
 	width: 200px;
 }
 
-body#clients div#main_part div.bar span.contact_email {
+body#invoices div#main_part div.bar span.contact_email {
 	margin-right: 10px;
 	float: left;
 	width: 200px;
@@ -2586,7 +2586,7 @@ body#projects li.row span.status.partial.nine {
 
 /* @group Clients */
 
-body#clients li.row span.company {
+body#invoices li.row span.company {
 	float: left;
 	margin-left: 20px;
 	padding-left: 24px;
@@ -2595,21 +2595,21 @@ body#clients li.row span.company {
 	background: url(/images/application.png) no-repeat -680px -2021px;
 }
 
-body#clients li.row span.company span.address {
+body#invoices li.row span.company span.address {
 	width: 218px;
 	float: left;
 	font-weight: normal;
 	font-style: normal;
 }
 
-body#clients li.row span.contact_name {
+body#invoices li.row span.contact_name {
 	width: 200px;
 	float: left;
 	height: 20px;
 	margin-right: 10px;
 }
 
-body#clients li.row span.contact_email {
+body#invoices li.row span.contact_email {
 	width: 200px;
 	float: left;
 	height: 20px;

@@ -17,7 +17,7 @@ namespace SeoFrontEnd
             
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/application.js",
+                       "~/Scripts/jquery.validate*",
                         "~/Scripts/jquery.unobtrusive*"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(

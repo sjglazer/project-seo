@@ -28,6 +28,19 @@ namespace SeoFrontEnd.Models
         public string UserName { get; set; }
     }
 
+
+    public class WebsiteModel
+    {
+        public string url { get; set; }
+
+        public List<string> urls { get; set; }
+
+        public int urlLimit { get; set; }
+    }
+
+
+
+
     public class UserModel
     {
         public List<UrlKeywordSet> urlKeywordSets { get; set; }
