@@ -214,6 +214,160 @@ namespace SEOCrawler.SEOService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/SEOServices")]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int keywordlLimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int urlLimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SEOCrawler.SEOService.UrlKeywordSet[] urllKeywordSetsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idField, value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int keywordlLimit {
+            get {
+                return this.keywordlLimitField;
+            }
+            set {
+                if ((this.keywordlLimitField.Equals(value) != true)) {
+                    this.keywordlLimitField = value;
+                    this.RaisePropertyChanged("keywordlLimit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int urlLimit {
+            get {
+                return this.urlLimitField;
+            }
+            set {
+                if ((this.urlLimitField.Equals(value) != true)) {
+                    this.urlLimitField = value;
+                    this.RaisePropertyChanged("urlLimit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SEOCrawler.SEOService.UrlKeywordSet[] urllKeywordSets {
+            get {
+                return this.urllKeywordSetsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.urllKeywordSetsField, value) != true)) {
+                    this.urllKeywordSetsField = value;
+                    this.RaisePropertyChanged("urllKeywordSets");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UrlKeywordSet", Namespace="http://schemas.datacontract.org/2004/07/SEOServices")]
+    [System.SerializableAttribute()]
+    public partial class UrlKeywordSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] keywordsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string urlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] keywords {
+            get {
+                return this.keywordsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.keywordsField, value) != true)) {
+                    this.keywordsField = value;
+                    this.RaisePropertyChanged("keywords");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string url {
+            get {
+                return this.urlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.urlField, value) != true)) {
+                    this.urlField = value;
+                    this.RaisePropertyChanged("url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="WebsiteInfo", Namespace="http://schemas.datacontract.org/2004/07/SEOServices")]
     [System.SerializableAttribute()]
     public partial class WebsiteInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -366,11 +520,23 @@ namespace SEOCrawler.SEOService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SEOService.IUserService")]
     public interface IUserService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
-        bool AddWebsiteInfo(string userId, string url, string[] keywords);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
+        bool AddUser(SEOCrawler.SEOService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/AddWebsiteInfoResponse")]
-        System.Threading.Tasks.Task<bool> AddWebsiteInfoAsync(string userId, string url, string[] keywords);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
+        System.Threading.Tasks.Task<bool> AddUserAsync(SEOCrawler.SEOService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        bool UpdateUser(SEOCrawler.SEOService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        System.Threading.Tasks.Task<bool> UpdateUserAsync(SEOCrawler.SEOService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
+        SEOCrawler.SEOService.User GetUser(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
+        System.Threading.Tasks.Task<SEOCrawler.SEOService.User> GetUserAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetWebsiteInfo", ReplyAction="http://tempuri.org/IUserService/GetWebsiteInfoResponse")]
         SEOCrawler.SEOService.WebsiteInfo GetWebsiteInfo(string userId);
@@ -406,12 +572,28 @@ namespace SEOCrawler.SEOService {
                 base(binding, remoteAddress) {
         }
         
-        public bool AddWebsiteInfo(string userId, string url, string[] keywords) {
-            return base.Channel.AddWebsiteInfo(userId, url, keywords);
+        public bool AddUser(SEOCrawler.SEOService.User user) {
+            return base.Channel.AddUser(user);
         }
         
-        public System.Threading.Tasks.Task<bool> AddWebsiteInfoAsync(string userId, string url, string[] keywords) {
-            return base.Channel.AddWebsiteInfoAsync(userId, url, keywords);
+        public System.Threading.Tasks.Task<bool> AddUserAsync(SEOCrawler.SEOService.User user) {
+            return base.Channel.AddUserAsync(user);
+        }
+        
+        public bool UpdateUser(SEOCrawler.SEOService.User user) {
+            return base.Channel.UpdateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateUserAsync(SEOCrawler.SEOService.User user) {
+            return base.Channel.UpdateUserAsync(user);
+        }
+        
+        public SEOCrawler.SEOService.User GetUser(string id) {
+            return base.Channel.GetUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<SEOCrawler.SEOService.User> GetUserAsync(string id) {
+            return base.Channel.GetUserAsync(id);
         }
         
         public SEOCrawler.SEOService.WebsiteInfo GetWebsiteInfo(string userId) {

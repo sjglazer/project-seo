@@ -112,61 +112,13 @@ namespace SeoFrontEnd.Controllers
         [HttpGet]
         public ActionResult Reports()
         {
-            var request = new ServiceReference1.GetWebsiteInfoRequest();
-            request.userId = User.Identity.Name;
-            var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
-
-            if (response == null || response.GetWebsiteInfoResult == null || string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
-            {
-                ViewBag.Message = "Please add a website!";
-                return View();
-            }
-
-            if (response.GetWebsiteInfoResult.keywords != null && response.GetWebsiteInfoResult.keywords.Count() < 1)
-            {
-                ViewBag.Message = "Please add some keywords!";
-                return View();
-            }
-
-            var statRequest = new ServiceReference1.GetKeywordStatsRequest();
-            statRequest.userId = User.Identity.Name;
-            var statResponse = new ServiceReference1.KeywordServiceClient().GetKeywordStats(statRequest);
+            ServiceReference1.User user = _repository.GetUser();
             KeywordStatModel model = new KeywordStatModel();
-            model.stats = statResponse.GetKeywordStatsResult;
-
+            model.stats = _repository.GetUserStats();
             return View(model);
 
         }
         
-        [HttpGet]
-        public ActionResult KeywordRanking()
-        {
-            var request = new ServiceReference1.GetWebsiteInfoRequest();
-            request.userId = User.Identity.Name;
-            var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
-
-            if (response == null || response.GetWebsiteInfoResult == null || string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
-            {
-                ViewBag.Message = "Please add a website!";
-                return View();
-            }
-
-            if (response.GetWebsiteInfoResult.keywords != null && response.GetWebsiteInfoResult.keywords.Count() < 1)
-            {
-                ViewBag.Message = "Please add some keywords!";
-                return View();
-            }
-
-            var statRequest = new ServiceReference1.GetKeywordStatsRequest();
-            statRequest.userId = User.Identity.Name;
-            var statResponse = new ServiceReference1.KeywordServiceClient().GetKeywordStats(statRequest);
-            KeywordStatModel model = new KeywordStatModel();
-            model.stats = statResponse.GetKeywordStatsResult;
-            
-            return View(model);
-
-        }
-
         [HttpGet]
         public ActionResult Website()
         {
@@ -229,67 +181,6 @@ namespace SeoFrontEnd.Controllers
             ViewBag.InfoMessage = "Here is where you can add or remove a website. To add a new website simply click on the + on the side menu and enter the url. Once the site is added tracking will begin immediately. Click the “remove” link next to any website to delete it. You will lose all keywords and history for any website you remove.";
             
             
-            return View(model);
-        }
-        
-        [HttpGet]
-        public ActionResult Configure()
-        {
-
-            var request = new ServiceReference1.GetWebsiteInfoRequest();
-            request.userId = request.userId = User.Identity.Name;
-            var response = new ServiceReference1.UserServiceClient().GetWebsiteInfo(request);
-
-            UserWebsiteModel model = new UserWebsiteModel();
-            if (response.GetWebsiteInfoResult == null || string.IsNullOrEmpty(response.GetWebsiteInfoResult.url))
-            {
-                return RedirectToAction("Website", "Account");
-            }
-
-            if(response.GetWebsiteInfoResult != null && response.GetWebsiteInfoResult.keywords != null)
-            {
-                model.keywords = response.GetWebsiteInfoResult.keywords.ToList();
-                model.url = response.GetWebsiteInfoResult.url;
-                int count = 5 - model.keywords.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList().Count();
-                model.Numkeywords = count.ToString();
-                ViewBag.InfoTitle = "Edit Your Keywords - Change your Keywords Here";
-                ViewBag.InfoMessage = "Here is where you can add more keywords (if you haven’t used them all up) or modify existing keywords. * Please note: If you deleted a keyword or modify an existing keyword all tracking will be stopped for that keyword and the history deleted!";
-            }
-            else
-            {
-                model.url = response.GetWebsiteInfoResult.url;
-                model.keywords = new List<string>(new string[5]);
-                model.Numkeywords = "5";
-                ViewBag.InfoTitle = "Getting Started - Add your Website and Keywords";
-                ViewBag.InfoMessage = "Here is where you add your website and the keywords that you want to track. Enter the root url of your site and add then add the keywords you are interested in. Once you are done we will automatically track your sites position for each keyword twice a day.";
-                
-
-            }
-            
-            return View(model); 
-            
-        }
-        
-        [HttpPost]
-        public ActionResult Configure(UserWebsiteModel model)
-        {
-            //var request = new ServiceReference1.AddWebsiteInfoRequest();
-            //request.url = string.Empty;
-            //request.userId = User.Identity.Name;
-            //request.keywords = model.keywords.ToArray();
-            //var response = new ServiceReference1.UserServiceClient().AddWebsiteInfo(request);
-
-            //var getRequest = new ServiceReference1.GetWebsiteInfoRequest();
-            //getRequest.userId = request.userId = User.Identity.Name;
-            //var getresponse = new ServiceReference1.UserServiceClient().GetWebsiteInfo(getRequest);
-
-            //model.keywords = getresponse.GetWebsiteInfoResult.keywords.ToList();
-            //model.url = getresponse.GetWebsiteInfoResult.url;
-            //int count = 5 - model.keywords.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList().Count();
-            //model.Numkeywords = count.ToString();
-            
-            //ViewBag.InfoTitle = "Keywords Succesfully Changed!";
-            //ViewBag.InfoMessage = "We will now start tracking your new keywords.";
             return View(model);
         }
      

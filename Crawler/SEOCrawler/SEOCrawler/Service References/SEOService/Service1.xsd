@@ -60,19 +60,45 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddWebsiteInfo">
+  <xs:element name="AddUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keywords" nillable="true" type="q4:ArrayOfstring" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SEOServices" minOccurs="0" name="user" nillable="true" type="q4:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddWebsiteInfoResponse">
+  <xs:element name="AddUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddWebsiteInfoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="AddUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SEOServices" minOccurs="0" name="user" nillable="true" type="q5:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SEOServices" minOccurs="0" name="GetUserResult" nillable="true" type="q6:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -86,7 +112,7 @@
   <xs:element name="GetWebsiteInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SEOServices" minOccurs="0" name="GetWebsiteInfoResult" nillable="true" type="q5:WebsiteInfo" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SEOServices" minOccurs="0" name="GetWebsiteInfoResult" nillable="true" type="q7:WebsiteInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

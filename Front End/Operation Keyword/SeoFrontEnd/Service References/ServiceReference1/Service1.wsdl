@@ -32,6 +32,12 @@
   <wsdl:message name="IKeywordService_GetKeywordStats_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetKeywordStatsResponse" />
   </wsdl:message>
+  <wsdl:message name="IKeywordService_GetUserStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserStats" />
+  </wsdl:message>
+  <wsdl:message name="IKeywordService_GetUserStats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserStatsResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserService_AddUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUser" />
   </wsdl:message>
@@ -72,6 +78,10 @@
     <wsdl:operation name="GetKeywordStats">
       <wsdl:input wsaw:Action="http://tempuri.org/IKeywordService/GetKeywordStats" message="tns:IKeywordService_GetKeywordStats_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKeywordService/GetKeywordStatsResponse" message="tns:IKeywordService_GetKeywordStats_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKeywordService/GetUserStats" message="tns:IKeywordService_GetUserStats_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKeywordService/GetUserStatsResponse" message="tns:IKeywordService_GetUserStats_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserService">
@@ -123,6 +133,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetKeywordStats">
       <soap:operation soapAction="http://tempuri.org/IKeywordService/GetKeywordStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStats">
+      <soap:operation soapAction="http://tempuri.org/IKeywordService/GetUserStats" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

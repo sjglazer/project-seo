@@ -454,6 +454,12 @@ namespace SeoFrontEnd.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetKeywordStats", ReplyAction="http://tempuri.org/IKeywordService/GetKeywordStatsResponse")]
         System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetKeywordStatsResponse> GetKeywordStatsAsync(SeoFrontEnd.ServiceReference1.GetKeywordStatsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetUserStats", ReplyAction="http://tempuri.org/IKeywordService/GetUserStatsResponse")]
+        SeoFrontEnd.ServiceReference1.GetUserStatsResponse GetUserStats(SeoFrontEnd.ServiceReference1.GetUserStatsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKeywordService/GetUserStats", ReplyAction="http://tempuri.org/IKeywordService/GetUserStatsResponse")]
+        System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetUserStatsResponse> GetUserStatsAsync(SeoFrontEnd.ServiceReference1.GetUserStatsRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -593,6 +599,38 @@ namespace SeoFrontEnd.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetUserStats", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetUserStatsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string userId;
+        
+        public GetUserStatsRequest() {
+        }
+        
+        public GetUserStatsRequest(string userId) {
+            this.userId = userId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetUserStatsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetUserStatsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<string, SeoFrontEnd.ServiceReference1.KeywordStat[]>> GetUserStatsResult;
+        
+        public GetUserStatsResponse() {
+        }
+        
+        public GetUserStatsResponse(System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<string, SeoFrontEnd.ServiceReference1.KeywordStat[]>> GetUserStatsResult) {
+            this.GetUserStatsResult = GetUserStatsResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IKeywordServiceChannel : SeoFrontEnd.ServiceReference1.IKeywordService, System.ServiceModel.IClientChannel {
     }
@@ -650,6 +688,14 @@ namespace SeoFrontEnd.ServiceReference1 {
         
         public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetKeywordStatsResponse> GetKeywordStatsAsync(SeoFrontEnd.ServiceReference1.GetKeywordStatsRequest request) {
             return base.Channel.GetKeywordStatsAsync(request);
+        }
+        
+        public SeoFrontEnd.ServiceReference1.GetUserStatsResponse GetUserStats(SeoFrontEnd.ServiceReference1.GetUserStatsRequest request) {
+            return base.Channel.GetUserStats(request);
+        }
+        
+        public System.Threading.Tasks.Task<SeoFrontEnd.ServiceReference1.GetUserStatsResponse> GetUserStatsAsync(SeoFrontEnd.ServiceReference1.GetUserStatsRequest request) {
+            return base.Channel.GetUserStatsAsync(request);
         }
     }
     

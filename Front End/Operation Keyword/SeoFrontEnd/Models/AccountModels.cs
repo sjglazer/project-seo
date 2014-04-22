@@ -90,7 +90,8 @@ namespace SeoFrontEnd.Models
 
     public class KeywordStatModel
     {
-        public Dictionary<string, KeywordStats> stats { get; set; }
+        //public Dictionary<string, Dictionary<string, ServiceReference1.KeywordStat[]>> stats { get; set; }
+        public Dictionary<string, Dictionary<string, KeywordStat[]>> stats { get; set; }
     }
     
     public class RegisterExternalLoginModel

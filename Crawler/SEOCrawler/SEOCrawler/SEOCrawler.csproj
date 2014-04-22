@@ -61,6 +61,9 @@
     <None Include="Service References\SEOService\SEOCrawler.SEOService.KeywordStats.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SEOService\SEOCrawler.SEOService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SEOService\SEOCrawler.SEOService.WebsiteInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

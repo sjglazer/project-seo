@@ -11,6 +11,7 @@ using Couchbase.Extensions;
 using Enyim.Caching.Memcached;
 using Newtonsoft.Json;
 using System.ServiceModel.Activation;
+using System.Reflection;
 
 namespace SEOServices
 {
@@ -18,16 +19,63 @@ namespace SEOServices
     public class Service1 : IKeywordService, IUserService
     {
 
+        public Dictionary<string, Dictionary<string,List<KeywordStat>>> GetUserStats(string userId)
+        {
+            Dictionary<string, Dictionary<string,List<KeywordStat>>> ret = new Dictionary<string, Dictionary<string,List<KeywordStat>>>();
+            User user = GetUser(userId);
+
+            // loop through each of tthe users websites
+            foreach(UrlKeywordSet set in user.urllKeywordSets)
+            {
+                string website = set.url;
+                List<string> keywords = set.keywords;
+                
+                // loop through each keyword
+                Dictionary<string, List<KeywordStat>> result = new Dictionary<string, List<KeywordStat>>();
+                foreach(string keyword in keywords)
+                {
+                    List<KeywordStat> stats = CalculateKeywordStats(website , keyword);
+                    result.Add(keyword, stats);
+                }
+
+                ret.Add(website, result);
+            }
+            return ret;
+        }
+        
+        private List<KeywordStat> CalculateKeywordStats(string website , string keyword)
+        {
+            List<KeywordStat> ret = new List<KeywordStat>();
+            List<KeywordCrawlResult> crawlResults = GetCrawlsByKeyword(keyword);
+            
+            if(crawlResults != null)
+            {
+                foreach(KeywordCrawlResult result in crawlResults)
+                {
+                    if (result != null)
+                    {
+                        KeywordStat stat = new KeywordStat();
+                        stat.keyword = result.keyword;
+                        stat.TimeStamp = result.TimeStamp;
+                        int index = result.searchResults.FindIndex(x => x.StartsWith(website));
+                        stat.position = index.ToString();
+                        ret.Add(stat);
+                    }
+                }
+            }
+            return ret;
+        }
+        
         // IKeywordService Start
         public Dictionary<string, KeywordStats> GetKeywordStats(string userId)
         {
-            // Get the users domain and keywords
+            
             Dictionary<string, KeywordStats> returnVal = new Dictionary<string, KeywordStats>();
-            WebsiteInfo websiteInfo = GetWebsiteInfo(userId);
-            if(websiteInfo != null && websiteInfo.keywords != null && websiteInfo.keywords.Count > 0 && !string.IsNullOrEmpty(websiteInfo.url))
+            List<string> keywordList = GetUserKeywrodList(userId);
+            if (keywordList != null && keywordList.Count > 0 )
             {
                 // loop through each keyword
-                foreach(string keyword in websiteInfo.keywords)
+                foreach (string keyword in keywordList)
                 {
                     if(!string.IsNullOrEmpty(keyword))
                     {
@@ -44,7 +92,7 @@ namespace SEOServices
                                     KeywordStat stat = new KeywordStat();
                                     stat.keyword = crawlResult.keyword;
                                     stat.TimeStamp = crawlResult.TimeStamp;
-                                    int index = crawlResult.searchResults.FindIndex(x => x.StartsWith(websiteInfo.url));
+                                    int index = crawlResult.searchResults.FindIndex(x => x.StartsWith("urlgoeshere"));
                                     stat.position = index.ToString();
                                     current.stats.Add(stat);
                                 }
@@ -77,7 +125,20 @@ namespace SEOServices
 
             return list;
         }
-        
+
+        private List<string> GetUserKeywrodList(string userId)
+        {
+            List<string> ret = new List<string>();
+            User user = GetUser(userId);
+            if(user != null && user.urllKeywordSets.Count() > 0)
+            {
+                foreach(UrlKeywordSet set in user.urllKeywordSets)
+                {
+                    ret = ret.Union(set.keywords).ToList();
+                }
+            }
+            return ret;
+        }
         
         public bool CrawlKeyword(string keyword)
         {
@@ -117,15 +178,17 @@ namespace SEOServices
                 foreach (var row in view)
                 {
                     object[] value = row.Info["value"] as object[];
-                    List<string> list = Array.ConvertAll<object, string>(value, ConvertObjectToString).ToList();
-                    ret.keywords = ret.keywords.Union(list).ToList();
-                    
+                    foreach( Dictionary<string, object> pair in value)
+                    {
+                        object[] keywords = (object[])pair["keywords"];
+                        List<string> fields = keywords.Select(i => i.ToString()).ToList();
+                        ret.keywords = ret.keywords.Union(fields).ToList();
+                    }
                 }
             }
            
             return ret;
         }
-
         // IKeywordService End
 
         // IUserService Start
@@ -151,81 +214,6 @@ namespace SEOServices
             var user = client.GetJson<User>(id);
             return user;
         }
-
-        public bool AddWebsiteInfo(string userId, string url, List<string> keywords)
-        {
-            
-            WebsiteInfo info = GetWebsiteInfo(userId);
-            if(info == null)
-            {
-                //return AddUser(userId, url, keywords);
-                
-                //var newKeyword = new User
-                //{
-                //    url = url,
-                //    keywords = keywords
-                //};
-
-                //var key = userId;
-                //var client = CouchbaseManager.Instance;
-                //var result = client.StoreJson(StoreMode.Add, key, newKeyword);
-                //return result;
-            }
-            else
-            {
-               //return AddUser(userId, url, keywords);
-                
-                //var newKeyword = new User();
-                //if (!string.IsNullOrEmpty(url))
-                //{
-                //    newKeyword.url = url;
-                //} 
-                //else
-                //{
-                //    newKeyword.url = info.url;
-                //}
-
-                //if (keywords != null)
-                //{
-                //    newKeyword.keywords = keywords;
-                //}
-                //else
-                //{
-                //    newKeyword.keywords = info.keywords;
-                //}
-
-                //var key = userId;
-                //var client = CouchbaseManager.Instance;
-                //var result = client.StoreJson(StoreMode.Replace, key, newKeyword);
-                //return result;
-               
-            }
-            return true;
-        }
-
-        //private bool AddUser(string userId, string url, List<string> keywords)
-        //{
-        //    User user = new User();
-        //    UrlKeywordSet urlKeywordSet = new UrlKeywordSet();
-            
-        //    if(!string.IsNullOrEmpty(url))
-        //    {
-        //        urlKeywordSet.url = url;
-
-        //        if (keywords != null)
-        //        {
-        //            urlKeywordSet.keywords = keywords;
-        //        }
-
-        //        user.urllKeywordSets = new List<UrlKeywordSet>();
-        //        user.urllKeywordSets.Add(urlKeywordSet);
-        //    }
-
-        //    var key = userId;
-        //    var client = CouchbaseManager.Instance;
-        //    var result = client.StoreJson(StoreMode.Add, key, user);
-        //    return result;
-        //}
 
         public WebsiteInfo GetWebsiteInfo(string userId)
         {

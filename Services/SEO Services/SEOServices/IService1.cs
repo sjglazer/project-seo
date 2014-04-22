@@ -24,6 +24,9 @@ namespace SEOServices
 
         [OperationContract]
         Dictionary<string,KeywordStats> GetKeywordStats(string userId);
+
+        [OperationContract]
+        Dictionary<string, Dictionary<string, List<KeywordStat>>> GetUserStats(string userId);
     }
 
     [ServiceContract]
@@ -61,6 +64,7 @@ namespace SEOServices
 
         [DataMember]
         [JsonProperty("urllKeywordSets")]
+        
         public List<UrlKeywordSet> urllKeywordSets { get; set; }
 
         [JsonProperty("type")]
