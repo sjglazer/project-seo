@@ -77,9 +77,20 @@
 @section Scripts {
     <script type="text/javascript">
 
+        $(document).ready(function () {
+            $("#navigation a").removeClass("current");
+            $(".websites").addClass("current");
+        });
+
+        $("#navigation a").on("click", function () {
+            $("#navigation a").removeClass("current");
+            $(this).addClass("current")
+        });
+
         $("#new").on("click", function () {
             $("#main_part").hide();
             $("#new_part").show();
+            $("#url").val('');
             return false
         });
 
@@ -92,6 +103,7 @@
         $(".cancel").on("click", function () {
             $("#new_part").hide();
             $("#main_part").show();
+            $("#url").val('');
             return false
         });
 

@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
 
+
 namespace SeoFrontEnd.Models
 {
     public class UsersContext : DbContext
@@ -36,6 +37,15 @@ namespace SeoFrontEnd.Models
         public List<string> urls { get; set; }
 
         public int urlLimit { get; set; }
+    }
+
+    public class KeywordModel
+    {
+        public List<string> urls { get; set; }
+
+        public string keywords { get; set; }
+
+        public int selectedIndex { get; set; }
     }
 
 

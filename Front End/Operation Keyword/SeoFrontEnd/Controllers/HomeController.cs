@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using SeoFrontEnd.Models;
 using SeoFrontEnd;
 
+
 namespace SeoFrontEnd.Controllers
 {
     public class HomeController : Controller

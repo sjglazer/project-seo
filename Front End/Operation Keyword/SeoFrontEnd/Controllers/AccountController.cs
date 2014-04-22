@@ -10,6 +10,8 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using SeoFrontEnd.Filters;
 using SeoFrontEnd.Models;
+using SeoFrontEnd.Repository;
+using System.Web.UI.WebControls;
 
 namespace SeoFrontEnd.Controllers
 {
@@ -17,16 +19,80 @@ namespace SeoFrontEnd.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        ISeoRepository _repository = new SeoRepository();
 
+        [HttpPost]
+        public ActionResult WebsiteChanged(FormCollection collection)
+        {
+            KeywordModel model = new KeywordModel();
+            ServiceReference1.User user = _repository.GetUser();
+            if (user != null)
+            {
+                model.urls = GetUserWebsites(user);
+            }
+
+            string selected = collection["urlSelect"];
+            model.selectedIndex = Convert.ToInt32(selected);
+
+            if (model.selectedIndex == -1)
+            {
+                return RedirectToAction("Keywords");
+            }
+
+
+            string newKeywords = collection["keywords"];
+            List<string> newList = collection["keywords"].Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            if (collection["save"] != null) 
+            {
+                // update the list in the user object
+                var selectedUrl = model.urls[model.selectedIndex];
+                user.urllKeywordSets = user.urllKeywordSets.OrderBy(item => item.url).ToArray();
+                user.urllKeywordSets[model.selectedIndex].keywords = newList.ToArray();
+
+                _repository.UpdateUser(user);
+            }           
+
+            List<string> keywords = GetKeywords(user, model.urls[model.selectedIndex]);
+            model.keywords = String.Join(Environment.NewLine, keywords);
+
+            ViewBag.InfoTitle = "Add/Remove keywords";
+            ViewBag.InfoMessage = "Here is where you can add or remove keywords for a site you are tracking...";
+            
+
+            return View("keywords", model);
+        }
+       
+        [HttpGet]
+        public ActionResult Keywords()
+        {
+            ServiceReference1.User user = _repository.GetUser();
+            KeywordModel model = new KeywordModel();
+            if (user != null)
+            {
+                model.urls = GetUserWebsites(user);
+            }
+
+            model.selectedIndex = -1;
+
+            ViewBag.InfoTitle = "Add/Remove keywords";
+            ViewBag.InfoMessage = "Here is where you can add or remove keywords for a site you are tracking...";
+            return View(model);
+        }
+
+        public ActionResult Keywords(KeywordModel model)
+        {
+            ViewBag.InfoTitle = "Add/Remove keywords";
+            ViewBag.InfoMessage = "Here is where you can add or remove keywords for a site you are tracking...";
+
+            return View(model);
+        }
 
         [HttpGet]
         public ActionResult RemoveWebsite(string url)
         {
             
-            // Get the user
-            var request = new ServiceReference1.GetUserRequest();
-            request.id = User.Identity.Name;
-            ServiceReference1.User user = new ServiceReference1.UserServiceClient().GetUser(request).GetUserResult;
+            ServiceReference1.User user = _repository.GetUser();
             
             if(user != null && user.urllKeywordSets != null && user.urllKeywordSets.Count() > 0)
             {
@@ -104,18 +170,13 @@ namespace SeoFrontEnd.Controllers
         [HttpGet]
         public ActionResult Website()
         {
-
-            var request = new ServiceReference1.GetUserRequest();
-            request.id = User.Identity.Name;
-            ServiceReference1.User user = new ServiceReference1.UserServiceClient().GetUser(request).GetUserResult;
-
+            ServiceReference1.User user = _repository.GetUser();
             WebsiteModel model = new WebsiteModel();
             
-         
             if (user != null)
             {
                 model.urlLimit = user.urlLimit;
-                model.urls = user.urllKeywordSets.Select(o => o.url).ToList();
+                model.urls = GetUserWebsites(user);
             }
             else
             {
@@ -132,9 +193,7 @@ namespace SeoFrontEnd.Controllers
         [HttpPost]
         public ActionResult Website(WebsiteModel model)
         {
-            var request = new ServiceReference1.GetUserRequest();
-            request.id = User.Identity.Name;
-            ServiceReference1.User user = new ServiceReference1.UserServiceClient().GetUser(request).GetUserResult;
+            ServiceReference1.User user = _repository.GetUser();
 
             bool response = false;
             if(user == null)
@@ -146,7 +205,7 @@ namespace SeoFrontEnd.Controllers
                 user.urllKeywordSets = new ServiceReference1.UrlKeywordSet[1];
                 user.urllKeywordSets[0] = new ServiceReference1.UrlKeywordSet();
                 user.urllKeywordSets[0].url = model.url;
-                model.urls = user.urllKeywordSets.Select(x => x.url).ToList();
+                model.urls = GetUserWebsites(user);
 
                 var addUserRequest = new ServiceReference1.AddUserRequest();
                 addUserRequest.user = user;
@@ -159,12 +218,17 @@ namespace SeoFrontEnd.Controllers
                 newList.Add(new ServiceReference1.UrlKeywordSet { url = model.url });
                 user.urllKeywordSets = newList.ToArray();
                 model.urls = newList.Select(x => x.url).ToList();
+                model.url = "";
 
                 var updateUserRequest = new ServiceReference1.UpdateUserRequest();
                 updateUserRequest.user = user;
                 response = new ServiceReference1.UserServiceClient().UpdateUser(updateUserRequest).UpdateUserResult;
             }
 
+            ViewBag.InfoTitle = "Add or Remove a Website";
+            ViewBag.InfoMessage = "Here is where you can add or remove a website. To add a new website simply click on the + on the side menu and enter the url. Once the site is added tracking will begin immediately. Click the “remove” link next to any website to delete it. You will lose all keywords and history for any website you remove.";
+            
+            
             return View(model);
         }
         
@@ -541,6 +605,20 @@ namespace SeoFrontEnd.Controllers
         }
 
         #region Helpers
+        
+        private List<string> GetUserWebsites(ServiceReference1.User user)
+        {
+            return user.urllKeywordSets.Select(o => o.url).OrderBy(x => x).ToList();
+        }
+
+        private List<string> GetKeywords(ServiceReference1.User user, string url)
+        {
+            var match =  user.urllKeywordSets.Where(o => o.url == url).FirstOrDefault();
+            if(match == null || match.keywords == null) return new List<string>();
+            return match.keywords.ToList();
+        }
+        
+        
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))

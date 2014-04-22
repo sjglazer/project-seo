@@ -25,12 +25,11 @@
                     }
                 </li>
 
-                <li><a id="logout" href="http://testier.invoicemachine.com/logout">Logout</a></li>
             </ul>
             <ul id="navigation">
-                <li>@Html.ActionLink("Website", "Website", "Account", new { @class = "current" })</li>
-                <li>@Html.ActionLink("Keywords", "configure", "Account")</li>
-                <li>@Html.ActionLink("Reports", "Reports", "Account")</li>
+                <li>@Html.ActionLink("Websites", "Website", "Account", new { @class = "current websites" })</li>
+                <li>@Html.ActionLink("Keywords", "Keywords", "Account", new { @class = "keywords" })</li>
+                <li>@Html.ActionLink("Reports", "Reports", "Account", new { @class = "reports" })</li>
             </ul>
         </div>
     </div>

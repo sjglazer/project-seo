@@ -192,6 +192,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ISeoRepository.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -371,6 +372,7 @@
     <Content Include="Views\Shared\_LayoutAccount.cshtml" />
     <Content Include="Views\Account\Website.cshtml" />
     <Content Include="Views\Account\Reports.cshtml" />
+    <Content Include="Views\Account\Keywords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
